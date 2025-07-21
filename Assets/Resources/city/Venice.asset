@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc46e3d4122a55252bd507b56e17001f, type: 3}
+  m_Name: Venice
+  m_EditorClassIdentifier:
+  cityName: 0
+  keepsakes:
+  - {fileID: 11400000, guid: af45e6231ba933647ab529068a345a91, type: 2}
+  - {fileID: 11400000, guid: 2beb3fcab6d3cde4bbe1d8f85379425a, type: 2}
+  - {fileID: 11400000, guid: ebd62470d9337504abc81c42d6c335ec, type: 2}
+  - {fileID: 11400000, guid: eab97b411481edf4fa8a420a684fd48c, type: 2}
+  sceneName: Venice
+  distort: {x: 0, y: 0, z: 0, w: 0}
+  subScenes:
+  - mainMusic:
+    minLength: 0
+    maxLength: 0
+    allowCityEnd: 1
+    allowFlypack: 1
+    order: 0
+  minLength: 0
+  minIntervalLength: 0
+  maxIntervalLength: 0
+  allowSnow: 0
+  order: 3
+  lockedTaskSet: 0
+  iconName:
+  texturePath:

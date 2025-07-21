@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc46e3d4122a55252bd507b56e17001f, type: 3}
+  m_Name: Paris
+  m_EditorClassIdentifier:
+  cityName: 624
+  keepsakes:
+  - {fileID: 11400000, guid: cda379c6079178d4ba2eaff15f724b77, type: 2}
+  - {fileID: 11400000, guid: bc7d9e8ed08b4e94da9b643ded6eabd9, type: 2}
+  - {fileID: 11400000, guid: 955ee293152675d4694c30d903eaa833, type: 2}
+  - {fileID: 11400000, guid: 7a1b4ae6b2ccf9448a8e35337356a24f, type: 2}
+  sceneName: Paris
+  distort: {x: 0.0004, y: -0.0002, z: 0, w: 0}
+  subScenes:
+  - mainMusic: Paris_BGM
+    minLength: 10000
+    maxLength: 12000
+    allowCityEnd: 1
+    allowFlypack: 1
+    order: 0
+  - mainMusic: caves_bg
+    minLength: 10000
+    maxLength: 12000
+    allowCityEnd: 0
+    allowFlypack: 0
+    order: 1
+  minLength: 25000
+  minIntervalLength: 1500
+  maxIntervalLength: 3000
+  allowSnow: 0
+  order: 1
+  lockedTaskSet: -1
+  iconName:
+  texturePath:

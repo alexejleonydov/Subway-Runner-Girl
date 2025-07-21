@@ -1,0 +1,106 @@
+using UnityEngine;
+
+public class UIPosScalesAndNGUIAtlas : MonoBehaviour
+{
+	private static UIPosScalesAndNGUIAtlas _instance;
+
+	public Vector3 characterScreenSelectedButtonPos = new Vector3(0f, -145f, 0f);
+
+	public Vector3 characterScreenCharacterModelLocalPos = new Vector3(0f, -40f, 0f);
+
+	public Vector3 characterScreenCharacterModelLocalScl = new Vector3(22f, 22f, 22f);
+
+	public Vector3 characterScreenCharacterModelLocalRot = new Vector3(0f, 180f, 0f);
+
+	public Vector3 helmetScreenCharacterModelLocalPos = Vector3.zero;
+
+	public Vector3 helmetScreenCharacterModelLocalScl = new Vector3(22f, 22f, 22f);
+
+	public Vector3 helmetScreenCharacterModelLocalRot = new Vector3(20f, 154.5f, 358f);
+
+	public Vector3 celebrationCharacterUnlockCharacterModelLocalPos = Vector3.zero;
+
+	public Vector3 celebrationCharacterUnlockCharacterModelLocalScl = new Vector3(22f, 22f, 22f);
+
+	public Vector3 celebrationCharacterUnlockCharacterModelLocalRot = new Vector3(0f, 180f, 0f);
+
+	public Vector3 celebrationHelmUnlockCharacterModelLocalPos = new Vector3(0f, -90f, 0f);
+
+	public Vector3 celebrationHelmUnlockCharacterModelLocalScl = new Vector3(22f, 22f, 22f);
+
+	public Vector3 celebrationHelmUnlockCharacterModelLocalRot = new Vector3(0f, 60f, 0f);
+
+	public Vector3 celebrationHighScoreCharacterModelLocalPos = new Vector3(0f, -90f, 0f);
+
+	public Vector3 celebrationHighScoreCharacterModelLocalScl = new Vector3(22f, 22f, 22f);
+
+	public Vector3 celebrationHighScoreCharacterModelLocalRot = new Vector3(0f, 60f, 0f);
+
+	public Vector3 tryCharacterModelLocalPos = new Vector3(0f, -100f, 0f);
+
+	public Vector3 tryCharacterModelLocalScl = new Vector3(18f, 18f, 18f);
+
+	public Vector3 tryCharacterModelLocalRot = new Vector3(0f, 180f, 0f);
+
+	public Vector3 mainScreenPlayFingerOffset = new Vector3(0f, 212f, 0f);
+
+	public float mainScreenPlayFingerRotZ = 100f;
+
+	public Vector3 mainScreenCharFingerOffset = new Vector3(-66f, 194f, 0f);
+
+	public float mainScreenCharFingerRotZ = 120f;
+
+	public Vector3 mainScreenChestFingerOffset = new Vector3(22f, 185f, 0f);
+
+	public float mainScreenChestFingerRotZ = 80f;
+
+	public Vector3 characterScreenShifterFingerOffset = new Vector3(-105f, 69f, 0f);
+
+	public float characterScreenShifterFingerRotZ = 175f;
+
+	public Vector3 characterScreenSelectFingerOffset = new Vector3(145f, -40f, 0f);
+
+	public float characterScreenSelectFingerRotZ;
+
+	public Vector3 shopScreenFreeFingerOffset = new Vector3(101f, -49f, 0f);
+
+	public float shopScreenFreeFingerRotZ;
+
+	public Vector3 chestPopupButtoneFingerOffset = new Vector3(119f, -37f, 0f);
+
+	public float chestPopupButtoneFingerRotZ;
+
+	public string coin = "jinbi";
+
+	public string key = "diamond";
+
+	public string fillSpriteNameFormat = "AX_{0}Btn";
+
+	public string slotFormat = "AX_slot{0}";
+
+	public Color dayLblActive;
+
+	public Color rewardLblActive;
+
+	public Color dayLblInactive;
+
+	public Color rewardLblInactive;
+
+	public string achievementCellFillSpriteName = "AX_{0}Btn";
+
+	public int freeViewCoinReward = 400;
+
+	public int freeViewGemReward = 2;
+
+	public static UIPosScalesAndNGUIAtlas Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = Object.FindObjectOfType<UIPosScalesAndNGUIAtlas>();
+			}
+			return _instance;
+		}
+	}
+}

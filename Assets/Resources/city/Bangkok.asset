@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc46e3d4122a55252bd507b56e17001f, type: 3}
+  m_Name: Bangkok
+  m_EditorClassIdentifier:
+  cityName: 622
+  keepsakes:
+  - {fileID: 11400000, guid: 67cff8fc1b2428f48b7727c5534a8422, type: 2}
+  - {fileID: 11400000, guid: 6807edb3bf96f154c8d8eed61fabd9a6, type: 2}
+  - {fileID: 11400000, guid: c6171a8d7375068478f4cd40557d0b91, type: 2}
+  - {fileID: 11400000, guid: 1489c66a272565c4daf9ca3152b3b038, type: 2}
+  sceneName: Bangkok
+  distort: {x: 0, y: 0.0003, z: 0, w: 0}
+  subScenes:
+  - mainMusic: Forest
+    minLength: 2147483647
+    maxLength: 2147483647
+    allowCityEnd: 1
+    allowFlypack: 0
+    order: 0
+  minLength: 15000
+  minIntervalLength: 3000
+  maxIntervalLength: 5000
+  allowSnow: 0
+  order: 2
+  lockedTaskSet: 5
+  iconName:
+  texturePath:

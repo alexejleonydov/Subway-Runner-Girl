@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc46e3d4122a55252bd507b56e17001f, type: 3}
+  m_Name: New York
+  m_EditorClassIdentifier:
+  cityName: 623
+  keepsakes:
+  - {fileID: 11400000, guid: 9473e1287bc22e742b6b72a131d2e8d7, type: 2}
+  - {fileID: 11400000, guid: 2148c54052e307f47b1a8aefb3b03b88, type: 2}
+  - {fileID: 11400000, guid: c64e2624b75eaeb409d8f6f6f8dcb117, type: 2}
+  - {fileID: 11400000, guid: 01029789082c54c41886847768de871c, type: 2}
+  sceneName: New York
+  distort: {x: -0.0005, y: -0.0003, z: 0, w: 0}
+  subScenes:
+  - mainMusic: leyou_Hr_music_newFunky
+    minLength: 2147483647
+    maxLength: 2147483647
+    allowCityEnd: 1
+    allowFlypack: 1
+    order: 0
+  minLength: 12000
+  minIntervalLength: 1500
+  maxIntervalLength: 3000
+  allowSnow: 1
+  order: 0
+  lockedTaskSet: -1
+  iconName:
+  texturePath:
