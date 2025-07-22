@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Network;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Game : MonoBehaviour
 {
@@ -355,6 +356,8 @@ public class Game : MonoBehaviour
 
 	public event OnTurboHeadstartInputDelegate OnTurboHeadstartInput;
 
+	private InputActions inputActions;
+
 	private SwipeDir AnalyzeSwipe(Swipe swipe)
 	{
 		Vector3 b = Camera.main.ScreenToWorldPoint(new Vector3(swipe.start.x, swipe.start.y, 2f));
@@ -425,6 +428,16 @@ public class Game : MonoBehaviour
 			FacebookManger.Instance.LoginFacebook();
 		}
 		awakeDone = true;
+
+		inputActions = new InputActions();
+
+
+		inputActions.Play.Interact.performed += OnInteract;
+		inputActions.Play.Up.performed += OnUp;
+		inputActions.Play.Down.performed += OnDown;
+		inputActions.Play.Left.performed += OnLeft;
+		inputActions.Play.Right.performed += OnRight;
+
 	}
 
 	private void OnEnable()
@@ -433,6 +446,8 @@ public class Game : MonoBehaviour
 		RiseSdkListener.OnPaymentEvent += PayResult;
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
+
+		inputActions.Enable();
 	}
 
 	private void OnDisable()
@@ -444,7 +459,11 @@ public class Game : MonoBehaviour
 		{
 			PlayerInfo.Instance.SaveIfDirty();
 		}
+
+		inputActions.Disable();
 	}
+
+
 
 	public void ResetTest(bool quit = false)
 	{
@@ -556,69 +575,69 @@ public class Game : MonoBehaviour
 			int num = 0;
 			switch (billId)
 			{
-			case 0:
-				PlayerInfo.Instance.amountOfCoins += 7500;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 7500);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 7500);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 1:
-				PlayerInfo.Instance.amountOfCoins += 18000;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 18000);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 18000);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 2:
-				PlayerInfo.Instance.amountOfCoins += 30000;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 30000);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 30000);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 3:
-				PlayerInfo.Instance.amountOfCoins += 45000;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 45000);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 45000);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 4:
-				PlayerInfo.Instance.amountOfCoins += 100000;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 10000);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 10000);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 5:
-				num = ((!PlayerInfo.Instance.hasSubscribed) ? 10 : 15);
-				PlayerInfo.Instance.amountOfKeys += num;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
-				if (UIScreenController.Instance.GetTopScreenName().Equals("IngameUI") && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
-				{
-					SaveMeManager.SendReviveIfPurchaseSucceeded();
+				case 0:
+					PlayerInfo.Instance.amountOfCoins += 7500;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 7500);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 7500);
 					UIScreenController.Instance.ClosePopup(null);
-				}
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 6:
-				num = ((!PlayerInfo.Instance.hasSubscribed) ? 25 : 38);
-				PlayerInfo.Instance.amountOfKeys += num;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 7:
-				num = ((!PlayerInfo.Instance.hasSubscribed) ? 80 : 120);
-				PlayerInfo.Instance.amountOfKeys += num;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
-			case 8:
-				num = ((!PlayerInfo.Instance.hasSubscribed) ? 300 : 450);
-				PlayerInfo.Instance.amountOfKeys += num;
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
-				UIScreenController.Instance.ClosePopup(null);
-				break;
+					break;
+				case 1:
+					PlayerInfo.Instance.amountOfCoins += 18000;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 18000);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 18000);
+					UIScreenController.Instance.ClosePopup(null);
+					break;
+				case 2:
+					PlayerInfo.Instance.amountOfCoins += 30000;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 30000);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 30000);
+					UIScreenController.Instance.ClosePopup(null);
+					break;
+				case 3:
+					PlayerInfo.Instance.amountOfCoins += 45000;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 45000);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 45000);
+					UIScreenController.Instance.ClosePopup(null);
+					break;
+				case 4:
+					PlayerInfo.Instance.amountOfCoins += 100000;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, 10000);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_shop_buy", 0, 10000);
+					UIScreenController.Instance.ClosePopup(null);
+					break;
+				case 5:
+					num = ((!PlayerInfo.Instance.hasSubscribed) ? 10 : 15);
+					PlayerInfo.Instance.amountOfKeys += num;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
+					if (UIScreenController.Instance.GetTopScreenName().Equals("IngameUI") && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
+					{
+						SaveMeManager.SendReviveIfPurchaseSucceeded();
+						UIScreenController.Instance.ClosePopup(null);
+					}
+					UIScreenController.Instance.ClosePopup(null);
+					break;
+				case 6:
+					num = ((!PlayerInfo.Instance.hasSubscribed) ? 25 : 38);
+					PlayerInfo.Instance.amountOfKeys += num;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
+					UIScreenController.Instance.ClosePopup(null);
+					break;
+				case 7:
+					num = ((!PlayerInfo.Instance.hasSubscribed) ? 80 : 120);
+					PlayerInfo.Instance.amountOfKeys += num;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
+					UIScreenController.Instance.ClosePopup(null);
+					break;
+				case 8:
+					num = ((!PlayerInfo.Instance.hasSubscribed) ? 300 : 450);
+					PlayerInfo.Instance.amountOfKeys += num;
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, num);
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_shop_buy", 0, num);
+					UIScreenController.Instance.ClosePopup(null);
+					break;
 			}
 		}
 		else if (billId == 5 && UIScreenController.Instance.GetTopScreenName().Equals("IngameUI") && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
@@ -749,7 +768,7 @@ public class Game : MonoBehaviour
 			return;
 		}
 		Touch touch = Input.touches[0];
-		if (touch.phase == TouchPhase.Began)
+		if (touch.phase == UnityEngine.TouchPhase.Began)
 		{
 			currentSwipe = new Swipe();
 			currentSwipe.start = touch.position;
@@ -765,7 +784,7 @@ public class Game : MonoBehaviour
 				touchCount = 0;
 			}
 		}
-		if (touch.phase == TouchPhase.Moved)
+		if (touch.phase == UnityEngine.TouchPhase.Moved)
 		{
 			delta += touch.deltaPosition;
 			if (Vector2.SqrMagnitude(delta) > 0.1f)
@@ -773,9 +792,9 @@ public class Game : MonoBehaviour
 				touchCount = 0;
 			}
 		}
-		if ((touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && currentSwipe != null)
+		if ((touch.phase == UnityEngine.TouchPhase.Moved || touch.phase == UnityEngine.TouchPhase.Ended || touch.phase == UnityEngine.TouchPhase.Canceled) && currentSwipe != null)
 		{
-			if (touch.phase == TouchPhase.Ended)
+			if (touch.phase == UnityEngine.TouchPhase.Ended)
 			{
 				delta = Vector2.zero;
 			}
@@ -791,7 +810,7 @@ public class Game : MonoBehaviour
 				currentSwipe = null;
 			}
 		}
-		if (touch.phase == TouchPhase.Ended && currentSwipe != null)
+		if (touch.phase == UnityEngine.TouchPhase.Ended && currentSwipe != null)
 		{
 			currentSwipe.endTime = Time.time;
 			currentSwipe.end = touch.position;
@@ -863,6 +882,33 @@ public class Game : MonoBehaviour
 			}
 		}
 	}
+
+	private void OnUp(InputAction.CallbackContext context)
+	{
+		characterState.HandleSwipe(SwipeDir.Up);
+	}
+
+	private void OnDown(InputAction.CallbackContext context)
+	{
+		characterState.HandleSwipe(SwipeDir.Down);
+	}
+
+	private void OnLeft(InputAction.CallbackContext context)
+	{
+		characterState.HandleSwipe(SwipeDir.Left);
+	}
+
+	private void OnRight(InputAction.CallbackContext context)
+	{
+		characterState.HandleSwipe(SwipeDir.Right);
+	}
+
+	private void OnInteract(InputAction.CallbackContext context)
+	{
+		characterState.HandleDoubleTap();
+	}
+
+
 
 	private bool HandleTap()
 	{
@@ -1020,6 +1066,8 @@ public class Game : MonoBehaviour
 		{
 			RiseSdk.Instance.OnExit();
 		}
+
+
 	}
 
 	public void UpdateMeters()
@@ -1214,45 +1262,45 @@ public class Game : MonoBehaviour
 		{
 			switch (Characters.characterOrder.IndexOf(CharacterScreenManager.Instance.currenCharacterShown))
 			{
-			case 0:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles01", 0);
-				break;
-			case 1:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles02", 0);
-				break;
-			case 2:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles03", 0);
-				break;
-			case 3:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles04", 0);
-				break;
-			case 4:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles05", 0);
-				break;
-			case 5:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles06", 0);
-				break;
-			case 6:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles07", 0);
-				break;
-			case 7:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles08", 0);
-				break;
-			case 8:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles09", 0);
-				break;
-			case 9:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles10", 0);
-				break;
-			case 10:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles11", 0);
-				break;
-			case 11:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles12", 0);
-				break;
-			case 12:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles13", 0);
-				break;
+				case 0:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles01", 0);
+					break;
+				case 1:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles02", 0);
+					break;
+				case 2:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles03", 0);
+					break;
+				case 3:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles04", 0);
+					break;
+				case 4:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles05", 0);
+					break;
+				case 5:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles06", 0);
+					break;
+				case 6:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles07", 0);
+					break;
+				case 7:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles08", 0);
+					break;
+				case 8:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles09", 0);
+					break;
+				case 9:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles10", 0);
+					break;
+				case 10:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles11", 0);
+					break;
+				case 11:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles12", 0);
+					break;
+				case 12:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "roles_run_roles13", 0);
+					break;
 			}
 		}
 	}
