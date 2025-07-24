@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using MiniJSONs;
 using UnityEngine;
-
+using System.Globalization;
 public class Upgrade
 {
 	public LanguageKey name;
@@ -117,17 +117,17 @@ public class Upgrade
 				upgrade.durations = new float[array.Length];
 				for (int i = 0; i < array.Length; i++)
 				{
-					upgrade.durations[i] = float.Parse(array[i]);
+					upgrade.durations[i] = float.Parse(array[i], CultureInfo.InvariantCulture);
 				}
 			}
 		}
 		if (dictionary.ContainsKey("speed"))
 		{
-			upgrade.speed = float.Parse((string)dictionary["speed"]);
+			upgrade.speed = float.Parse((string)dictionary["speed"], CultureInfo.InvariantCulture);
 		}
 		if (dictionary.ContainsKey("landSpeed"))
 		{
-			upgrade.landSpeed = float.Parse((string)dictionary["landSpeed"]);
+			upgrade.landSpeed = float.Parse((string)dictionary["landSpeed"], CultureInfo.InvariantCulture);
 		}
 		if (dictionary.ContainsKey("spawnProbability"))
 		{

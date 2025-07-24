@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameOverNewUI : MonoBehaviour
 {
@@ -96,6 +97,8 @@ public class GameOverNewUI : MonoBehaviour
 
 	private GameOverScreen gameOverScreen;
 
+	private InputActions inputActions;
+
 	public void Init(GameOverScreen screen)
 	{
 		gameOverScreen = screen;
@@ -112,14 +115,24 @@ public class GameOverNewUI : MonoBehaviour
 		doubleAmountLblOriginColor = doubleAmountLbl.color;
 	}
 
+
+	void Awake()
+	{
+		inputActions = new InputActions();
+
+		inputActions.UI.PlayGame.performed += OnClaimPressed;
+	}
+
 	private void OnEnable()
 	{
 		GameStats.Instance.OnGameOverPlayLotteryCountIncreased = (Action)Delegate.Combine(GameStats.Instance.OnGameOverPlayLotteryCountIncreased, new Action(OnGameOverPlayLotteryCountIncreased));
+		inputActions.Enable();
 	}
 
 	private void OnDisable()
 	{
 		GameStats.Instance.OnGameOverPlayLotteryCountIncreased = (Action)Delegate.Remove(GameStats.Instance.OnGameOverPlayLotteryCountIncreased, new Action(OnGameOverPlayLotteryCountIncreased));
+		inputActions.Disable();
 	}
 
 	private void RefreshLabel()
@@ -317,38 +330,38 @@ public class GameOverNewUI : MonoBehaviour
 
 	public void ShowLotteryBtn(bool showTryRole)
 	{
-		trialInfo = TrialManager.Instance.SelectValidlyTrialInfo();
-		if (trialInfo == null)
-		{
-			showTryRole = false;
-		}
-		else
-		{
-			tryIconSpr.spriteName = trialInfo.icon;
-		}
-		if (RiseSdk.Instance.HasRewardAd())
-		{
-			if (!upGo.activeInHierarchy)
-			{
-				upGo.SetActive(true);
-			}
-			up_anim.Play();
-			if (tryCharacterGo.activeInHierarchy != showTryRole)
-			{
-				tryCharacterGo.SetActive(showTryRole);
-			}
-			if (lotteryGo.activeInHierarchy == showTryRole)
-			{
-				lotteryGo.SetActive(!showTryRole);
-			}
-			if (showTryRole)
-			{
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "show_video_all_success", 0);
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "show_video_try_endless", 0);
-			}
-			ps_lotter_try.Play();
-			ts_up.PlayForward();
-		}
+		// trialInfo = TrialManager.Instance.SelectValidlyTrialInfo();
+		// if (trialInfo == null)
+		// {
+		// 	showTryRole = false;
+		// }
+		// else
+		// {
+		// 	tryIconSpr.spriteName = trialInfo.icon;
+		// }
+		// if (RiseSdk.Instance.HasRewardAd())
+		// {
+		// 	if (!upGo.activeInHierarchy)
+		// 	{
+		// 		upGo.SetActive(true);
+		// 	}
+		// 	up_anim.Play();
+		// 	if (tryCharacterGo.activeInHierarchy != showTryRole)
+		// 	{
+		// 		tryCharacterGo.SetActive(showTryRole);
+		// 	}
+		// 	if (lotteryGo.activeInHierarchy == showTryRole)
+		// 	{
+		// 		lotteryGo.SetActive(!showTryRole);
+		// 	}
+		// 	if (showTryRole)
+		// 	{
+		// 		IvyApp.Instance.Statistics(string.Empty, string.Empty, "show_video_all_success", 0);
+		// 		IvyApp.Instance.Statistics(string.Empty, string.Empty, "show_video_try_endless", 0);
+		// 	}
+		// 	ps_lotter_try.Play();
+		// 	ts_up.PlayForward();
+		// }
 	}
 
 	private void OnClaimClick(GameObject go)
@@ -362,6 +375,14 @@ public class GameOverNewUI : MonoBehaviour
 		ps_claim.Play();
 		HideDown();
 	}
+
+	private void OnClaimPressed(InputAction.CallbackContext context)
+	{
+
+		OnClaimClick(claimGo);
+
+	}
+
 
 	private void OnLotteryClick(GameObject go)
 	{

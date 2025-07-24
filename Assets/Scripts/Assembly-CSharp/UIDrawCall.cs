@@ -694,7 +694,7 @@ public class UIDrawCall : MonoBehaviour
 			NGUITools.SetActive(uIDrawCall.gameObject, true);
 			return uIDrawCall;
 		}
-		GameObject gameObject = new GameObject(name);
+		GameObject gameObject = new GameObject("LoadingPicture");
 #if !UNITY_EDITOR
 		UnityEngine.Object.DontDestroyOnLoad(gameObject);
 #endif

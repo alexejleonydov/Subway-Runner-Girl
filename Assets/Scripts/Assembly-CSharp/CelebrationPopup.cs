@@ -657,32 +657,32 @@ public class CelebrationPopup : UIBaseScreen
 		GameObject result = rewardCoins;
 		switch (reward.rewardType)
 		{
-		case CelebrationRewardType.coins:
-			return rewardCoins;
-		case CelebrationRewardType.powerup:
-			switch (reward.powerupType)
-			{
-			case PropType.headstart2000:
-				return rewardPowerupHeadstart2000;
-			case PropType.scorebooster:
-				return rewardPowerupScoreBooster;
+			case CelebrationRewardType.coins:
+				return rewardCoins;
+			case CelebrationRewardType.powerup:
+				switch (reward.powerupType)
+				{
+					case PropType.headstart2000:
+						return rewardPowerupHeadstart2000;
+					case PropType.scorebooster:
+						return rewardPowerupScoreBooster;
+					default:
+						return result;
+				}
+			case CelebrationRewardType.symbol:
+				switch (reward.characterType)
+				{
+					case Characters.CharacterType.lee:
+						return rewardSymbolLee;
+					case Characters.CharacterType.turtlefok:
+						return rewardSymbolTurtlefok;
+					default:
+						return result;
+				}
+			case CelebrationRewardType.keys:
+				return rewardKey;
 			default:
 				return result;
-			}
-		case CelebrationRewardType.symbol:
-			switch (reward.characterType)
-			{
-			case Characters.CharacterType.lee:
-				return rewardSymbolLee;
-			case Characters.CharacterType.turtlefok:
-				return rewardSymbolTurtlefok;
-			default:
-				return result;
-			}
-		case CelebrationRewardType.keys:
-			return rewardKey;
-		default:
-			return result;
 		}
 	}
 
@@ -724,18 +724,18 @@ public class CelebrationPopup : UIBaseScreen
 			bool flag = true;
 			switch (celebrationRewardOrigin)
 			{
-			case CelebrationRewardOrigin.Chest:
-				gameObject = NGUITools.AddChild(slots[i], chestPrefab);
-				flag = false;
-				break;
-			case CelebrationRewardOrigin.SuperChest:
-				gameObject = NGUITools.AddChild(slots[i], superChestPrefab);
-				flag = false;
-				break;
-			case CelebrationRewardOrigin.ChestMini:
-				gameObject = NGUITools.AddChild(slots[i], miniChestPrefab);
-				flag = false;
-				break;
+				case CelebrationRewardOrigin.Chest:
+					gameObject = NGUITools.AddChild(slots[i], chestPrefab);
+					flag = false;
+					break;
+				case CelebrationRewardOrigin.SuperChest:
+					gameObject = NGUITools.AddChild(slots[i], superChestPrefab);
+					flag = false;
+					break;
+				case CelebrationRewardOrigin.ChestMini:
+					gameObject = NGUITools.AddChild(slots[i], miniChestPrefab);
+					flag = false;
+					break;
 			}
 			if (!flag)
 			{
@@ -1083,23 +1083,23 @@ public class CelebrationPopup : UIBaseScreen
 	{
 		switch (reward.CelebrationRewardOrigin)
 		{
-		case CelebrationRewardOrigin.Chest:
-		case CelebrationRewardOrigin.SuperChest:
-		case CelebrationRewardOrigin.ChestMini:
-			ResetBackgroundToNormal();
-			openButton.enabled = true;
-			break;
-		case CelebrationRewardOrigin.CharacterUnlock:
-		case CelebrationRewardOrigin.HelmetUnlock:
-			ResetBackgroundToNormal();
-			openButton.enabled = false;
-			break;
-		case CelebrationRewardOrigin.NewHighScore:
-			ResetBackgroundToNormal();
-			openButton.enabled = false;
-			_currentNewHighScoreHandler = NGUITools.AddChild(UIScreenController.Instance.CameraOverlay2d.gameObject, _NewHighScoreHandlerPrefab.gameObject).GetComponent<NewHighScoreHandler>();
-			Utility.SetLayerRecursively(_currentNewHighScoreHandler.gameObject.transform, UIScreenController.Instance.CameraOverlay2d.gameObject.layer);
-			break;
+			case CelebrationRewardOrigin.Chest:
+			case CelebrationRewardOrigin.SuperChest:
+			case CelebrationRewardOrigin.ChestMini:
+				ResetBackgroundToNormal();
+				openButton.enabled = true;
+				break;
+			case CelebrationRewardOrigin.CharacterUnlock:
+			case CelebrationRewardOrigin.HelmetUnlock:
+				ResetBackgroundToNormal();
+				openButton.enabled = false;
+				break;
+			case CelebrationRewardOrigin.NewHighScore:
+				ResetBackgroundToNormal();
+				openButton.enabled = false;
+				_currentNewHighScoreHandler = NGUITools.AddChild(UIScreenController.Instance.CameraOverlay2d.gameObject, _NewHighScoreHandlerPrefab.gameObject).GetComponent<NewHighScoreHandler>();
+				Utility.SetLayerRecursively(_currentNewHighScoreHandler.gameObject.transform, UIScreenController.Instance.CameraOverlay2d.gameObject.layer);
+				break;
 		}
 	}
 }

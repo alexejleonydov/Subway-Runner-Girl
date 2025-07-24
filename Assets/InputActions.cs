@@ -98,6 +98,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""024d2290-0a91-4638-9def-bd0d91d48e06"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -158,8 +167,19 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5f5367c5-76a5-4299-b18d-8b00a8b1af94"",
+                    ""path"": ""<NPad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f22e5b47-ece2-4a9d-8ca0-4c8c408f6a00"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -170,7 +190,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9b81f302-616b-42e8-9405-25e7779fda10"",
-                    ""path"": ""<NPad>/buttonSouth"",
+                    ""path"": ""<NPad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""GamePad"",
@@ -320,6 +340,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4bc09086-ffbe-4505-963d-d8130554ed78"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad54c7b4-c634-43aa-9975-ea26e1fafaae"",
+                    ""path"": ""<NPad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -413,42 +455,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""da68ce65-61db-4ad7-a233-6e0e3670a0b8"",
                     ""expectedControlType"": ""Quaternion"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Weapons"",
-                    ""type"": ""Button"",
-                    ""id"": ""22768a86-7c5a-4eb2-9b35-06f6a1c0abc8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Cars"",
-                    ""type"": ""Button"",
-                    ""id"": ""5f1726fe-2456-4cc3-bca1-9f84c1496258"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SoundOff"",
-                    ""type"": ""Button"",
-                    ""id"": ""a65495e3-e448-45ac-a067-0b72462897c2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Shop"",
-                    ""type"": ""Button"",
-                    ""id"": ""77e68b1f-f04c-4e73-90c3-9692f9343de1"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -895,96 +901,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""08724dbd-c8fa-44e8-ba62-ec313fab2f34"",
-                    ""path"": ""<NPad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Weapons"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""47ecaa1a-1230-4d9a-b0cb-c000af5f3c9a"",
-                    ""path"": ""<Keyboard>/b"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Weapons"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""44cc7b44-c7ef-4348-be57-049778c24e1e"",
-                    ""path"": ""<NPad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cars"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3ed89216-ae7d-4645-800c-736763fa527c"",
-                    ""path"": ""<Keyboard>/n"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cars"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""22bd4c53-2e96-47fc-8daa-5b5b92a58dcd"",
-                    ""path"": ""<NPad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SoundOff"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c2596021-cb5e-44d0-bb4a-397a88f01884"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SoundOff"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f85046f6-7eee-47f2-bd51-a3b30a19ea2c"",
-                    ""path"": ""<NPad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5000e12f-2aab-4d3d-b87c-ddbf86c565e4"",
-                    ""path"": ""<Keyboard>/m"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c8bf259b-ce0c-452d-afad-186bd886582b"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -1040,6 +958,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Play_Down = m_Play.FindAction("Down", throwIfNotFound: true);
         m_Play_Left = m_Play.FindAction("Left", throwIfNotFound: true);
         m_Play_Right = m_Play.FindAction("Right", throwIfNotFound: true);
+        m_Play_Pause = m_Play.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1052,10 +971,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
-        m_UI_Weapons = m_UI.FindAction("Weapons", throwIfNotFound: true);
-        m_UI_Cars = m_UI.FindAction("Cars", throwIfNotFound: true);
-        m_UI_SoundOff = m_UI.FindAction("SoundOff", throwIfNotFound: true);
-        m_UI_Shop = m_UI.FindAction("Shop", throwIfNotFound: true);
         m_UI_PlayGame = m_UI.FindAction("PlayGame", throwIfNotFound: true);
     }
 
@@ -1126,6 +1041,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Play_Down;
     private readonly InputAction m_Play_Left;
     private readonly InputAction m_Play_Right;
+    private readonly InputAction m_Play_Pause;
     public struct PlayActions
     {
         private @InputActions m_Wrapper;
@@ -1138,6 +1054,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Down => m_Wrapper.m_Play_Down;
         public InputAction @Left => m_Wrapper.m_Play_Left;
         public InputAction @Right => m_Wrapper.m_Play_Right;
+        public InputAction @Pause => m_Wrapper.m_Play_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1171,6 +1088,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Right.started += instance.OnRight;
             @Right.performed += instance.OnRight;
             @Right.canceled += instance.OnRight;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayActions instance)
@@ -1199,6 +1119,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Right.started -= instance.OnRight;
             @Right.performed -= instance.OnRight;
             @Right.canceled -= instance.OnRight;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayActions instance)
@@ -1230,10 +1153,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
-    private readonly InputAction m_UI_Weapons;
-    private readonly InputAction m_UI_Cars;
-    private readonly InputAction m_UI_SoundOff;
-    private readonly InputAction m_UI_Shop;
     private readonly InputAction m_UI_PlayGame;
     public struct UIActions
     {
@@ -1249,10 +1168,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
-        public InputAction @Weapons => m_Wrapper.m_UI_Weapons;
-        public InputAction @Cars => m_Wrapper.m_UI_Cars;
-        public InputAction @SoundOff => m_Wrapper.m_UI_SoundOff;
-        public InputAction @Shop => m_Wrapper.m_UI_Shop;
         public InputAction @PlayGame => m_Wrapper.m_UI_PlayGame;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
@@ -1293,18 +1208,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
-            @Weapons.started += instance.OnWeapons;
-            @Weapons.performed += instance.OnWeapons;
-            @Weapons.canceled += instance.OnWeapons;
-            @Cars.started += instance.OnCars;
-            @Cars.performed += instance.OnCars;
-            @Cars.canceled += instance.OnCars;
-            @SoundOff.started += instance.OnSoundOff;
-            @SoundOff.performed += instance.OnSoundOff;
-            @SoundOff.canceled += instance.OnSoundOff;
-            @Shop.started += instance.OnShop;
-            @Shop.performed += instance.OnShop;
-            @Shop.canceled += instance.OnShop;
             @PlayGame.started += instance.OnPlayGame;
             @PlayGame.performed += instance.OnPlayGame;
             @PlayGame.canceled += instance.OnPlayGame;
@@ -1342,18 +1245,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
-            @Weapons.started -= instance.OnWeapons;
-            @Weapons.performed -= instance.OnWeapons;
-            @Weapons.canceled -= instance.OnWeapons;
-            @Cars.started -= instance.OnCars;
-            @Cars.performed -= instance.OnCars;
-            @Cars.canceled -= instance.OnCars;
-            @SoundOff.started -= instance.OnSoundOff;
-            @SoundOff.performed -= instance.OnSoundOff;
-            @SoundOff.canceled -= instance.OnSoundOff;
-            @Shop.started -= instance.OnShop;
-            @Shop.performed -= instance.OnShop;
-            @Shop.canceled -= instance.OnShop;
             @PlayGame.started -= instance.OnPlayGame;
             @PlayGame.performed -= instance.OnPlayGame;
             @PlayGame.canceled -= instance.OnPlayGame;
@@ -1402,6 +1293,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1415,10 +1307,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
-        void OnWeapons(InputAction.CallbackContext context);
-        void OnCars(InputAction.CallbackContext context);
-        void OnSoundOff(InputAction.CallbackContext context);
-        void OnShop(InputAction.CallbackContext context);
         void OnPlayGame(InputAction.CallbackContext context);
     }
 }

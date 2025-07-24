@@ -1,8 +1,53 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [AddComponentMenu("GUI/Interaction/Change Screen Button")]
 public class UIButtonChangeScreen : UIBasicButton
 {
+	private InputActions inputActions;
+
+
+	void Awake()
+	{
+		inputActions = new InputActions();
+
+		inputActions.Play.Throw.performed += OnInteractPerformed;
+
+		inputActions.Play.Pause.performed += OnPausePerformed;
+	}
+
+	private void OnEnable()
+	{
+		inputActions.Enable();
+	}
+
+	private void OnDisable()
+	{
+		inputActions.Disable();
+
+		inputActions.Play.Throw.performed -= OnInteractPerformed;
+
+		inputActions.Play.Pause.performed -= OnPausePerformed;
+	}
+
+	private void OnInteractPerformed(InputAction.CallbackContext context)
+	{
+		ScreenNameToOpen = "CoinsUI_shop";
+
+		//CharacterScreen
+		Send();
+	}
+
+
+	private void OnPausePerformed(InputAction.CallbackContext context)
+	{
+		ScreenNameToOpen = "PauseUI";
+
+		//CharacterScreen
+		Send();
+	}
+
+
 	public enum ScreenChangeType
 	{
 		PushScreen = 0,

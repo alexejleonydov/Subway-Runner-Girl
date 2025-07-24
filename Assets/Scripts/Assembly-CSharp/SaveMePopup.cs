@@ -106,7 +106,7 @@ public class SaveMePopup : UIBaseScreen
 	public override void GainFocus()
 	{
 		base.GainFocus();
-		Time.timeScale = 0f;
+		Time.timeScale = 1f;
 	}
 
 	public override void LooseFocus()

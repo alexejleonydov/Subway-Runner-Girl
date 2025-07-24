@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "024d2290-0a91-4638-9def-bd0d91d48e06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -136,8 +145,19 @@
                 },
                 {
                     "name": "",
+                    "id": "5f5367c5-76a5-4299-b18d-8b00a8b1af94",
+                    "path": "<NPad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f22e5b47-ece2-4a9d-8ca0-4c8c408f6a00",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -148,7 +168,7 @@
                 {
                     "name": "",
                     "id": "9b81f302-616b-42e8-9405-25e7779fda10",
-                    "path": "<NPad>/buttonSouth",
+                    "path": "<NPad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -298,6 +318,28 @@
                     "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bc09086-ffbe-4505-963d-d8130554ed78",
+                    "path": "<Keyboard>/numpadPlus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad54c7b4-c634-43aa-9975-ea26e1fafaae",
+                    "path": "<NPad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -391,42 +433,6 @@
                     "type": "PassThrough",
                     "id": "da68ce65-61db-4ad7-a233-6e0e3670a0b8",
                     "expectedControlType": "Quaternion",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Weapons",
-                    "type": "Button",
-                    "id": "22768a86-7c5a-4eb2-9b35-06f6a1c0abc8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Cars",
-                    "type": "Button",
-                    "id": "5f1726fe-2456-4cc3-bca1-9f84c1496258",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SoundOff",
-                    "type": "Button",
-                    "id": "a65495e3-e448-45ac-a067-0b72462897c2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Shop",
-                    "type": "Button",
-                    "id": "77e68b1f-f04c-4e73-90c3-9692f9343de1",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -873,96 +879,8 @@
                 },
                 {
                     "name": "",
-                    "id": "08724dbd-c8fa-44e8-ba62-ec313fab2f34",
-                    "path": "<NPad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Weapons",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "47ecaa1a-1230-4d9a-b0cb-c000af5f3c9a",
-                    "path": "<Keyboard>/b",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Weapons",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "44cc7b44-c7ef-4348-be57-049778c24e1e",
-                    "path": "<NPad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cars",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3ed89216-ae7d-4645-800c-736763fa527c",
-                    "path": "<Keyboard>/n",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cars",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "22bd4c53-2e96-47fc-8daa-5b5b92a58dcd",
-                    "path": "<NPad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SoundOff",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c2596021-cb5e-44d0-bb4a-397a88f01884",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SoundOff",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f85046f6-7eee-47f2-bd51-a3b30a19ea2c",
-                    "path": "<NPad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5000e12f-2aab-4d3d-b87c-ddbf86c565e4",
-                    "path": "<Keyboard>/m",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c8bf259b-ce0c-452d-afad-186bd886582b",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
