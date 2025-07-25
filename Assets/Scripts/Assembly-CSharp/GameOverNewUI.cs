@@ -116,23 +116,20 @@ public class GameOverNewUI : MonoBehaviour
 	}
 
 
-	void Awake()
-	{
-		inputActions = new InputActions();
-
-		inputActions.UI.PlayGame.performed += OnClaimPressed;
-	}
-
 	private void OnEnable()
 	{
 		GameStats.Instance.OnGameOverPlayLotteryCountIncreased = (Action)Delegate.Combine(GameStats.Instance.OnGameOverPlayLotteryCountIncreased, new Action(OnGameOverPlayLotteryCountIncreased));
+
+		inputActions = new InputActions();
 		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnClaimPressed;
 	}
 
 	private void OnDisable()
 	{
 		GameStats.Instance.OnGameOverPlayLotteryCountIncreased = (Action)Delegate.Remove(GameStats.Instance.OnGameOverPlayLotteryCountIncreased, new Action(OnGameOverPlayLotteryCountIncreased));
 		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnClaimPressed;
 	}
 
 	private void RefreshLabel()
@@ -197,6 +194,11 @@ public class GameOverNewUI : MonoBehaviour
 				doubleViewSpr[j].color = Color.cyan;
 			}
 			doubleAmountLbl.color = Color.white;
+		}
+
+		if (coins == 0)
+		{
+			OnClaimClick(claimGo);
 		}
 	}
 

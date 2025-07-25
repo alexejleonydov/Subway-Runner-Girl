@@ -62,16 +62,16 @@ public class MainScreen : UIBaseScreen
 	private void OnEnable()
 	{
 		inputActions = new InputActions();
-		inputActions.UI.Enable();
-		inputActions.UI.PlayGame.performed += OnStartPerformed;
+		inputActions.Play.Enable();
+		inputActions.Play.PlayGame.performed += OnStartPerformed;
 
 		PlayerInfo.Instance.onPowerupAmountChanged = (Action)Delegate.Combine(PlayerInfo.Instance.onPowerupAmountChanged, new Action(UpdatehelmLabel));
 	}
 
 	private void OnDisable()
 	{
-		inputActions.UI.PlayGame.performed -= OnStartPerformed;
-		inputActions.UI.Disable();
+		inputActions.Play.PlayGame.performed -= OnStartPerformed;
+		inputActions.Play.Disable();
 
 		PlayerInfo.Instance.onPowerupAmountChanged = (Action)Delegate.Remove(PlayerInfo.Instance.onPowerupAmountChanged, new Action(UpdatehelmLabel));
 	}

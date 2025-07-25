@@ -7,21 +7,19 @@ public class UIGameOverScreenButton : UIButtonGame
 
 
 
-	void Awake()
-	{
-		inputActions = new InputActions();
-
-		inputActions.UI.PlayGame.performed += OnInteractPerformed;
-	}
-
 	private void OnEnable()
 	{
+
+
+		inputActions = new InputActions();
 		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnInteractPerformed;
 	}
 
 	private void OnDisable()
 	{
 		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnInteractPerformed;
 	}
 
 	private void OnInteractPerformed(InputAction.CallbackContext context)

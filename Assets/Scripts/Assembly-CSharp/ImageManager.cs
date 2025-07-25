@@ -22,16 +22,16 @@ public class ImageManager
 
 	public void Add(string url, Texture2D image)
 	{
-		if (!string.IsNullOrEmpty(url) && !loaderDict.ContainsKey(url))
+		/*if (!string.IsNullOrEmpty(url) && !loaderDict.ContainsKey(url))
 		{
 			loaderDict.Add(url, image);
 			Save(url, image, loaderDict.Count);
-		}
+		}*/
 	}
 
 	private void Save(string url, Texture2D image, int number)
 	{
-		string text = Application.persistentDataPath + "/Images";
+		/*string text = Application.persistentDataPath + "/Images";
 		if (!Directory.Exists(text))
 		{
 			Directory.CreateDirectory(text);
@@ -45,12 +45,12 @@ public class ImageManager
 			binaryWriter.Write(array.Length);
 			binaryWriter.Write(array);
 			fileStream.Close();
-		}
+		}*/
 	}
 
 	public void Load()
 	{
-		string path = Application.persistentDataPath + "/Images";
+		/*string path = Application.persistentDataPath + "/Images";
 		if (!Directory.Exists(path))
 		{
 			return;
@@ -74,24 +74,26 @@ public class ImageManager
 				texture2D.LoadImage(data);
 				loaderDict.Add(key, texture2D);
 			}
-		}
+		}*/
 	}
 
 	public Texture2D GetTexture(string url)
 	{
-		if (string.IsNullOrEmpty(url) || !loaderDict.ContainsKey(url))
+		/*if (string.IsNullOrEmpty(url) || !loaderDict.ContainsKey(url))
 		{
 			return null;
 		}
-		return loaderDict[url];
-	}
+		return loaderDict[url];*/
+		return null;
+}
 
 	public bool ContainsKey(string url)
 	{
-		if (string.IsNullOrEmpty(url))
+		/*if (string.IsNullOrEmpty(url))
 		{
 			return false;
 		}
-		return loaderDict.ContainsKey(url);
+		return loaderDict.ContainsKey(url);*/
+		return false; 
 	}
 }

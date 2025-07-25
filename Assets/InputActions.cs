@@ -55,9 +55,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Throw"",
+                    ""name"": ""CoinsShop"",
                     ""type"": ""Button"",
                     ""id"": ""40adf84e-8455-41c9-9f30-001656dd7475"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CharacterShop"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd58e22b-0d58-4207-8bd2-a68a677fb799"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -100,9 +109,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""PlayGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""3fcb1de3-1bfe-4479-b0bb-45b0ee204bcc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
-                    ""id"": ""024d2290-0a91-4638-9def-bd0d91d48e06"",
+                    ""id"": ""98698655-e6d5-49e5-b533-9ed81ec11d16"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -201,11 +219,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3d03a510-86a1-42f0-8642-c92febdd1b07"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throw"",
+                    ""action"": ""CoinsShop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -343,7 +361,40 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4bc09086-ffbe-4505-963d-d8130554ed78"",
+                    ""id"": ""83a93b5d-b7a0-44f0-a1f5-510ce48df514"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CharacterShop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0cf2fcf4-33b1-4d10-a9a1-57704bcc6586"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad3f4f64-24b5-471e-95e2-719ae8c163f9"",
+                    ""path"": ""<NPad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""PlayGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9c59095-0677-41b3-801f-52a3763c4987"",
                     ""path"": ""<Keyboard>/numpadPlus"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -354,7 +405,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ad54c7b4-c634-43aa-9975-ea26e1fafaae"",
+                    ""id"": ""54e8dda9-267c-4fbb-ad37-50818afd8718"",
                     ""path"": ""<NPad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -455,15 +506,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""da68ce65-61db-4ad7-a233-6e0e3670a0b8"",
                     ""expectedControlType"": ""Quaternion"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PlayGame"",
-                    ""type"": ""Button"",
-                    ""id"": ""30b4ad18-c91e-4359-8601-ac3959ca3ee8"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -901,28 +943,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c8bf259b-ce0c-452d-afad-186bd886582b"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""PlayGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2d281cf3-01c6-4b2d-b2c7-69dfb469ba3b"",
-                    ""path"": ""<NPad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""PlayGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""74508a02-aab1-43d6-a3e3-ad9dbf9acfaa"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -953,11 +973,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Play_Jump = m_Play.FindAction("Jump", throwIfNotFound: true);
         m_Play_Interact = m_Play.FindAction("Interact", throwIfNotFound: true);
         m_Play_Exit = m_Play.FindAction("Exit", throwIfNotFound: true);
-        m_Play_Throw = m_Play.FindAction("Throw", throwIfNotFound: true);
+        m_Play_CoinsShop = m_Play.FindAction("CoinsShop", throwIfNotFound: true);
+        m_Play_CharacterShop = m_Play.FindAction("CharacterShop", throwIfNotFound: true);
         m_Play_Up = m_Play.FindAction("Up", throwIfNotFound: true);
         m_Play_Down = m_Play.FindAction("Down", throwIfNotFound: true);
         m_Play_Left = m_Play.FindAction("Left", throwIfNotFound: true);
         m_Play_Right = m_Play.FindAction("Right", throwIfNotFound: true);
+        m_Play_PlayGame = m_Play.FindAction("PlayGame", throwIfNotFound: true);
         m_Play_Pause = m_Play.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -971,7 +993,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
-        m_UI_PlayGame = m_UI.FindAction("PlayGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1036,11 +1057,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Play_Jump;
     private readonly InputAction m_Play_Interact;
     private readonly InputAction m_Play_Exit;
-    private readonly InputAction m_Play_Throw;
+    private readonly InputAction m_Play_CoinsShop;
+    private readonly InputAction m_Play_CharacterShop;
     private readonly InputAction m_Play_Up;
     private readonly InputAction m_Play_Down;
     private readonly InputAction m_Play_Left;
     private readonly InputAction m_Play_Right;
+    private readonly InputAction m_Play_PlayGame;
     private readonly InputAction m_Play_Pause;
     public struct PlayActions
     {
@@ -1049,11 +1072,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Play_Jump;
         public InputAction @Interact => m_Wrapper.m_Play_Interact;
         public InputAction @Exit => m_Wrapper.m_Play_Exit;
-        public InputAction @Throw => m_Wrapper.m_Play_Throw;
+        public InputAction @CoinsShop => m_Wrapper.m_Play_CoinsShop;
+        public InputAction @CharacterShop => m_Wrapper.m_Play_CharacterShop;
         public InputAction @Up => m_Wrapper.m_Play_Up;
         public InputAction @Down => m_Wrapper.m_Play_Down;
         public InputAction @Left => m_Wrapper.m_Play_Left;
         public InputAction @Right => m_Wrapper.m_Play_Right;
+        public InputAction @PlayGame => m_Wrapper.m_Play_PlayGame;
         public InputAction @Pause => m_Wrapper.m_Play_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
@@ -1073,9 +1098,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Exit.started += instance.OnExit;
             @Exit.performed += instance.OnExit;
             @Exit.canceled += instance.OnExit;
-            @Throw.started += instance.OnThrow;
-            @Throw.performed += instance.OnThrow;
-            @Throw.canceled += instance.OnThrow;
+            @CoinsShop.started += instance.OnCoinsShop;
+            @CoinsShop.performed += instance.OnCoinsShop;
+            @CoinsShop.canceled += instance.OnCoinsShop;
+            @CharacterShop.started += instance.OnCharacterShop;
+            @CharacterShop.performed += instance.OnCharacterShop;
+            @CharacterShop.canceled += instance.OnCharacterShop;
             @Up.started += instance.OnUp;
             @Up.performed += instance.OnUp;
             @Up.canceled += instance.OnUp;
@@ -1088,6 +1116,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Right.started += instance.OnRight;
             @Right.performed += instance.OnRight;
             @Right.canceled += instance.OnRight;
+            @PlayGame.started += instance.OnPlayGame;
+            @PlayGame.performed += instance.OnPlayGame;
+            @PlayGame.canceled += instance.OnPlayGame;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -1104,9 +1135,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Exit.started -= instance.OnExit;
             @Exit.performed -= instance.OnExit;
             @Exit.canceled -= instance.OnExit;
-            @Throw.started -= instance.OnThrow;
-            @Throw.performed -= instance.OnThrow;
-            @Throw.canceled -= instance.OnThrow;
+            @CoinsShop.started -= instance.OnCoinsShop;
+            @CoinsShop.performed -= instance.OnCoinsShop;
+            @CoinsShop.canceled -= instance.OnCoinsShop;
+            @CharacterShop.started -= instance.OnCharacterShop;
+            @CharacterShop.performed -= instance.OnCharacterShop;
+            @CharacterShop.canceled -= instance.OnCharacterShop;
             @Up.started -= instance.OnUp;
             @Up.performed -= instance.OnUp;
             @Up.canceled -= instance.OnUp;
@@ -1119,6 +1153,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Right.started -= instance.OnRight;
             @Right.performed -= instance.OnRight;
             @Right.canceled -= instance.OnRight;
+            @PlayGame.started -= instance.OnPlayGame;
+            @PlayGame.performed -= instance.OnPlayGame;
+            @PlayGame.canceled -= instance.OnPlayGame;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -1153,7 +1190,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
-    private readonly InputAction m_UI_PlayGame;
     public struct UIActions
     {
         private @InputActions m_Wrapper;
@@ -1168,7 +1204,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
-        public InputAction @PlayGame => m_Wrapper.m_UI_PlayGame;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1208,9 +1243,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
-            @PlayGame.started += instance.OnPlayGame;
-            @PlayGame.performed += instance.OnPlayGame;
-            @PlayGame.canceled += instance.OnPlayGame;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1245,9 +1277,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
-            @PlayGame.started -= instance.OnPlayGame;
-            @PlayGame.performed -= instance.OnPlayGame;
-            @PlayGame.canceled -= instance.OnPlayGame;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1288,11 +1317,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
-        void OnThrow(InputAction.CallbackContext context);
+        void OnCoinsShop(InputAction.CallbackContext context);
+        void OnCharacterShop(InputAction.CallbackContext context);
         void OnUp(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+        void OnPlayGame(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
@@ -1307,6 +1338,5 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
-        void OnPlayGame(InputAction.CallbackContext context);
     }
 }

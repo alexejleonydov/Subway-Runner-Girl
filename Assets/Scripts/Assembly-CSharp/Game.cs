@@ -422,7 +422,7 @@ public class Game : MonoBehaviour
 		show20sAd = true;
 		showAdTime = 0f;
 		startGameTime = Time.time;
-		ImageManager.Instance.Load();
+		//ImageManager.Instance.Load();
 		if (PlayerInfo.Instance.hasFacebookLogin)
 		{
 			FacebookManger.Instance.LoginFacebook();

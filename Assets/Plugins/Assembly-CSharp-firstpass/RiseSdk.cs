@@ -293,7 +293,7 @@ public sealed class RiseSdk
 
 		public FileLRUCache(int capacity)
 		{
-			maxCapacity = capacity;
+			/*maxCapacity = capacity;
 			cache = new Dictionary<string, LinkedNode>();
 			head = new LinkedNode();
 			tail = new LinkedNode();
@@ -330,7 +330,7 @@ public sealed class RiseSdk
 				{
 					LoadLocalFile(text, loadCache);
 				}
-			}
+			}*/
 		}
 
 		public void DownloadFile(string url, Action<string, WWW> resultEvent)

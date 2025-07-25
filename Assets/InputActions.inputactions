@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Throw",
+                    "name": "CoinsShop",
                     "type": "Button",
                     "id": "40adf84e-8455-41c9-9f30-001656dd7475",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CharacterShop",
+                    "type": "Button",
+                    "id": "cd58e22b-0d58-4207-8bd2-a68a677fb799",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -78,9 +87,18 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PlayGame",
+                    "type": "Button",
+                    "id": "3fcb1de3-1bfe-4479-b0bb-45b0ee204bcc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
-                    "id": "024d2290-0a91-4638-9def-bd0d91d48e06",
+                    "id": "98698655-e6d5-49e5-b533-9ed81ec11d16",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -179,11 +197,11 @@
                 {
                     "name": "",
                     "id": "3d03a510-86a1-42f0-8642-c92febdd1b07",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
+                    "action": "CoinsShop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -321,7 +339,40 @@
                 },
                 {
                     "name": "",
-                    "id": "4bc09086-ffbe-4505-963d-d8130554ed78",
+                    "id": "83a93b5d-b7a0-44f0-a1f5-510ce48df514",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CharacterShop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0cf2fcf4-33b1-4d10-a9a1-57704bcc6586",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PlayGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad3f4f64-24b5-471e-95e2-719ae8c163f9",
+                    "path": "<NPad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "PlayGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9c59095-0677-41b3-801f-52a3763c4987",
                     "path": "<Keyboard>/numpadPlus",
                     "interactions": "",
                     "processors": "",
@@ -332,7 +383,7 @@
                 },
                 {
                     "name": "",
-                    "id": "ad54c7b4-c634-43aa-9975-ea26e1fafaae",
+                    "id": "54e8dda9-267c-4fbb-ad37-50818afd8718",
                     "path": "<NPad>/start",
                     "interactions": "",
                     "processors": "",
@@ -433,15 +484,6 @@
                     "type": "PassThrough",
                     "id": "da68ce65-61db-4ad7-a233-6e0e3670a0b8",
                     "expectedControlType": "Quaternion",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "PlayGame",
-                    "type": "Button",
-                    "id": "30b4ad18-c91e-4359-8601-ac3959ca3ee8",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -874,28 +916,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "TrackedDeviceOrientation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c8bf259b-ce0c-452d-afad-186bd886582b",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "PlayGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2d281cf3-01c6-4b2d-b2c7-69dfb469ba3b",
-                    "path": "<NPad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "PlayGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

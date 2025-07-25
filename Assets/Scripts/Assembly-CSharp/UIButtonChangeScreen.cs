@@ -6,47 +6,53 @@ public class UIButtonChangeScreen : UIBasicButton
 {
 	private InputActions inputActions;
 
-
-	void Awake()
+	private void OnEnable()
 	{
 		inputActions = new InputActions();
 
-		inputActions.Play.Throw.performed += OnInteractPerformed;
-
-		inputActions.Play.Pause.performed += OnPausePerformed;
-	}
-
-	private void OnEnable()
-	{
 		inputActions.Enable();
+		inputActions.Play.CoinsShop.performed += OnCoinsShopPerformed;
+		inputActions.Play.CharacterShop.performed += OnCharacterShopPerformed;
+		inputActions.Play.Exit.performed += OnFrontUIPerformed;
+		//inputActions.Play.PlayGame.performed += OnStartPerformed;
+
 	}
 
 	private void OnDisable()
 	{
 		inputActions.Disable();
-
-		inputActions.Play.Throw.performed -= OnInteractPerformed;
-
-		inputActions.Play.Pause.performed -= OnPausePerformed;
+		inputActions.Play.CoinsShop.performed -= OnCoinsShopPerformed;
+		inputActions.Play.CharacterShop.performed -= OnCharacterShopPerformed;
+		inputActions.Play.Exit.performed -= OnFrontUIPerformed;
+		//inputActions.Play.PlayGame.performed -= OnStartPerformed;
 	}
 
-	private void OnInteractPerformed(InputAction.CallbackContext context)
+	private void OnCoinsShopPerformed(InputAction.CallbackContext context)
 	{
 		ScreenNameToOpen = "CoinsUI_shop";
 
-		//CharacterScreen
+
 		Send();
 	}
 
-
-	private void OnPausePerformed(InputAction.CallbackContext context)
+	private void OnCharacterShopPerformed(InputAction.CallbackContext context)
 	{
-		ScreenNameToOpen = "PauseUI";
+		ScreenNameToOpen = "CharacterScreen";
 
-		//CharacterScreen
+
 		Send();
 	}
 
+	private void OnFrontUIPerformed(InputAction.CallbackContext context)
+	{
+		ScreenNameToOpen = "FrontUI";
+		Send();
+	}
+
+	// private void OnStartPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+	// {
+	// 	Game.Instance.StartGame();
+	// }
 
 	public enum ScreenChangeType
 	{
