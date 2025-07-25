@@ -16,7 +16,10 @@ public class Upgrades
 	public static Dictionary<PropType, Upgrade> Load()
 	{
 		TextAsset textAsset = Resources.Load<TextAsset>("Text/Upgrades");
-		IDictionary<string, object> dictionary = Json.Deserialize(textAsset.text) as IDictionary<string, object>;
+
+		string upgradeText = PlayerPrefs.GetString("UpgradeDataText", textAsset.text);
+
+		IDictionary<string, object> dictionary = Json.Deserialize(upgradeText) as IDictionary<string, object>;
 		upgrades = new Dictionary<PropType, Upgrade>();
 		foreach (KeyValuePair<string, object> item in dictionary)
 		{
@@ -34,7 +37,7 @@ public class Upgrades
 		}
 		string value = Json.Serialize(dictionary);
 		string path = Application.dataPath + "/Resources/Text/Upgrades.txt";
-		try
+		/*try
 		{
 			using (StreamWriter streamWriter = File.CreateText(path))
 			{
@@ -45,6 +48,8 @@ public class Upgrades
 		catch (Exception message)
 		{
 			Debug.LogError(message);
-		}
+		}*/
+
+		PlayerPrefs.SetString("UpgradeDataText", value);
 	}
 }
