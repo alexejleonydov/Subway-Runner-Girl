@@ -42,7 +42,7 @@ namespace Network
 
 		public void Request(NetworkConnect.RequestCommand command, Dictionary<string, string> dict, Action<string> onCompleted)
 		{
-			try
+			/*try
 			{
 				switch (command)
 				{
@@ -63,7 +63,7 @@ namespace Network
 			catch
 			{
 				Debug.Log("Request Error!");
-			}
+			}*/
 		}
 
 		private IEnumerator PostRequest(string url, Dictionary<string, string> dict, Action<string> onCompleted)

@@ -267,7 +267,12 @@ public class UIDrawCall : MonoBehaviour
 	{
 		mTextureClip = false;
 		mLegacyShader = false;
-		mClipCount = panel.clipCount;
+		if (panel != null)
+		{
+			mClipCount = panel.clipCount;
+		}
+		else
+			return;
 		string text = ((mShader != null) ? mShader.name : ((!(mMaterial != null)) ? "Unlit/Transparent Colored" : mMaterial.shader.name));
 		text = text.Replace("GUI/Text Shader", "Unlit/Text");
 		if (text.Length > 2 && text[text.Length - 2] == ' ')
@@ -342,7 +347,12 @@ public class UIDrawCall : MonoBehaviour
 	{
 		NGUITools.DestroyImmediate(mDynamicMat);
 		CreateMaterial();
-		mDynamicMat.renderQueue = mRenderQueue;
+		if (mDynamicMat != null)
+		{
+			mDynamicMat.renderQueue = mRenderQueue;
+		}
+		else
+			return null;
 		if (mTexture != null)
 		{
 			mDynamicMat.mainTexture = mTexture;
