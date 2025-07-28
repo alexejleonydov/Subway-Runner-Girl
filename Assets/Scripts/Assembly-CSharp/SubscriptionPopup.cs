@@ -60,6 +60,8 @@ public class SubscriptionPopup : UIBaseScreen
 
 	private void Awake()
 	{
+		PlayerInfo.Instance.ignoreSubscriptionPopup = true;
+		gameObject.SetActive(false);
 		UIEventListener uIEventListener = UIEventListener.Get(purchaseBtn);
 		uIEventListener.onClick = Pay;
 	}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DailyLandingPopup : UIBaseScreen
 {
@@ -19,6 +20,7 @@ public class DailyLandingPopup : UIBaseScreen
 
 	[SerializeField]
 	private GameObject getGo;
+	private InputActions inputActions;
 
 	[SerializeField]
 	private GameObject viewGo;
@@ -31,6 +33,7 @@ public class DailyLandingPopup : UIBaseScreen
 			helps[i].Init(i + 1);
 		}
 	}
+
 
 	public override void Show()
 	{
@@ -92,6 +95,16 @@ public class DailyLandingPopup : UIBaseScreen
 		}
 	}
 
+	private void OnInteractPerformed(InputAction.CallbackContext context)
+	{
+		GameObject claimBtn = GameObject.Find("ReceiveButton");
+
+		if (claimBtn != null || claimBtn.activeInHierarchy)
+		{
+			OnReceiceClick();
+		}
+	}
+
 	public void OnReceiceClick()
 	{
 		PlayerInfo.Instance.ReceiveDailyLandingPayout(1, CloseDailyRewardPopUp);
@@ -126,11 +139,18 @@ public class DailyLandingPopup : UIBaseScreen
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeView;
 		RiseSdkListener.OnAdEvent += OnFreeView;
+
+		inputActions = new InputActions();
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnInteractPerformed;
 	}
 
 	private void OnDisable()
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeView;
+
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnInteractPerformed;
 	}
 
 	public void CloseDailyRewardPopUp()

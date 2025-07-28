@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GetFreeRewardPopup : UIBaseScreen
 {
@@ -68,6 +69,7 @@ public class GetFreeRewardPopup : UIBaseScreen
 	private bool isRewardShowing;
 
 	private FreeRewardPopupData popupData;
+	private InputActions inputActions;
 
 	public override void Init()
 	{
@@ -80,6 +82,21 @@ public class GetFreeRewardPopup : UIBaseScreen
 		{
 			anchor.pixelOffset.y = 0f;
 		}
+	}
+
+	private void OnEnable()
+	{
+
+
+		inputActions = new InputActions();
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnInteractPerformed;
+	}
+
+	private void OnDisable()
+	{
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnInteractPerformed;
 	}
 
 	public override void Show()
@@ -112,39 +129,39 @@ public class GetFreeRewardPopup : UIBaseScreen
 		helmetIcon.enabled = false;
 		switch (popupData.rewardType)
 		{
-		case RewardType.coins:
-		case RewardType.viewcoins:
-		case RewardType.dailycoins:
-		case RewardType.doublecoins:
-			coinIcon.enabled = true;
-			flyHelper.Selecte(coinPs, coinBoomPs);
-			break;
-		case RewardType.keys:
-		case RewardType.viewkeys:
-		case RewardType.dailykeys:
-			keyIcon.enabled = true;
-			flyHelper.Selecte(keyPs, keyBoomPs);
-			break;
-		case RewardType.headstart2000:
-			headstartIcon.enabled = true;
-			flyHelper.Selecte(propPs, propBoomPs);
-			break;
-		case RewardType.scorebooster:
-			scoreboosterIcon.enabled = true;
-			flyHelper.Selecte(propPs, propBoomPs);
-			break;
-		case RewardType.leeSymbol:
-			leeIcon.enabled = true;
-			flyHelper.Selecte(propPs, propBoomPs);
-			break;
-		case RewardType.turtlefokSymbol:
-			turtlefokIcon.enabled = true;
-			flyHelper.Selecte(propPs, propBoomPs);
-			break;
-		case RewardType.helmet:
-			helmetIcon.enabled = true;
-			flyHelper.Selecte(propPs, propBoomPs);
-			break;
+			case RewardType.coins:
+			case RewardType.viewcoins:
+			case RewardType.dailycoins:
+			case RewardType.doublecoins:
+				coinIcon.enabled = true;
+				flyHelper.Selecte(coinPs, coinBoomPs);
+				break;
+			case RewardType.keys:
+			case RewardType.viewkeys:
+			case RewardType.dailykeys:
+				keyIcon.enabled = true;
+				flyHelper.Selecte(keyPs, keyBoomPs);
+				break;
+			case RewardType.headstart2000:
+				headstartIcon.enabled = true;
+				flyHelper.Selecte(propPs, propBoomPs);
+				break;
+			case RewardType.scorebooster:
+				scoreboosterIcon.enabled = true;
+				flyHelper.Selecte(propPs, propBoomPs);
+				break;
+			case RewardType.leeSymbol:
+				leeIcon.enabled = true;
+				flyHelper.Selecte(propPs, propBoomPs);
+				break;
+			case RewardType.turtlefokSymbol:
+				turtlefokIcon.enabled = true;
+				flyHelper.Selecte(propPs, propBoomPs);
+				break;
+			case RewardType.helmet:
+				helmetIcon.enabled = true;
+				flyHelper.Selecte(propPs, propBoomPs);
+				break;
 		}
 		amountOfItemLbl.text = "x" + popupData.num;
 	}
@@ -152,6 +169,16 @@ public class GetFreeRewardPopup : UIBaseScreen
 	private void RefreshLbal()
 	{
 		getLbl.text = Strings.Get(LanguageKey.UI_POPUP_GET_FREE_REWARD_BUTTON_GET);
+	}
+
+	private void OnInteractPerformed(InputAction.CallbackContext context)
+	{
+		GameObject getBtn = GameObject.Find("Get");
+
+		if (getBtn != null || getBtn.activeInHierarchy)
+		{
+			GetBtnOnClick();
+		}
 	}
 
 	public void GetBtnOnClick()
@@ -185,42 +212,42 @@ public class GetFreeRewardPopup : UIBaseScreen
 	{
 		switch (popupData.rewardType)
 		{
-		case RewardType.coins:
-		case RewardType.viewcoins:
-		case RewardType.doublecoins:
-			PlayerInfo.Instance.amountOfCoins += popupData.num;
-			TasksManager.Instance.PlayerDidThis(TaskTarget.EarnCoin, popupData.num);
-			break;
-		case RewardType.dailycoins:
-			PlayerInfo.Instance.amountOfCoins += popupData.num;
-			TasksManager.Instance.PlayerDidThis(TaskTarget.EarnCoin, popupData.num);
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, popupData.num);
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_daily", 0, popupData.num);
-			break;
-		case RewardType.keys:
-		case RewardType.viewkeys:
-			PlayerInfo.Instance.amountOfKeys += popupData.num;
-			break;
-		case RewardType.dailykeys:
-			PlayerInfo.Instance.amountOfKeys += popupData.num;
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, popupData.num);
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_menu_daily", 0, popupData.num);
-			break;
-		case RewardType.headstart2000:
-			PlayerInfo.Instance.IncreaseUpgradeAmount(PropType.headstart2000, popupData.num);
-			break;
-		case RewardType.scorebooster:
-			PlayerInfo.Instance.IncreaseUpgradeAmount(PropType.scorebooster, popupData.num);
-			break;
-		case RewardType.leeSymbol:
-			PlayerInfo.Instance.CollectSymbol(Characters.CharacterType.lee, popupData.num);
-			break;
-		case RewardType.turtlefokSymbol:
-			PlayerInfo.Instance.CollectSymbol(Characters.CharacterType.turtlefok, popupData.num);
-			break;
-		case RewardType.helmet:
-			PlayerInfo.Instance.IncreaseUpgradeAmount(PropType.helmet, popupData.num);
-			break;
+			case RewardType.coins:
+			case RewardType.viewcoins:
+			case RewardType.doublecoins:
+				PlayerInfo.Instance.amountOfCoins += popupData.num;
+				TasksManager.Instance.PlayerDidThis(TaskTarget.EarnCoin, popupData.num);
+				break;
+			case RewardType.dailycoins:
+				PlayerInfo.Instance.amountOfCoins += popupData.num;
+				TasksManager.Instance.PlayerDidThis(TaskTarget.EarnCoin, popupData.num);
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_total", 0, popupData.num);
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_coins_daily", 0, popupData.num);
+				break;
+			case RewardType.keys:
+			case RewardType.viewkeys:
+				PlayerInfo.Instance.amountOfKeys += popupData.num;
+				break;
+			case RewardType.dailykeys:
+				PlayerInfo.Instance.amountOfKeys += popupData.num;
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_total", 0, popupData.num);
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_gems_menu_daily", 0, popupData.num);
+				break;
+			case RewardType.headstart2000:
+				PlayerInfo.Instance.IncreaseUpgradeAmount(PropType.headstart2000, popupData.num);
+				break;
+			case RewardType.scorebooster:
+				PlayerInfo.Instance.IncreaseUpgradeAmount(PropType.scorebooster, popupData.num);
+				break;
+			case RewardType.leeSymbol:
+				PlayerInfo.Instance.CollectSymbol(Characters.CharacterType.lee, popupData.num);
+				break;
+			case RewardType.turtlefokSymbol:
+				PlayerInfo.Instance.CollectSymbol(Characters.CharacterType.turtlefok, popupData.num);
+				break;
+			case RewardType.helmet:
+				PlayerInfo.Instance.IncreaseUpgradeAmount(PropType.helmet, popupData.num);
+				break;
 		}
 	}
 }
