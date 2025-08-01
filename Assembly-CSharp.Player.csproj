@@ -700,6 +700,7 @@
     <Compile Include="Assets\Scripts\Assembly-CSharp\CameraCulling.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\CharacterCamera.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\UIImageButton.cs" />
+    <Compile Include="Assets\ChangeAnimationState.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\CelebrationPopupLabelTemplate.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\InitAssets.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\UIBaseScreen.cs" />

@@ -116,15 +116,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""98698655-e6d5-49e5-b533-9ed81ec11d16"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -389,28 +380,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""GamePad"",
                     ""action"": ""PlayGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d9c59095-0677-41b3-801f-52a3763c4987"",
-                    ""path"": ""<Keyboard>/numpadPlus"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""54e8dda9-267c-4fbb-ad37-50818afd8718"",
-                    ""path"": ""<NPad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -980,7 +949,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Play_Left = m_Play.FindAction("Left", throwIfNotFound: true);
         m_Play_Right = m_Play.FindAction("Right", throwIfNotFound: true);
         m_Play_PlayGame = m_Play.FindAction("PlayGame", throwIfNotFound: true);
-        m_Play_Pause = m_Play.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1064,7 +1032,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Play_Left;
     private readonly InputAction m_Play_Right;
     private readonly InputAction m_Play_PlayGame;
-    private readonly InputAction m_Play_Pause;
     public struct PlayActions
     {
         private @InputActions m_Wrapper;
@@ -1079,7 +1046,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Left => m_Wrapper.m_Play_Left;
         public InputAction @Right => m_Wrapper.m_Play_Right;
         public InputAction @PlayGame => m_Wrapper.m_Play_PlayGame;
-        public InputAction @Pause => m_Wrapper.m_Play_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1119,9 +1085,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @PlayGame.started += instance.OnPlayGame;
             @PlayGame.performed += instance.OnPlayGame;
             @PlayGame.canceled += instance.OnPlayGame;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayActions instance)
@@ -1156,9 +1119,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @PlayGame.started -= instance.OnPlayGame;
             @PlayGame.performed -= instance.OnPlayGame;
             @PlayGame.canceled -= instance.OnPlayGame;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayActions instance)
@@ -1324,7 +1284,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
         void OnPlayGame(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -173,7 +173,7 @@ public class GetFreeRewardPopup : UIBaseScreen
 
 	private void OnInteractPerformed(InputAction.CallbackContext context)
 	{
-		GameObject getBtn = GameObject.Find("Get");
+		GameObject getBtn = GameObject.Find("get");
 
 		if (getBtn != null || getBtn.activeInHierarchy)
 		{

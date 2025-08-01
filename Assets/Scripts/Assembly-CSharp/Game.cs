@@ -431,7 +431,7 @@ public class Game : MonoBehaviour
 
 		inputActions = new InputActions();
 
-
+		inputActions.Enable();
 		inputActions.Play.Interact.performed += OnInteract;
 		inputActions.Play.Up.performed += OnUp;
 		inputActions.Play.Down.performed += OnDown;
@@ -447,7 +447,7 @@ public class Game : MonoBehaviour
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
 
-		inputActions.Enable();
+		//inputActions.Enable();
 	}
 
 	private void OnDisable()
@@ -461,6 +461,11 @@ public class Game : MonoBehaviour
 		}
 
 		inputActions.Disable();
+		inputActions.Play.Interact.performed -= OnInteract;
+		inputActions.Play.Up.performed -= OnUp;
+		inputActions.Play.Down.performed -= OnDown;
+		inputActions.Play.Left.performed -= OnLeft;
+		inputActions.Play.Right.performed -= OnRight;
 	}
 
 
@@ -885,11 +890,23 @@ public class Game : MonoBehaviour
 
 	private void OnUp(InputAction.CallbackContext context)
 	{
+		if (characterState == null)
+		{
+			Debug.LogError("characterState is NULL у OnUp!");
+			return;
+		}
+
 		characterState.HandleSwipe(SwipeDir.Up);
 	}
 
 	private void OnDown(InputAction.CallbackContext context)
 	{
+		if (characterState == null)
+		{
+			Debug.LogError("characterState is NULL у OnUp!");
+			return;
+		}
+
 		characterState.HandleSwipe(SwipeDir.Down);
 	}
 

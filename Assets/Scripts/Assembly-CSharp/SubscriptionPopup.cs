@@ -60,7 +60,13 @@ public class SubscriptionPopup : UIBaseScreen
 
 	private void Awake()
 	{
-		PlayerInfo.Instance.ignoreSubscriptionPopup = true;
+		//UIScreenController.Instance.ClosePopup("SubscribePopup(Clone)");
+		//UIScreenController.Instance.ClosePopup("SubscribePopup");
+		GameObject subscribePopup = GameObject.Find("SubscribePopup(Clone)");
+		if (subscribePopup != null && subscribePopup.activeInHierarchy)
+		{
+			UIScreenController.Instance.ClosePopup(null);
+		}
 		gameObject.SetActive(false);
 		UIEventListener uIEventListener = UIEventListener.Get(purchaseBtn);
 		uIEventListener.onClick = Pay;

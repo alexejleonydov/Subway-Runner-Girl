@@ -806,6 +806,8 @@ public class CharacterRendering : MonoBehaviour
 			helmetAnimation.CrossFade(animation, 0.1f);
 			helmetAnimation.CrossFadeQueued(animation2, 0.1f);
 		}
+
+		
 	}
 
 	private void WallWalkingOnJumpAheadEnd(SwipeDir dir)
@@ -1164,6 +1166,9 @@ public class CharacterRendering : MonoBehaviour
 		if (character.IsStumbling && game.CharacterState != null && game.IsInRunningMode)
 		{
 			characterAnimation.Play(animations.HitLower);
+			
+
+			
 			return;
 		}
 		if (stumbleType == Character.StumbleType.Bush || colliderName == "lightSignal" || colliderName == "powerbox")

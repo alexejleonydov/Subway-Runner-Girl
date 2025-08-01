@@ -45,8 +45,12 @@ public class UIButtonChangeScreen : UIBasicButton
 
 	private void OnFrontUIPerformed(InputAction.CallbackContext context)
 	{
-		ScreenNameToOpen = "FrontUI";
-		Send();
+		GameObject gameOverUIPopup = GameObject.Find("4Footer");
+		if (gameOverUIPopup != null && gameOverUIPopup.activeInHierarchy)
+		{
+			ScreenNameToOpen = "FrontUI";
+			Send();
+		}
 	}
 
 	// private void OnStartPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)

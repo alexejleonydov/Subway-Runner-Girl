@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CelebrationPopup : UIBaseScreen
 {
@@ -161,6 +162,7 @@ public class CelebrationPopup : UIBaseScreen
 	private CelebrationReward canDoubleReward;
 
 	private CelebrationPopupLabelTemplate celPopLabelTemple;
+	private InputActions inputActions;
 
 	public override void Show()
 	{
@@ -363,6 +365,10 @@ public class CelebrationPopup : UIBaseScreen
 
 	private void OnEnable()
 	{
+		inputActions = new InputActions();
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnTapPerformed;
+
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
 	}
@@ -370,6 +376,18 @@ public class CelebrationPopup : UIBaseScreen
 	private void OnDisable()
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
+
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnTapPerformed;
+	}
+
+	private void OnTapPerformed(InputAction.CallbackContext context)
+	{
+		GameObject celebrationPopup = GameObject.Find("CelebrationPopup(Clone)");
+		if (celebrationPopup != null && celebrationPopup.activeInHierarchy)
+		{
+			UIScreenController.Instance.ClosePopup(null);
+		}
 	}
 
 	private void OnFreeReward(RiseSdk.AdEventType type, int id, string tag, int eventType)
