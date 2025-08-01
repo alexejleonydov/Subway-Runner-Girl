@@ -20,21 +20,25 @@ public class ChangeAnimationState : MonoBehaviour
         Debug.Log("Currently playing: " + currAnim);
         Debug.Log("Currently playing: " + currAnimState);
 
-        isRightAnim = currAnim == currAnimState;
-
-        if (!isRightAnim)
+        foreach (AnimationState state in charAnimation)
         {
-            foreach (AnimationState state in charAnimation)
+            if (charAnimation.IsPlaying(state.name))
             {
-                if (charAnimation.IsPlaying(state.name))
-                {
-                    currAnim = state.name;
-                    ChangeAnimatorState(currAnim);
-                    Debug.Log("Currently playing: " + state.name);
-                }
+                currAnim = state.name;
+
+                Debug.Log("Currently playing: " + state.name);
             }
         }
 
+        isRightAnim = currAnim == currAnimState;
+
+
+
+        if (!isRightAnim)
+        {
+            ChangeAnimatorState(currAnim);
+
+        }
     }
 
     public void ChangeAnimatorState(string name)

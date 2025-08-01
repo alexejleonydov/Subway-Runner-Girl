@@ -14,7 +14,7 @@ public class UIButtonChangeScreen : UIBasicButton
 		inputActions.Play.CoinsShop.performed += OnCoinsShopPerformed;
 		inputActions.Play.CharacterShop.performed += OnCharacterShopPerformed;
 		inputActions.Play.Exit.performed += OnFrontUIPerformed;
-		//inputActions.Play.PlayGame.performed += OnStartPerformed;
+		inputActions.Play.PlayGame.performed += OnStartPerformed;
 
 	}
 
@@ -24,7 +24,7 @@ public class UIButtonChangeScreen : UIBasicButton
 		inputActions.Play.CoinsShop.performed -= OnCoinsShopPerformed;
 		inputActions.Play.CharacterShop.performed -= OnCharacterShopPerformed;
 		inputActions.Play.Exit.performed -= OnFrontUIPerformed;
-		//inputActions.Play.PlayGame.performed -= OnStartPerformed;
+		inputActions.Play.PlayGame.performed -= OnStartPerformed;
 	}
 
 	private void OnCoinsShopPerformed(InputAction.CallbackContext context)
@@ -53,10 +53,15 @@ public class UIButtonChangeScreen : UIBasicButton
 		}
 	}
 
-	// private void OnStartPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
-	// {
-	// 	Game.Instance.StartGame();
-	// }
+	private void OnStartPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+	{
+		GameObject gameOverUIPopup = GameObject.Find("PauseUI(Clone)");
+		if (gameOverUIPopup != null && gameOverUIPopup.activeInHierarchy)
+		{
+			ScreenNameToOpen = "IngameUI";
+			Send();
+		}
+	}
 
 	public enum ScreenChangeType
 	{
