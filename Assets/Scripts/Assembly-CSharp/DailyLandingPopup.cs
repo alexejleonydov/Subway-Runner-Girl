@@ -20,6 +20,7 @@ public class DailyLandingPopup : UIBaseScreen
 
 	[SerializeField]
 	private GameObject getGo;
+
 	private InputActions inputActions;
 
 	[SerializeField]
@@ -97,10 +98,11 @@ public class DailyLandingPopup : UIBaseScreen
 
 	private void OnInteractPerformed(InputAction.CallbackContext context)
 	{
-		GameObject claimBtn = GameObject.Find("ReceiveButton");
+		GameObject claimBtn = GameObject.Find("DailyRewardsPopup(Clone)");
 
 		if (claimBtn != null || claimBtn.activeInHierarchy)
 		{
+			Debug.Log("Claim is pressed for Daily reward");
 			OnReceiceClick();
 		}
 	}

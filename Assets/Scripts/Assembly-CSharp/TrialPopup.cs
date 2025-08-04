@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TrialPopup : UIBaseScreen, IPurchaseHandler
 {
@@ -82,6 +83,8 @@ public class TrialPopup : UIBaseScreen, IPurchaseHandler
 	private int _tryState;
 
 	public static bool startNewGame;
+
+	private InputActions inputActions;
 
 	public override void Init()
 	{
@@ -274,11 +277,29 @@ public class TrialPopup : UIBaseScreen, IPurchaseHandler
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
+
+		inputActions = new InputActions();
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnInteractPerformed;
 	}
 
 	private void OnDisable()
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
+
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnInteractPerformed;
+	}
+
+	private void OnInteractPerformed(InputAction.CallbackContext context)
+	{
+		GameObject claimBtn = GameObject.Find("TryHoverboardPopup(Clone)");
+
+		if (claimBtn != null || claimBtn.activeInHierarchy)
+		{
+			Debug.Log("Claim is pressed for TryHoverboard");
+			OnBuyClick();
+		}
 	}
 
 	public void OnBuyClick()
@@ -289,45 +310,45 @@ public class TrialPopup : UIBaseScreen, IPurchaseHandler
 			{
 				switch (Characters.characterOrder.IndexOf(_trialInfo.characterType))
 				{
-				case 0:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles1st", 0);
-					break;
-				case 1:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles2nd", 0);
-					break;
-				case 2:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles3rd", 0);
-					break;
-				case 3:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles4th", 0);
-					break;
-				case 4:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles5th", 0);
-					break;
-				case 5:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles6th", 0);
-					break;
-				case 6:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles7th", 0);
-					break;
-				case 7:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles8th", 0);
-					break;
-				case 8:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles9th", 0);
-					break;
-				case 9:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles10th", 0);
-					break;
-				case 10:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles11th", 0);
-					break;
-				case 11:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles12th", 0);
-					break;
-				case 12:
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles13th", 0);
-					break;
+					case 0:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles1st", 0);
+						break;
+					case 1:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles2nd", 0);
+						break;
+					case 2:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles3rd", 0);
+						break;
+					case 3:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles4th", 0);
+						break;
+					case 4:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles5th", 0);
+						break;
+					case 5:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles6th", 0);
+						break;
+					case 6:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles7th", 0);
+						break;
+					case 7:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles8th", 0);
+						break;
+					case 8:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles9th", 0);
+						break;
+					case 9:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles10th", 0);
+						break;
+					case 10:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles11th", 0);
+						break;
+					case 11:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles12th", 0);
+						break;
+					case 12:
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles13th", 0);
+						break;
 				}
 				UIScreenController.Instance.ClosePopup(null);
 				UIScreenController.Instance.ShowUnlockAnimationForCharacter(_trialInfo.characterType, _trialInfo.characterThemeId);
@@ -434,24 +455,24 @@ public class TrialPopup : UIBaseScreen, IPurchaseHandler
 		_purchaseInProgress = false;
 		switch (Helmets.helmOrder.IndexOf(_trialInfo.helmetType))
 		{
-		case 1:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet2nd", 0);
-			break;
-		case 2:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet3rd", 0);
-			break;
-		case 3:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet4th", 0);
-			break;
-		case 4:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet5th", 0);
-			break;
-		case 5:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet6th", 0);
-			break;
-		case 6:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet7th", 0);
-			break;
+			case 1:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet2nd", 0);
+				break;
+			case 2:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet3rd", 0);
+				break;
+			case 3:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet4th", 0);
+				break;
+			case 4:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet5th", 0);
+				break;
+			case 5:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet6th", 0);
+				break;
+			case 6:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet7th", 0);
+				break;
 		}
 		UIScreenController.Instance.ClosePopup(null);
 		UIScreenController.Instance.ShowUnlockAnimationForHelmet(_trialInfo.helmetType);

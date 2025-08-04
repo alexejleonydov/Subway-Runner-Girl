@@ -6,8 +6,11 @@ public class UIButtonChangeScreen : UIBasicButton
 {
 	private InputActions inputActions;
 
+
 	private void OnEnable()
 	{
+		Debug.Log("UIButtonChangeScreen connected to..." + gameObject.name);
+
 		inputActions = new InputActions();
 
 		inputActions.Enable();
@@ -16,6 +19,7 @@ public class UIButtonChangeScreen : UIBasicButton
 		inputActions.Play.Exit.performed += OnFrontUIPerformed;
 		inputActions.Play.PlayGame.performed += OnStartPerformed;
 
+		CloseSubscribePopupIfActive();
 	}
 
 	private void OnDisable()
@@ -60,6 +64,18 @@ public class UIButtonChangeScreen : UIBasicButton
 		{
 			ScreenNameToOpen = "IngameUI";
 			Send();
+		}
+	}
+
+
+	private void CloseSubscribePopupIfActive()
+	{
+		GameObject subscribePopup = GameObject.Find("SubscribePopup(Clone)");
+		Debug.Log("Subscribe Popup in Button is..." + subscribePopup);
+		if (subscribePopup != null && subscribePopup.activeInHierarchy)
+		{
+			UIScreenController.Instance.ClosePopup("SubscribePopup");
+			UIScreenController.Instance.ClosePopup(null);
 		}
 	}
 

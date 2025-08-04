@@ -60,12 +60,16 @@ public class SubscriptionPopup : UIBaseScreen
 
 	private void Awake()
 	{
+		Debug.Log("SubscriptionPopup connected to... " + gameObject.name);
+
 		//UIScreenController.Instance.ClosePopup("SubscribePopup(Clone)");
 		//UIScreenController.Instance.ClosePopup("SubscribePopup");
 		GameObject subscribePopup = GameObject.Find("SubscribePopup(Clone)");
+		Debug.Log("Subscribe Popup is..." + subscribePopup);
 		if (subscribePopup != null && subscribePopup.activeInHierarchy)
 		{
 			UIScreenController.Instance.ClosePopup(null);
+			UIScreenController.Instance.ClosePopup("SubscribePopup");
 		}
 		gameObject.SetActive(false);
 		UIEventListener uIEventListener = UIEventListener.Get(purchaseBtn);
