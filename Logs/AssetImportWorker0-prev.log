@@ -15,7 +15,7 @@ D:/MyGames/Unity/Subway-Runner-Girl
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55237
+51559
 Successfully changed project path to: D:/MyGames/Unity/Subway-Runner-Girl
 D:/MyGames/Unity/Subway-Runner-Girl
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ D:/MyGames/Unity/Subway-Runner-Girl
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [32932] Host "[IP] 172.27.192.1 [Port] 0 [Flags] 2 [Guid] 980338589 [EditorId] 980338589 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KETM6M0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [32632] Host "[IP] 172.27.192.1 [Port] 0 [Flags] 2 [Guid] 3088177747 [EditorId] 3088177747 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KETM6M0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [32932] Host "[IP] 172.27.192.1 [Port] 0 [Flags] 2 [Guid] 980338589 [EditorId] 980338589 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KETM6M0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [32632] Host "[IP] 172.27.192.1 [Port] 0 [Flags] 2 [Guid] 3088177747 [EditorId] 3088177747 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KETM6M0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-Refreshing native plugins compatible for Editor in 19.25 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 13.26 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.34f1 (4886f5360533)
 [Subsystems] Discovering subsystems at path D:/Programms/Unity/Hub/Editor/Editor/Data/Resources/UnitySubsystems
@@ -70,45 +70,45 @@ Initialize mono
 Mono path[0] = 'D:/Programms/Unity/Hub/Editor/Editor/Data/Managed'
 Mono path[1] = 'D:/Programms/Unity/Hub/Editor/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Programms/Unity/Hub/Editor/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56948
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56192
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Programms/Unity/Hub/Editor/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: D:/Programms/Unity/Hub/Editor/Editor/Data/PlaybackEngines/Switch/UnityEditor.Switch.Extensions.dll
-Registered in 0.007785 seconds.
-- Loaded All Assemblies, in  1.122 seconds
+Registered in 0.004830 seconds.
+- Loaded All Assemblies, in  0.478 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.772 seconds
-Domain Reload Profiling: 1895ms
-	BeginReloadAssembly (464ms)
+- Finished resetting the current domain, in  0.561 seconds
+Domain Reload Profiling: 1039ms
+	BeginReloadAssembly (143ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (92ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (123ms)
-	LoadAllAssembliesAndSetupDomain (416ms)
-		LoadAssemblies (466ms)
+	RebuildCommonClasses (52ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (70ms)
+	LoadAllAssembliesAndSetupDomain (196ms)
+		LoadAssemblies (142ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (410ms)
-			TypeCache.Refresh (407ms)
-				TypeCache.ScanAssembly (370ms)
+		AnalyzeDomain (193ms)
+			TypeCache.Refresh (192ms)
+				TypeCache.ScanAssembly (174ms)
 			ScanForSourceGeneratedMonoScriptInfo (1ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (774ms)
+	FinalizeReload (561ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (664ms)
+		SetupLoadedEditorAssemblies (474ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (184ms)
-			SetLoadedEditorAssemblies (18ms)
+			InitializePlatformSupportModulesInManaged (144ms)
+			SetLoadedEditorAssemblies (12ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (7ms)
-			ProcessInitializeOnLoadAttributes (321ms)
-			ProcessInitializeOnLoadMethodAttributes (134ms)
+			BeforeProcessingInitializeOnLoad (4ms)
+			ProcessInitializeOnLoadAttributes (236ms)
+			ProcessInitializeOnLoadMethodAttributes (79ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -130,55 +130,55 @@ System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.
 System.Threading.ThreadHelper:ThreadStart ()
 
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.060 seconds
-Refreshing native plugins compatible for Editor in 15.11 ms, found 2 plugins.
+- Loaded All Assemblies, in  1.048 seconds
+Refreshing native plugins compatible for Editor in 7.69 ms, found 2 plugins.
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.068 seconds
-Domain Reload Profiling: 3130ms
-	BeginReloadAssembly (217ms)
+- Finished resetting the current domain, in  1.129 seconds
+Domain Reload Profiling: 2176ms
+	BeginReloadAssembly (298ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
+		DisableScriptedObjects (15ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (35ms)
-	RebuildCommonClasses (52ms)
-	RebuildNativeTypeToScriptingClass (17ms)
-	initialDomainReloadingComplete (35ms)
-	LoadAllAssembliesAndSetupDomain (740ms)
-		LoadAssemblies (467ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (77ms)
+	RebuildNativeTypeToScriptingClass (27ms)
+	initialDomainReloadingComplete (53ms)
+	LoadAllAssembliesAndSetupDomain (591ms)
+		LoadAssemblies (533ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (398ms)
-			TypeCache.Refresh (274ms)
-				TypeCache.ScanAssembly (242ms)
-			ScanForSourceGeneratedMonoScriptInfo (87ms)
-			ResolveRequiredComponents (35ms)
-	FinalizeReload (2069ms)
+		AnalyzeDomain (229ms)
+			TypeCache.Refresh (177ms)
+				TypeCache.ScanAssembly (157ms)
+			ScanForSourceGeneratedMonoScriptInfo (35ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (1130ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1567ms)
+		SetupLoadedEditorAssemblies (880ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (178ms)
-			SetLoadedEditorAssemblies (23ms)
+			InitializePlatformSupportModulesInManaged (91ms)
+			SetLoadedEditorAssemblies (9ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (216ms)
-			ProcessInitializeOnLoadAttributes (734ms)
-			ProcessInitializeOnLoadMethodAttributes (412ms)
-			AfterProcessingInitializeOnLoad (5ms)
-			EditorAssembliesLoaded (1ms)
+			BeforeProcessingInitializeOnLoad (97ms)
+			ProcessInitializeOnLoadAttributes (421ms)
+			ProcessInitializeOnLoadMethodAttributes (259ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (18ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.18 seconds
-Refreshing native plugins compatible for Editor in 15.83 ms, found 2 plugins.
+		AwakeInstancesAfterBackupRestoration (10ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 8.59 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3590 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 71 unused Assets / (72.1 KB). Loaded Objects now: 4037.
+Unloading 3591 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 71 unused Assets / (72.4 KB). Loaded Objects now: 4034.
 Memory consumption went from 143.9 MB to 143.8 MB.
-Total: 19.447000 ms (FindLiveObjects: 0.737300 ms CreateObjectMapping: 0.540700 ms MarkObjects: 17.831100 ms  DeleteObjects: 0.333500 ms)
+Total: 10.048000 ms (FindLiveObjects: 0.439900 ms CreateObjectMapping: 0.186800 ms MarkObjects: 9.217600 ms  DeleteObjects: 0.201500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -196,26 +196,48 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 787581.586936 seconds.
+  Time since last request: 1036224.908451 seconds.
+  path: Assets/Treading Water.fbx
+  artifactKey: Guid(e50cc0154bb7f7a46954a3bf0dc14b60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Treading Water.fbx using Guid(e50cc0154bb7f7a46954a3bf0dc14b60) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '806c050393dcc8383db855b265fa1064') in 0.569106 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
   path: Assets/Ai_hair.mesh
   artifactKey: Guid(f4ec2023742cac5499bf1adfb046b5a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Ai_hair.mesh using Guid(f4ec2023742cac5499bf1adfb046b5a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'b40fbcbe79a7d593b07a96648ed812fe') in 2.577151 seconds
+ -> (artifact id: '3e993f0bb964a5bb5240ce198910e340') in 1.197110 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000063 seconds.
+  Time since last request: 0.000029 seconds.
   path: Assets/InputActions.inputactions
   artifactKey: Guid(2f4d70e98002c8d4aab46ac0b898c04b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/InputActions.inputactions using Guid(2f4d70e98002c8d4aab46ac0b898c04b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'fd2d2b12fd7183b2fe233b57e1393311') in 0.013465 seconds
+ -> (artifact id: 'fd2d2b12fd7183b2fe233b57e1393311') in 0.008522 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 21
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000027 seconds.
+  Time since last request: 0.000035 seconds.
   path: Assets/T-Pose (2).fbx
   artifactKey: Guid(e5916d0d723606a4da48e2f11396610f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/T-Pose (2).fbx using Guid(e5916d0d723606a4da48e2f11396610f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
@@ -232,12 +254,12 @@ Start importing Assets/T-Pose (2).fbx using Guid(e5916d0d723606a4da48e2f11396610
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '8e822784e16f92c5c2d4ae1f25a09929') in 0.372893 seconds
+ -> (artifact id: 'aa096e6e05f5df0f46a0fa9c1391cf4b') in 0.139369 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 425
+Number of asset objects unloaded after import = 434
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000047 seconds.
+  Time since last request: 0.000039 seconds.
   path: Assets/anime8.fbx
   artifactKey: Guid(57cab44ec4347ea4788a3945d9dbbae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/anime8.fbx using Guid(57cab44ec4347ea4788a3945d9dbbae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
@@ -254,12 +276,144 @@ Start importing Assets/anime8.fbx using Guid(57cab44ec4347ea4788a3945d9dbbae8) I
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '92bb8f575ba557a12ff06c08c792af16') in 0.142116 seconds
+ -> (artifact id: 'aab101b5dfaeb94855425cf6b1e208a3') in 0.131331 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 422
+Number of asset objects unloaded after import = 431
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000053 seconds.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Jump (2).fbx
+  artifactKey: Guid(50b5f4501c30f9b418d9fb08697ead14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Jump (2).fbx using Guid(50b5f4501c30f9b418d9fb08697ead14) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '17d7be2ab90e7899d87627ae5124138b') in 0.128590 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Jump.fbx
+  artifactKey: Guid(e4af68cef8af49246917f2cc219f3ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Jump.fbx using Guid(e4af68cef8af49246917f2cc219f3ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '3f4fce55be3063d65005a167908ed965') in 0.120081 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Driving.fbx
+  artifactKey: Guid(6bf65d01e87e0f1488babbca94f8e2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Driving.fbx using Guid(6bf65d01e87e0f1488babbca94f8e2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'e1d5975d7060ad2b60f255855a36c097') in 0.122719 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Running2.fbx
+  artifactKey: Guid(366a8e87daa260341aa3ca425eb89c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Running2.fbx using Guid(366a8e87daa260341aa3ca425eb89c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '0aeb0079a51d48d373a500bc133c235c') in 0.119518 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Falling To Landing.fbx
+  artifactKey: Guid(636a67675b8f24440b5679d2c5a557b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Falling To Landing.fbx using Guid(636a67675b8f24440b5679d2c5a557b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '290bc45b9980614cbe0eb5b4a45c6e59') in 0.117140 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Ninja Idle.fbx
+  artifactKey: Guid(dde2edfbde827594880903d6a0efc89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Ninja Idle.fbx using Guid(dde2edfbde827594880903d6a0efc89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '243a1e0ffc93abcbacaef8418e2095e4') in 0.116094 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
   path: Assets/Running (1).fbx
   artifactKey: Guid(c0db71672884a214ab248a323c577981) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Running (1).fbx using Guid(c0db71672884a214ab248a323c577981) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
@@ -276,12 +430,34 @@ Start importing Assets/Running (1).fbx using Guid(c0db71672884a214ab248a323c5779
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'dce02326c9ed8d85e78c410be37cc95d') in 0.125228 seconds
+ -> (artifact id: 'd7818782df5b06bc49bfaaf2ef6eb5a9') in 0.118437 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 425
+Number of asset objects unloaded after import = 434
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000043 seconds.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Idle.fbx
+  artifactKey: Guid(d03c5ff4f7a0e4649a40b01d93e5ccf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Idle.fbx using Guid(d03c5ff4f7a0e4649a40b01d93e5ccf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'e6ca7b9f1cb08c523e062fada58736a8') in 0.111940 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
   path: Assets/Fast Run (2).fbx
   artifactKey: Guid(000c2d8b60c90e848996ea496f0bf3c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Fast Run (2).fbx using Guid(000c2d8b60c90e848996ea496f0bf3c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
@@ -298,12 +474,34 @@ Start importing Assets/Fast Run (2).fbx using Guid(000c2d8b60c90e848996ea496f0bf
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '9ce255d10ab86ca0f2c6892dfdd3edc6') in 0.125437 seconds
+ -> (artifact id: '7fdfec8947e03e175b12bea04052f092') in 0.114982 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 423
+Number of asset objects unloaded after import = 432
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000028 seconds.
+  Time since last request: 0.000132 seconds.
+  path: Assets/Running Forward Flip.fbx
+  artifactKey: Guid(e3031cf930808d046a41c356afeb7e0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Running Forward Flip.fbx using Guid(e3031cf930808d046a41c356afeb7e0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'b7f149e504ed2c3ba85f177bcd25207b') in 0.117581 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 432
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
   path: Assets/Slow Run.fbx
   artifactKey: Guid(1dc9f8b118da7c14494812f6e36ab0db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Slow Run.fbx using Guid(1dc9f8b118da7c14494812f6e36ab0db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
@@ -328,28 +526,6 @@ Start importing Assets/Slow Run.fbx using Guid(1dc9f8b118da7c14494812f6e36ab0db)
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '297e75cfcf710cc9c6554cedb095bfe9') in 0.335011 seconds
+ -> (artifact id: '8698d5f7a8dcf4808eac5d90277e2600') in 0.331419 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 173
-========================================================================
-Received Import Request.
-  Time since last request: 0.923862 seconds.
-  path: Assets/Jump (2).fbx
-  artifactKey: Guid(50b5f4501c30f9b418d9fb08697ead14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Jump (2).fbx using Guid(50b5f4501c30f9b418d9fb08697ead14) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '5e7796c2759dc25881a848a23eb5f622') in 0.115062 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 423
