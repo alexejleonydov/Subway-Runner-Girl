@@ -425,6 +425,9 @@ public class CharacterRendering : MonoBehaviour
 	[OptionalField]
 	public Animation characterAnimation;
 
+	[OptionalField]
+	public ChangeAnimationState changeAnimationState;
+
 	[SerializeField]
 	private AnimationCurve jetpackParticleOffsetCurve;
 
@@ -670,6 +673,7 @@ public class CharacterRendering : MonoBehaviour
 		gameObject.transform.localPosition = Vector3.zero;
 		characterModel = gameObject.GetComponent<CharacterModel>();
 		characterAnimation = characterModel.characterAnimation;
+		changeAnimationState = characterModel.changeAnimationState;
 	}
 
 	private void InitializeCharacterRenderingEffects()
@@ -702,6 +706,11 @@ public class CharacterRendering : MonoBehaviour
 			SpringJumpOnStop();
 		}
 	}
+
+	public void SetChangeAnimationState(ChangeAnimationState changeAnimationStateNew)
+    {
+		changeAnimationState = changeAnimationStateNew;
+    }
 
 	private void HandleOnTurboHeadstart()
 	{
@@ -1076,6 +1085,7 @@ public class CharacterRendering : MonoBehaviour
 		{
 			characterAnimation["hold_magnet"].enabled = true;
 			characterAnimation.Play("hold_magnet");
+			Debug.Log("Magnet");
 		}
 	}
 

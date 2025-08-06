@@ -9,7 +9,9 @@ public class ChangeAnimationState : MonoBehaviour
     private bool isRightAnim;
     private string currAnim;
     private string currAnimState = "idle";
-
+    private string prevAnim;
+    private bool isNormalAnim = true;
+    private bool isAbility;
     private void Awake()
     {
         currAnimState = "idle";
@@ -17,8 +19,8 @@ public class ChangeAnimationState : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Currently playing: " + currAnim);
-        Debug.Log("Currently playing: " + currAnimState);
+        //Debug.Log("Currently playing: " + currAnim);
+
 
         foreach (AnimationState state in charAnimation)
         {
@@ -26,7 +28,7 @@ public class ChangeAnimationState : MonoBehaviour
             {
                 currAnim = state.name;
 
-                Debug.Log("Currently playing: " + state.name);
+               // Debug.Log("Currently playing: " + state.name);
             }
         }
 
@@ -36,15 +38,58 @@ public class ChangeAnimationState : MonoBehaviour
 
         if (!isRightAnim)
         {
-            ChangeAnimatorState(currAnim);
 
+            ChangeAnimatorState(currAnim); 
         }
+    }
+    
+    public void SetAbilty(bool ability)
+    {
+        isAbility = ability;
     }
 
     public void ChangeAnimatorState(string name)
     {
-        currAnimState = name;
+        if (isAbility)
+        {
+
+            if (name == "jump" || name == "jump_salto" || name == "jump_2" || name == "jump_3")
+            {
+                
+                //if(name == "hold_magnet")
+                currAnimState = "hold_magnet_jump";
+            }
+            else
+            {
+                currAnimState = "hold_magnet_run";
+            }
+
+            Debug.Log("Currently playing: " + currAnimState);
+        }
+
+
+        /*else if (currAnimState == "jump" || currAnimState == "jump_salto" || currAnimState == "jump_2" || currAnimState == "jump_3")
+        {
+            if (name == "hangtime")
+            {
+                currAnimState = "run";
+            }
+
+            else if (name == "hangtime_3")
+            {
+                currAnimState = "run";
+            }
+
+        }*/
+
+        else
+        {
+            currAnimState = name;
+            isNormalAnim = true;
+        }
+        //if(isNormalAnim)
         charAnimator.Play(currAnimState);
+
     }
 
 

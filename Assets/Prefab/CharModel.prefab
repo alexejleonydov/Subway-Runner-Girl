@@ -24708,6 +24708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRender: {fileID: 137404581164046099}
+  changeAnimationState: {fileID: 4516200569025410069}
   meshSuperShoes: {fileID: 137605171990698472}
   meshHelmet: {fileID: 23391596048589823}
   meshCoinMagnet: {fileID: 23963675117049740}

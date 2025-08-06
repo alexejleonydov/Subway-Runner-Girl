@@ -45,6 +45,8 @@ public class Helmet : ICharacterAttachment
 
 	private Animation characterAnimation;
 
+	private ChangeAnimationState changeAnimationState;
+
 	private CharacterController characterController;
 
 	private OnTriggerObject coinMagnetCollider;
@@ -119,6 +121,7 @@ public class Helmet : ICharacterAttachment
 		characterModel = character.characterModel;
 		characterController = character.characterController;
 		characterAnimation = CharacterRendering.Instance.characterAnimation;
+		changeAnimationState = CharacterRendering.Instance.changeAnimationState;
 		coinMagnetCollider = character.coinMagnetCollider;
 		coinEFX = character.CharacterPickupParticleSystem.CoinEFX.transform;
 		helmetRoot = characterModel.BoneHelmet.gameObject;
@@ -194,6 +197,7 @@ public class Helmet : ICharacterAttachment
 				characterModel.meshCoinMagnet.enabled = false;
 				coinEFX.localPosition = PickupParticles.coinEfxOffset;
 				characterAnimation["hold_magnet"].enabled = false;
+				changeAnimationState.SetAbilty(false);
 			}
 		}
 		if (useMutiplier)
@@ -365,8 +369,11 @@ public class Helmet : ICharacterAttachment
 				characterModel.meshCoinMagnet.enabled = true;
 				characterAnimation["hold_magnet"].enabled = true;
 				characterAnimation.Play("hold_magnet");
+				changeAnimationState.SetAbilty(true);
+				//changeAnimationState.ChangeAnimatorState("hold_magnet");
 				coinMagnetCollider.GetComponent<Collider>().enabled = true;
 				coinMagnetCollider.OnEnter = CoinTriggerHit;
+				Debug.Log("Magnit");
 			}
 		}
 		if (helm.useMutiplier)

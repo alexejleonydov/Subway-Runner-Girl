@@ -37,7 +37,7 @@ public class UIBasicButton : MonoBehaviour
 		}
 	}
 
-	protected virtual void Send()
+	public virtual void Send()
 	{
 	}
 }

@@ -156,7 +156,7 @@ namespace Network
 
 		private void Update()
 		{
-			if (platType == PlatFormType.guest && _guestLoginIn.hasInited)
+			/*if (platType == PlatFormType.guest && _guestLoginIn.hasInited)
 			{
 				base.enabled = false;
 				_interval = _min_interval;
@@ -193,7 +193,7 @@ namespace Network
 			{
 				RequestFacebookUserID();
 				_interval = _min_interval;
-			}
+			}*/
 		}
 	}
 }

@@ -1440,12 +1440,14 @@ public class UICamera : MonoBehaviour
 		{
 			if (Input.GetMouseButtonDown(i))
 			{
+				Debug.Log("Click");
 				currentKey = (KeyCode)(323 + i);
 				flag2 = true;
 				flag = true;
 			}
 			else if (Input.GetMouseButton(i))
 			{
+				Debug.Log("Click");
 				currentKey = (KeyCode)(323 + i);
 				flag = true;
 			}

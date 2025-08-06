@@ -21,4 +21,9 @@ public class FootItem
 			fillIcon.enabled = isfill;
 		}
 	}
+
+	public UIButtonChangeScreen GetParentBuuton()
+    {
+		return fill.transform.parent.gameObject.GetComponent<UIButtonChangeScreen>();
+    }
 }

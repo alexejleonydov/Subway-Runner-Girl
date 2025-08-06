@@ -11,7 +11,7 @@ public class UIButtonGame : UIBasicButton
 
 	public GameMessage messageType;
 
-	protected override void Send()
+	public override void Send()
 	{
 		if (messageType == GameMessage.StartNewRun)
 		{

@@ -66,6 +66,7 @@ public class CoinMagnet : ICharacterAttachment
 		characterAnimation["hold_magnet"].layer = 3;
 		characterAnimation["hold_magnet"].weight = 0.9f;
 		characterAnimation["hold_magnet"].enabled = false;
+		Debug.Log("Magnet");
 		game = Game.Instance;
 		pullSpeed = HelmetModelPreviewFactory.Instance.pullSpeed;
 	}
@@ -96,6 +97,8 @@ public class CoinMagnet : ICharacterAttachment
 			characterModel.meshCoinMagnet.enabled = true;
 			characterAnimation["hold_magnet"].enabled = true;
 			characterAnimation.Play("hold_magnet");
+			characterModel.changeAnimationState.SetAbilty(true);
+			Debug.Log("Magnet");
 			coinMagnetCollider.OnEnter = CoinTriggerHit;
 			coinMagnetCollider.GetComponent<Collider>().enabled = true;
 		}
@@ -109,6 +112,7 @@ public class CoinMagnet : ICharacterAttachment
 		{
 			coinMagnetCollider.GetComponent<Collider>().enabled = false;
 			characterModel.meshCoinMagnet.enabled = false;
+			characterModel.changeAnimationState.SetAbilty(false);
 			coinEFX.localPosition = PickupParticles.coinEfxOffset;
 			characterAnimation["hold_magnet"].enabled = false;
 			if (Powerup.timeLeft <= 0f)

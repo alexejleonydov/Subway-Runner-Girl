@@ -33,7 +33,7 @@ public class UIGameOverScreenButton : UIButtonGame
 	}
 
 
-	protected override void Send()
+	public override void Send()
 	{
 
 		if (Game.Instance != null)

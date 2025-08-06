@@ -7,6 +7,9 @@ public class CharacterModel : MonoBehaviour, ICharacterModel
 	public SkinnedMeshRenderer currentRender;
 
 	[OptionalField]
+	public ChangeAnimationState changeAnimationState;
+
+	[OptionalField]
 	public SkinnedMeshRenderer meshSuperShoes;
 
 	[OptionalField]

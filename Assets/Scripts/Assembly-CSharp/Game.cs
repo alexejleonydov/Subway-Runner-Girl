@@ -892,7 +892,7 @@ public class Game : MonoBehaviour
 	{
 		if (characterState == null)
 		{
-			Debug.LogError("characterState is NULL у OnUp!");
+			//Debug.LogError("characterState is NULL у OnUp!");
 			return;
 		}
 
@@ -903,7 +903,7 @@ public class Game : MonoBehaviour
 	{
 		if (characterState == null)
 		{
-			Debug.LogError("characterState is NULL у OnUp!");
+			//Debug.LogError("characterState is NULL у OnUp!");
 			return;
 		}
 
@@ -912,16 +912,28 @@ public class Game : MonoBehaviour
 
 	private void OnLeft(InputAction.CallbackContext context)
 	{
-		characterState.HandleSwipe(SwipeDir.Left);
+		if (characterState == null)
+		{
+			return;
+		}
+	    characterState.HandleSwipe(SwipeDir.Left);
 	}
 
 	private void OnRight(InputAction.CallbackContext context)
 	{
+		if (characterState == null)
+		{
+			return;
+		}
 		characterState.HandleSwipe(SwipeDir.Right);
 	}
 
 	private void OnInteract(InputAction.CallbackContext context)
 	{
+		if (characterState == null)
+		{
+			return;
+		}
 		characterState.HandleDoubleTap();
 	}
 

@@ -95,7 +95,7 @@ public class UIButtonChangeScreen : UIBasicButton
 
 	private bool useSend = true;
 
-	protected override void Send()
+	public override void Send()
 	{
 		if (!useSend)
 		{
