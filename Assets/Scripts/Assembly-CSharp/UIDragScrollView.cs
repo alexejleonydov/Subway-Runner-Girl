@@ -17,7 +17,7 @@ public class UIDragScrollView : MonoBehaviour
 
 	private bool mStarted;
 
-	private void OnEnable()
+	/*private void OnEnable()
 	{
 		mTrans = base.transform;
 		if (scrollView == null && draggablePanel != null)
@@ -92,5 +92,5 @@ public class UIDragScrollView : MonoBehaviour
 		{
 			scrollView.OnPan(delta);
 		}
-	}
+	}*/
 }

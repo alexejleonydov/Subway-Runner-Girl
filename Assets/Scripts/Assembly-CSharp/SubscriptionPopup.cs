@@ -69,7 +69,7 @@ public class SubscriptionPopup : UIBaseScreen
 		if (subscribePopup != null && subscribePopup.activeInHierarchy)
 		{
 			UIScreenController.Instance.ClosePopup(null);
-			UIScreenController.Instance.ClosePopup("SubscribePopup");
+			UIScreenController.Instance.ClosePopup("SubscribePopup(Clone)");
 		}
 		gameObject.SetActive(false);
 		UIEventListener uIEventListener = UIEventListener.Get(purchaseBtn);
@@ -78,9 +78,10 @@ public class SubscriptionPopup : UIBaseScreen
 
 	public override void Show()
 	{
-		base.Show();
-		Refresh();
-		RefreshLabel();
+		Debug.Log("SubscriptionPopup.Show() called");
+		// base.Show();
+		// Refresh();
+		// RefreshLabel();
 	}
 
 	private void Refresh()

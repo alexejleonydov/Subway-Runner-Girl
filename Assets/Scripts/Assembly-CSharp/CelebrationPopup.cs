@@ -386,7 +386,7 @@ public class CelebrationPopup : UIBaseScreen
 		GameObject celebrationPopup = GameObject.Find("CelebrationPopup(Clone)");
 		if (celebrationPopup != null && celebrationPopup.activeInHierarchy)
 		{
-			UIScreenController.Instance.ClosePopup(null);
+			UIScreenController.Instance.ClosePopupHandle("CelebrationPopup(Clone)");
 		}
 	}
 

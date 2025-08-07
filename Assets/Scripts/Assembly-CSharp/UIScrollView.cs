@@ -771,6 +771,7 @@ public class UIScrollView : MonoBehaviour
 
 	private void LateUpdate()
 	{
+		return;
 		if (!Application.isPlaying)
 		{
 			return;

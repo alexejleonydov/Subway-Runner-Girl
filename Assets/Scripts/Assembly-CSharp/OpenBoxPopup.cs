@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class OpenBoxPopup : UIBaseScreen
 {
@@ -65,11 +66,48 @@ public class OpenBoxPopup : UIBaseScreen
 
 	private bool _openHasStarted;
 
+	private InputActions inputActions;
+
 	public override void Init()
 	{
 		base.Init();
 		coinBoxSizer = InitializeCoinbox(false, true, true, false);
 	}
+
+
+	void OnEnable()
+	{
+		inputActions = new InputActions();
+
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnOpenChestPressed;
+		inputActions.Play.Exit.performed += OnSkipChestPressed;
+	}
+
+	void OnDisable()
+	{
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnOpenChestPressed;
+		inputActions.Play.Exit.performed -= OnSkipChestPressed;
+	}
+
+	private void OnOpenChestPressed(InputAction.CallbackContext context)
+	{
+		if (openButton.enabled)
+		{
+			OnPressed();
+			OnReleased();
+		}
+	}
+
+	private void OnSkipChestPressed(InputAction.CallbackContext context)
+	{
+		if (skipButton.enabled)
+		{
+			Skip();
+		}
+	}
+
 
 	public override void Show()
 	{
@@ -319,34 +357,34 @@ public class OpenBoxPopup : UIBaseScreen
 			count2 = Mathf.RoundToInt(Mathf.SmoothStep(from, amount, countFactor));
 			switch (itemType)
 			{
-			case PrizeEntryType.Coin:
-				coinBoxSizer.AddCoins(count2);
-				break;
-			case PrizeEntryType.Key:
-				coinBoxSizer.AddKeys(count2);
-				break;
-			case PrizeEntryType.SEB:
-			case PrizeEntryType.MEB:
-			case PrizeEntryType.LEB:
-				coinBoxSizer.AddExps(count2);
-				break;
+				case PrizeEntryType.Coin:
+					coinBoxSizer.AddCoins(count2);
+					break;
+				case PrizeEntryType.Key:
+					coinBoxSizer.AddKeys(count2);
+					break;
+				case PrizeEntryType.SEB:
+				case PrizeEntryType.MEB:
+				case PrizeEntryType.LEB:
+					coinBoxSizer.AddExps(count2);
+					break;
 			}
 			yield return null;
 		}
 		switch (itemType)
 		{
-		case PrizeEntryType.Coin:
-			coinBoxSizer.AddOriginCoins(amount);
-			TasksManager.Instance.PlayerDidThis(TaskTarget.EarnCoin, amount);
-			break;
-		case PrizeEntryType.Key:
-			coinBoxSizer.AddOriginKeys(amount);
-			break;
-		case PrizeEntryType.SEB:
-		case PrizeEntryType.MEB:
-		case PrizeEntryType.LEB:
-			coinBoxSizer.AddOriginExps(amount);
-			break;
+			case PrizeEntryType.Coin:
+				coinBoxSizer.AddOriginCoins(amount);
+				TasksManager.Instance.PlayerDidThis(TaskTarget.EarnCoin, amount);
+				break;
+			case PrizeEntryType.Key:
+				coinBoxSizer.AddOriginKeys(amount);
+				break;
+			case PrizeEntryType.SEB:
+			case PrizeEntryType.MEB:
+			case PrizeEntryType.LEB:
+				coinBoxSizer.AddOriginExps(amount);
+				break;
 		}
 	}
 

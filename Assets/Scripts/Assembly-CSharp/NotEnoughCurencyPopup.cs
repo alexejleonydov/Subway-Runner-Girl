@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NotEnoughCurencyPopup : UIBaseScreen
 {
@@ -33,6 +34,9 @@ public class NotEnoughCurencyPopup : UIBaseScreen
 	private UILabel buyLbl;
 
 	private InAppManagerPopupData _popupData;
+
+	private InputActions inputActions;
+
 
 	public override void Hide()
 	{
@@ -96,12 +100,34 @@ public class NotEnoughCurencyPopup : UIBaseScreen
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
+
+		inputActions = new InputActions();
+
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnBuyKeyPressed;
+
 	}
 
 	private void OnDisable()
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
+
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnBuyKeyPressed;
 	}
+
+	private void OnBuyKeyPressed(InputAction.CallbackContext context)
+	{
+		if ("IngameUI".Equals(UIScreenController.Instance.GetTopScreenName()) && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
+		{
+			OnBuyClicked(buy);
+		}
+		else
+		{
+			OnOkClicked(buy);
+		}
+	}
+
 
 	public void OnBuyClicked(GameObject go)
 	{
@@ -183,11 +209,13 @@ public class NotEnoughCurencyPopup : UIBaseScreen
 		{
 			UIEventListener uIEventListener = UIEventListener.Get(buy);
 			uIEventListener.onClick = OnBuyClicked;
+			Debug.Log("Buy clicked");
 		}
 		else
 		{
 			UIEventListener uIEventListener2 = UIEventListener.Get(buy);
 			uIEventListener2.onClick = OnOkClicked;
+			Debug.Log("OK clicked");
 		}
 	}
 }

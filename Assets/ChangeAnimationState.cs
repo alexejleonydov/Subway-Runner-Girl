@@ -19,7 +19,7 @@ public class ChangeAnimationState : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("Currently playing: " + currAnim);
+        Debug.Log("Currently playing: " + currAnim);
 
 
         foreach (AnimationState state in charAnimation)
@@ -28,7 +28,7 @@ public class ChangeAnimationState : MonoBehaviour
             {
                 currAnim = state.name;
 
-               // Debug.Log("Currently playing: " + state.name);
+                // Debug.Log("Currently playing: " + state.name);
             }
         }
 
@@ -39,10 +39,10 @@ public class ChangeAnimationState : MonoBehaviour
         if (!isRightAnim)
         {
 
-            ChangeAnimatorState(currAnim); 
+            ChangeAnimatorState(currAnim);
         }
     }
-    
+
     public void SetAbilty(bool ability)
     {
         isAbility = ability;
@@ -55,7 +55,7 @@ public class ChangeAnimationState : MonoBehaviour
 
             if (name == "jump" || name == "jump_salto" || name == "jump_2" || name == "jump_3")
             {
-                
+
                 //if(name == "hold_magnet")
                 currAnimState = "hold_magnet_jump";
             }

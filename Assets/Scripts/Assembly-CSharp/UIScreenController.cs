@@ -412,6 +412,11 @@ public class UIScreenController : MonoBehaviour
 		_RemovePopup(string.Empty);
 	}
 
+	public void ClosePopupHandle(string screenName)
+	{
+		_RemovePopup(screenName);
+	}
+
 	private UIBaseScreen _ActivateScreen(string screenName)
 	{
 		UIBaseScreen screen = null;

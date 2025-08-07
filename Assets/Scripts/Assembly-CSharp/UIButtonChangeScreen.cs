@@ -9,7 +9,7 @@ public class UIButtonChangeScreen : UIBasicButton
 
 	private void OnEnable()
 	{
-		Debug.Log("UIButtonChangeScreen connected to..." + gameObject.name);
+		//Debug.Log("UIButtonChangeScreen connected to..." + gameObject.name);
 
 		inputActions = new InputActions();
 
@@ -74,8 +74,10 @@ public class UIButtonChangeScreen : UIBasicButton
 		Debug.Log("Subscribe Popup in Button is..." + subscribePopup);
 		if (subscribePopup != null && subscribePopup.activeInHierarchy)
 		{
-			UIScreenController.Instance.ClosePopup("SubscribePopup");
-			UIScreenController.Instance.ClosePopup(null);
+			UIScreenController.Instance.ClosePopupHandle("SubscribePopup(Clone)");
+			//UIScreenController.Instance.ClosePopup(null);
+			UIScreenController.Instance.ClosePopupHandle("SubscribePopup");
+			Debug.Log("Subscribe Popup closed for" + subscribePopup);
 		}
 	}
 
