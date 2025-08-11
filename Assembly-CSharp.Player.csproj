@@ -493,6 +493,7 @@
     <Compile Include="Assets\Scripts\Assembly-CSharp\MoveAnimation.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\OnLineRewardHelper.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\VipScrollView.cs" />
+    <Compile Include="Assets\ChooseButton.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\UIPowerupHelper.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\HelmetRendering.cs" />
     <Compile Include="Assets\Scripts\Assembly-CSharp\RendererActivator.cs" />

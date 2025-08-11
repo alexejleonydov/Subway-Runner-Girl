@@ -37,13 +37,19 @@ public class UIFooterHandler : MonoBehaviour
 
     private void MoveFooterButtons(InputAction.CallbackContext obj)
     {
+		float direction = inputActions.UI.FooterMove.ReadValue<float>();
+
 		currentIndex += inputActions.UI.FooterMove.ReadValue<float>();
 
 		currentIndex = Mathf.Clamp(currentIndex, 1, 4);
 
+		OnButtonPress((int)currentIndex);
+
 		OnButtonClick((int)currentIndex);
 
-		OnButtonPress((int)currentIndex);
+
+
+		Debug.Log("CurrentIndex:" + currentIndex + direction);
 	}
 
     private void OnDisable()
@@ -103,6 +109,7 @@ public class UIFooterHandler : MonoBehaviour
 
 	public void OnButtonPress(int selected)
 	{
+
 		switch (selected)
 		{
 			case 1:
