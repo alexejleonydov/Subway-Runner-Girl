@@ -82,6 +82,8 @@ public class OpenBoxPopup : UIBaseScreen
 		inputActions.Enable();
 		inputActions.Play.PlayGame.performed += OnOpenChestPressed;
 		inputActions.Play.Exit.performed += OnSkipChestPressed;
+
+		finishPanel.gameObject.SetActive(false);
 	}
 
 	void OnDisable()
@@ -98,6 +100,8 @@ public class OpenBoxPopup : UIBaseScreen
 			OnPressed();
 			OnReleased();
 		}
+		finishPanel.gameObject.SetActive(true);
+		openButton.enabled = false;
 	}
 
 	private void OnSkipChestPressed(InputAction.CallbackContext context)
@@ -160,6 +164,8 @@ public class OpenBoxPopup : UIBaseScreen
 		tapToCollectLabel.text = Strings.Get(LanguageKey.CELEBRATION_POPUP_CONTINUE);
 		tapToCollectLabel.alpha = 0f;
 		openButton.enabled = false;
+		finishPanel.gameObject.SetActive(false);
+
 		skipLbl.alpha = 0f;
 		skipButton.enabled = false;
 		if (_chestType == ChestType.Game)

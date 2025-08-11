@@ -9,6 +9,8 @@ public class UIButtonChangeScreen : UIBasicButton
 
 	private void OnEnable()
 	{
+		CloseSubscribePopupIfActive();
+
 		//Debug.Log("UIButtonChangeScreen connected to..." + gameObject.name);
 
 		inputActions = new InputActions();
@@ -65,6 +67,28 @@ public class UIButtonChangeScreen : UIBasicButton
 			ScreenNameToOpen = "IngameUI";
 			Send();
 		}
+
+		GameObject levelUpUIPopup = GameObject.Find("LevelUpPopup(Clone)");
+		if (levelUpUIPopup != null && levelUpUIPopup.activeInHierarchy)
+		{
+			ScreenNameToOpen = "IngameUI";
+			Send();
+		}
+
+		GameObject boxOpenUIPopup = GameObject.Find("OK");
+		if (boxOpenUIPopup != null && boxOpenUIPopup.activeInHierarchy)
+		{
+			//ScreenNameToOpen = "IngameUI";
+			Send();
+		}
+
+		GameObject playerLevelPopup = GameObject.Find("PlayerLevelPopup(Clone)");
+		if (playerLevelPopup != null && playerLevelPopup.activeInHierarchy)
+		{
+			//ScreenNameToOpen = "IngameUI";
+			Send();
+		}
+
 	}
 
 
@@ -78,6 +102,8 @@ public class UIButtonChangeScreen : UIBasicButton
 			//UIScreenController.Instance.ClosePopup(null);
 			UIScreenController.Instance.ClosePopupHandle("SubscribePopup");
 			Debug.Log("Subscribe Popup closed for" + subscribePopup);
+			ScreenNameToOpen = "IngameUI";
+			Send();
 		}
 	}
 

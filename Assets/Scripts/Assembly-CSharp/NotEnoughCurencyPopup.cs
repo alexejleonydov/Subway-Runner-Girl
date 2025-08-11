@@ -118,13 +118,21 @@ public class NotEnoughCurencyPopup : UIBaseScreen
 
 	private void OnBuyKeyPressed(InputAction.CallbackContext context)
 	{
-		if ("IngameUI".Equals(UIScreenController.Instance.GetTopScreenName()) && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
+		Debug.Log("OnBuyKeyPressed activated");
+		GameObject NotEnoughCurencyPopup = GameObject.Find("NotEnoughCurencyPopup(Clone)");
+		if (NotEnoughCurencyPopup != null && NotEnoughCurencyPopup.activeInHierarchy)
 		{
-			OnBuyClicked(buy);
-		}
-		else
-		{
-			OnOkClicked(buy);
+
+			if ("IngameUI".Equals(UIScreenController.Instance.GetTopScreenName()) && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
+			{
+				OnBuyClicked(buy);
+				Debug.Log("Buy button pressed");
+			}
+			else
+			{
+				OnOkClicked(buy);
+				Debug.Log("OK button pressed");
+			}
 		}
 	}
 

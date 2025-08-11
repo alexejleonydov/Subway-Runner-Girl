@@ -59,6 +59,22 @@ public class ChangeAnimationState : MonoBehaviour
                 //if(name == "hold_magnet")
                 currAnimState = "hold_magnet_jump";
             }
+
+            else if (name == "roll")
+            {
+                currAnimState = "roll";
+            }
+
+            else if (name == "run_side_R")
+            {
+                currAnimState = "run_side_R";
+            }
+
+            else if (name == "run_side_L")
+            {
+                currAnimState = "run_side_L";
+            }
+
             else
             {
                 currAnimState = "hold_magnet_run";
@@ -88,6 +104,7 @@ public class ChangeAnimationState : MonoBehaviour
             isNormalAnim = true;
         }
         //if(isNormalAnim)
+        Debug.Log("Currently finally playing: " + currAnimState);
         charAnimator.Play(currAnimState);
 
     }

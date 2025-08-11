@@ -257,42 +257,42 @@ public class CharacterCamera : MonoBehaviour
 		StartCameraConfig.ApplyNewConfig(CurrentCameraConfig);
 		switch (mode)
 		{
-		case CameraFollowMode.FlyUp:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.FlyingConfig);
-			break;
-		case CameraFollowMode.FlyDown:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
-			break;
-		case CameraFollowMode.StairDown:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
-			break;
-		case CameraFollowMode.StairUp:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
-			break;
-		case CameraFollowMode.SpringUp:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.SpringConfig);
-			break;
-		case CameraFollowMode.SpringDown:
-			StartCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
-			EndCameraConfig.ApplyNewConfig(CurrentCameraConfig);
-			break;
-		case CameraFollowMode.WallUp:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.WallConfig);
-			break;
-		case CameraFollowMode.WallDown:
-			StartCameraConfig.ApplyNewConfig(EndCameraConfig);
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
-			break;
-		case CameraFollowMode.SpeedUp:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.OverdriveConfig);
-			break;
-		case CameraFollowMode.SpeedDown:
-			EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
-			break;
-		case CameraFollowMode.Flying:
-		case CameraFollowMode.TransitionDown:
-		case CameraFollowMode.TransitionUp:
-			break;
+			case CameraFollowMode.FlyUp:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.FlyingConfig);
+				break;
+			case CameraFollowMode.FlyDown:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
+				break;
+			case CameraFollowMode.StairDown:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
+				break;
+			case CameraFollowMode.StairUp:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
+				break;
+			case CameraFollowMode.SpringUp:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.SpringConfig);
+				break;
+			case CameraFollowMode.SpringDown:
+				StartCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
+				EndCameraConfig.ApplyNewConfig(CurrentCameraConfig);
+				break;
+			case CameraFollowMode.WallUp:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.WallConfig);
+				break;
+			case CameraFollowMode.WallDown:
+				StartCameraConfig.ApplyNewConfig(EndCameraConfig);
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
+				break;
+			case CameraFollowMode.SpeedUp:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.OverdriveConfig);
+				break;
+			case CameraFollowMode.SpeedDown:
+				EndCameraConfig.ApplyNewConfig(currentCameraFollowPlayerConfig.NormalConfig);
+				break;
+			case CameraFollowMode.Flying:
+			case CameraFollowMode.TransitionDown:
+			case CameraFollowMode.TransitionUp:
+				break;
 		}
 	}
 
@@ -380,60 +380,62 @@ public class CharacterCamera : MonoBehaviour
 
 	public void UpdatePosition(Vector3 position, Quaternion rotation, float deltaTime, bool allowHeightBlending)
 	{
+		Debug.Log("Current Camera Follow Mode: " + CurrentFollowMode);
+
 		switch (CurrentFollowMode)
 		{
-		case CameraFollowMode.TunnelTransition:
-			UpdateTunnelTransitionStep();
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.Normal:
-		case CameraFollowMode.Flying:
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.FlyUp:
-		case CameraFollowMode.WallUp:
-			TransitionUpdatePosition(deltaTime);
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.FlyDown:
-		case CameraFollowMode.WallDown:
-			TransitionUpdatePosition(deltaTime);
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.TransitionDown:
-			UpdateStairTransitionStepDown();
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.TransitionUp:
-			UpdateStairTransitionStepUp();
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.SpringUp:
-			UpdateJumpTransitionStepUpBefore();
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			UpdateJumpTransitionStepUpAfter();
-			break;
-		case CameraFollowMode.SpringDown:
-			UpdateJumpTransitionStepDownBefore();
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			UpdateJumpTransitionStepDownAfter(position);
-			break;
-		case CameraFollowMode.StairDown:
-			UpdateStairTransitionStepDown();
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.StairUp:
-			UpdateStairTransitionStepUp();
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.SpeedUp:
-			TransitionUpdatePosition(deltaTime);
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
-		case CameraFollowMode.SpeedDown:
-			TransitionUpdatePosition(deltaTime);
-			NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
-			break;
+			case CameraFollowMode.TunnelTransition:
+				UpdateTunnelTransitionStep();
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.Normal:
+			case CameraFollowMode.Flying:
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.FlyUp:
+			case CameraFollowMode.WallUp:
+				TransitionUpdatePosition(deltaTime);
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.FlyDown:
+			case CameraFollowMode.WallDown:
+				TransitionUpdatePosition(deltaTime);
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.TransitionDown:
+				UpdateStairTransitionStepDown();
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.TransitionUp:
+				UpdateStairTransitionStepUp();
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.SpringUp:
+				UpdateJumpTransitionStepUpBefore();
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				UpdateJumpTransitionStepUpAfter();
+				break;
+			case CameraFollowMode.SpringDown:
+				UpdateJumpTransitionStepDownBefore();
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				UpdateJumpTransitionStepDownAfter(position);
+				break;
+			case CameraFollowMode.StairDown:
+				UpdateStairTransitionStepDown();
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.StairUp:
+				UpdateStairTransitionStepUp();
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.SpeedUp:
+				TransitionUpdatePosition(deltaTime);
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
+			case CameraFollowMode.SpeedDown:
+				TransitionUpdatePosition(deltaTime);
+				NormalUpdatePosition(position, rotation, CurrentCameraConfig.cameraFOV, deltaTime, allowHeightBlending);
+				break;
 		}
 		CurrentCameraState.ApplyToCamera(_camera);
 	}

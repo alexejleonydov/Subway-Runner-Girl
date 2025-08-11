@@ -210,14 +210,14 @@ public class MainScreen : UIBaseScreen
 			if (!PlayerPrefs.HasKey("NewPlayerShowSubscribeFirst") && (DateTime.UtcNow - PlayerInfo.Instance.firstInstallDate).Days < 1)
 			{
 				autoShowPopup = true;
-				UIScreenController.Instance.QueuePopup("SubscribePopup");
+				//UIScreenController.Instance.QueuePopup("SubscribePopup");
 				PlayerPrefs.SetInt("NewPlayerShowSubscribeFirst", 1);
 			}
 			if ((DateTime.UtcNow - PlayerInfo.Instance.firstInstallDate).Days > 0 && PlayerInfo.Instance.gameOverFullAdCount >= 3 && PlayerPrefs.GetInt("ShowSubscribeCount") < 1)
 			{
 				PlayerPrefs.SetInt("ShowSubscribeCount", PlayerPrefs.GetInt("ShowSubscribeCount") + 1);
 				autoShowPopup = true;
-				UIScreenController.Instance.QueuePopup("SubscribePopup");
+				//UIScreenController.Instance.QueuePopup("SubscribePopup");
 			}
 			if (!PlayerPrefs.HasKey("OldPlayerShowUnlockNewScreenPopup") && !PlayerInfo.Instance.isNewPlayer)
 			{
