@@ -499,6 +499,7 @@ public class UIScreenController : MonoBehaviour
 
 	private UIBaseScreen _LoadScreenToCache(string screenName, bool isPopup = false)
 	{
+		Debug.Log("ScreenName" + screenName);
 		GameObject gameObject;
 		if (!isPopup)
 		{

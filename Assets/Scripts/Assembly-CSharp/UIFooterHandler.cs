@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class UIFooterHandler : MonoBehaviour
 {
@@ -12,19 +13,36 @@ public class UIFooterHandler : MonoBehaviour
 
 	public FootItem store;
 
-	private float currentIndex = 0;
+	private float currentIndex;
+
+	private float direction = 0;
+
+	private bool canPress = true;
 
 	[SerializeField]
 	private UISprite[] tips = new UISprite[3];
 
 	private InputActions inputActions;
 
-	private void OnEnable()
+
+    private void Start()
+    {
+		//currentIndex = 1;
+
+		OnButtonClick((int)currentIndex);
+	}
+
+    private void OnEnable()
 	{
 		if (inputActions == null)
 			inputActions = new InputActions();
 
+		//if(currentIndex == 1)
+		 //OnButtonClick(1);
+
 		inputActions.Enable();
+
+		//inputActions.UI.FooterMove.performed+= MoveFooterButtonsDirection;
 
 		inputActions.UI.FooterMove.performed += MoveFooterButtons;
 
@@ -34,22 +52,35 @@ public class UIFooterHandler : MonoBehaviour
 		PlayerInfo instance = PlayerInfo.Instance;
 		instance.OnHelmUnlocked = (Action<Helmets.HelmType>)Delegate.Combine(instance.OnHelmUnlocked, new Action<Helmets.HelmType>(UpdateTipsBY));
 	}
+	private void MoveFooterButtonsDirection(InputAction.CallbackContext obj)
+	{
+		
+	}
 
-    private void MoveFooterButtons(InputAction.CallbackContext obj)
+
+
+	private void MoveFooterButtons(InputAction.CallbackContext obj)
     {
-		float direction = inputActions.UI.FooterMove.ReadValue<float>();
+		//if (canPress)
+		//{
+			//canPress = false;
 
-		currentIndex += inputActions.UI.FooterMove.ReadValue<float>();
+			direction = inputActions.UI.FooterMove.ReadValue<float>();
 
-		currentIndex = Mathf.Clamp(currentIndex, 1, 4);
+			Debug.Log("CurrentIndexValue:" + inputActions.UI.FooterMove.ReadValue<float>());
 
-		OnButtonPress((int)currentIndex);
+			currentIndex += direction;
 
-		OnButtonClick((int)currentIndex);
+			currentIndex = Mathf.Clamp(currentIndex, 1, 4);
 
+			OnButtonPress((int)currentIndex);
 
+			OnButtonClick((int)currentIndex);
 
-		Debug.Log("CurrentIndex:" + currentIndex + direction);
+			//StartCoroutine(ButtonClickDelay());
+
+			Debug.Log("CurrentIndex:" + currentIndex + direction);
+		//}
 	}
 
     private void OnDisable()
@@ -84,44 +115,63 @@ public class UIFooterHandler : MonoBehaviour
 		tips[2].enabled = PlayerInfo.Instance.CanIncreasePowerup();
 	}
 
+	public IEnumerator ButtonClickDelay()
+    {
+		yield return new WaitForSeconds(0.5f);
+
+		canPress = true;
+    }
+
+
 	public void OnButtonClick(int selected)
 	{
 		InitButtonType();
-		switch (selected)
+
+		Debug.Log("CurrentIndex2:" + selected);
+		if (canPress)
 		{
-		case 1:
-			character.SetFill(true);
-			break;
-		case 2:
-			helm.SetFill(true);
-			break;
-		case 3:
-			upgrade.SetFill(true);
-			break;
-		case 4:
-			store.SetFill(true);
-			break;
-		default:
-			Debug.Log("No button was selected in the footer?", this);
-			break;
+			switch (selected)
+			{
+				case 1:
+					character.SetFill(true);
+					break;
+				case 2:
+					helm.SetFill(true);
+					break;
+				case 3:
+					upgrade.SetFill(true);
+					break;
+				case 4:
+					store.SetFill(true);
+					break;
+				default:
+					Debug.Log("No button was selected in the footer?", this);
+					break;
+			}
 		}
 	}
 
 	public void OnButtonPress(int selected)
 	{
 
+		Debug.Log("CurrentIndex3:" + selected);
+
 		switch (selected)
 		{
 			case 1:
+				Debug.Log("CurrentIndexC:" + selected);
 				character.GetParentBuuton().Send();
 				break;
 			case 2:
+				Debug.Log("CurrentIndexH:" + selected);
 				helm.GetParentBuuton().Send();
 				break;
 			case 3:
+				Debug.Log("CurrentIndexU:" + selected);
 				upgrade.GetParentBuuton().Send();
 				break;
 			case 4:
+				Debug.Log("CurrentIndexS:" + selected);
 				store.GetParentBuuton().Send();
 				break;
 			default:

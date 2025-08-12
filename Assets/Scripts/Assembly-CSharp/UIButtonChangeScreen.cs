@@ -43,10 +43,10 @@ public class UIButtonChangeScreen : UIBasicButton
 
 	private void OnCharacterShopPerformed(InputAction.CallbackContext context)
 	{
-		ScreenNameToOpen = "CharacterScreen";
+		//ScreenNameToOpen = "CharacterScreen";
 
-
-		Send();
+		if(ScreenNameToOpen == "CharacterScreen")
+		  Send();
 	}
 
 	private void OnFrontUIPerformed(InputAction.CallbackContext context)
@@ -95,7 +95,7 @@ public class UIButtonChangeScreen : UIBasicButton
 	private void CloseSubscribePopupIfActive()
 	{
 		GameObject subscribePopup = GameObject.Find("SubscribePopup(Clone)");
-		Debug.Log("Subscribe Popup in Button is..." + subscribePopup);
+		//Debug.Log("Subscribe Popup in Button is..." + subscribePopup);
 		if (subscribePopup != null && subscribePopup.activeInHierarchy)
 		{
 			UIScreenController.Instance.ClosePopupHandle("SubscribePopup(Clone)");

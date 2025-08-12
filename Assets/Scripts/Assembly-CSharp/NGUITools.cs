@@ -540,6 +540,7 @@ public static class NGUITools
 
 	public static GameObject AddChild(GameObject parent, GameObject prefab)
 	{
+		
 		GameObject gameObject = UnityEngine.Object.Instantiate(prefab);
 		if (gameObject != null && parent != null)
 		{
