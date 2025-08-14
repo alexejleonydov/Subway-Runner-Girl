@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UIFooterHandler : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class UIFooterHandler : MonoBehaviour
 
 	public FootItem store;
 
-	private float currentIndex;
+	public float currentIndex;
 
 	private float direction = 0;
 
@@ -24,29 +25,22 @@ public class UIFooterHandler : MonoBehaviour
 
 	private InputActions inputActions;
 
+	public FootItem[] footItems;
+
+	public IndexController indexController;
 
     private void Start()
     {
 		//currentIndex = 1;
 
-		OnButtonClick((int)currentIndex);
+		
 	}
 
     private void OnEnable()
 	{
-		if (inputActions == null)
-			inputActions = new InputActions();
-
-		//if(currentIndex == 1)
-		 //OnButtonClick(1);
-
-		inputActions.Enable();
-
-		//inputActions.UI.FooterMove.performed+= MoveFooterButtonsDirection;
-
-		inputActions.UI.FooterMove.performed += MoveFooterButtons;
-
-
+		indexController = FindObjectOfType<IndexController>();
+		currentIndex = indexController.currentInd;
+		OnButtonClick((int)currentIndex);
 		UpdateTips();
 		PurchaseHandler.Instance.AddOnUpgradePurchase(UpdateTips);
 		PlayerInfo instance = PlayerInfo.Instance;
@@ -57,7 +51,33 @@ public class UIFooterHandler : MonoBehaviour
 		
 	}
 
+	public void SetIndex()
+    {
+		FootItem[] footItemsNew = { character, helm, upgrade, store };
 
+		footItems = footItemsNew;
+
+		for (int i = 0; i < 4; i++)
+		{
+			footItems[i].index = i + 1;
+		}
+	}
+
+
+	public void AddInput()
+    {
+		if (inputActions == null)
+			inputActions = new InputActions();
+
+		//if(currentIndex == 1)
+		//OnButtonClick(1);
+
+		inputActions.Enable();
+
+		//inputActions.UI.FooterMove.performed+= MoveFooterButtonsDirection;
+
+		inputActions.UI.FooterMove.performed += MoveFooterButtons;
+	}
 
 	private void MoveFooterButtons(InputAction.CallbackContext obj)
     {
@@ -72,6 +92,8 @@ public class UIFooterHandler : MonoBehaviour
 			currentIndex += direction;
 
 			currentIndex = Mathf.Clamp(currentIndex, 1, 4);
+
+		    indexController.currentInd = currentIndex;
 
 			OnButtonPress((int)currentIndex);
 
@@ -90,9 +112,9 @@ public class UIFooterHandler : MonoBehaviour
 		instance.OnHelmUnlocked = (Action<Helmets.HelmType>)Delegate.Remove(instance.OnHelmUnlocked, new Action<Helmets.HelmType>(UpdateTipsBY));
 
 
-		inputActions.Disable();
+		//inputActions.Disable();
 
-		inputActions.UI.FooterMove.performed -= MoveFooterButtons;
+		//inputActions.UI.FooterMove.performed -= MoveFooterButtons;
 	}
 
 	private void UpdateTipsBY(Helmets.HelmType obj)

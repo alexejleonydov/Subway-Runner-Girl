@@ -9,7 +9,9 @@ public class FootItem
 
 	public UISprite fillIcon;
 
-	private bool isFilled = true;
+	public bool isFilled = true;
+
+	public float index;
 
 	public void SetFill(bool isfill)
 	{

@@ -113,7 +113,25 @@ public class UIBaseScreen : MonoBehaviour
 		if (FooterPrefab != null)
 		{
 			_footerHandler = NGUITools.AddChild(base.gameObject, FooterPrefab).GetComponent<UIFooterHandler>();
+
+			/*_footerHandler.SetIndex();
+
+			foreach(FootItem footItem in _footerHandler.footItems)
+            {
+				if (footItem.isFilled)
+				{
+					selectedFooterButton = (int)footItem.index;
+					Debug.Log("CurrentIndexNew" + selectedFooterButton);
+					break;
+				}
+				else
+					continue;
+            }*/
+
 			//_footerHandler.OnButtonClick(selectedFooterButton);
+
+			//_footerHandler.currentIndex = 1;
+			//_footerHandler.AddInput();
 			if (UIScreenController.Instance.curDeviceType == UIScreenController.DeviceType.iPhoneX)
 			{
 				_footerHandler.gameObject.GetComponent<UIAnchor>().pixelOffset.y = 102f;

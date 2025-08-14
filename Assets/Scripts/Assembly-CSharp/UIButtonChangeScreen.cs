@@ -45,14 +45,21 @@ public class UIButtonChangeScreen : UIBasicButton
 	{
 		//ScreenNameToOpen = "CharacterScreen";
 
-		if(ScreenNameToOpen == "CharacterScreen")
-		  Send();
+		if (ScreenNameToOpen == "CharacterScreen")
+			Send();
 	}
 
 	private void OnFrontUIPerformed(InputAction.CallbackContext context)
 	{
 		GameObject gameOverUIPopup = GameObject.Find("4Footer");
 		if (gameOverUIPopup != null && gameOverUIPopup.activeInHierarchy)
+		{
+			ScreenNameToOpen = "FrontUI";
+			Send();
+		}
+
+		GameObject CoinboxQuickPopup = GameObject.Find("CoinboxQuick(Clone)");
+		if (CoinboxQuickPopup != null && CoinboxQuickPopup.activeInHierarchy)
 		{
 			ScreenNameToOpen = "FrontUI";
 			Send();
