@@ -26,27 +26,6 @@ public class CustomizeControl : MonoBehaviour
 		eyeAnima = base.transform.GetChild(0).GetComponent<AvatarEyeAnimation>();
 	}
 
-	// private void OnEnable()
-	// {
-	// 	if (!adjustAnimation)
-	// 	{
-	// 		ResetTransform();
-	// 		return;
-	// 	}
-	// 	anim.AddClip(animClip, animClip.name);
-	// 	anim.clip = animClip;
-	// 	if (totalFrame <= 0)
-	// 	{
-	// 		anim[animClip.name].time = 0f;
-	// 	}
-	// 	else
-	// 	{
-	// 		anim[animClip.name].time = (float)frame / (float)totalFrame;
-	// 	}
-	// 	anim[animClip.name].speed = 0f;
-	// 	anim.Play();
-	// }
-
 	private void OnEnable()
 	{
 		if (!adjustAnimation)
@@ -54,8 +33,6 @@ public class CustomizeControl : MonoBehaviour
 			ResetTransform();
 			return;
 		}
-
-		// Запуск animClip
 		anim.AddClip(animClip, animClip.name);
 		anim.clip = animClip;
 		if (totalFrame <= 0)
@@ -68,20 +45,50 @@ public class CustomizeControl : MonoBehaviour
 		}
 		anim[animClip.name].speed = 0f;
 		anim.Play();
-
-
-		Animator armatureAnimator = GetComponentInChildren<Animator>(true);
-		Debug.Log("Animator is... " + armatureAnimator);
-
-		if (armatureAnimator != null && armatureAnimator.runtimeAnimatorController != null)
-		{
-
-			if (armatureAnimator.runtimeAnimatorController.name == "Armature 2")
-			{
-				armatureAnimator.Play("run", 0, 0f);
-			}
-		}
 	}
+
+	// private void OnEnable()
+	// {
+	// 	if (!adjustAnimation)
+	// 	{
+	// 		ResetTransform();
+	// 		return;
+	// 	}
+
+	// 	anim.AddClip(animClip, animClip.name);
+	// 	anim.clip = animClip;
+	// 	if (totalFrame <= 0)
+	// 	{
+	// 		anim[animClip.name].time = 0f;
+	// 	}
+	// 	else
+	// 	{
+	// 		anim[animClip.name].time = (float)frame / (float)totalFrame;
+	// 	}
+	// 	anim[animClip.name].speed = 0f;
+	// 	anim.Play();
+
+
+	// 	Animator armatureAnimator = GetComponentInChildren<Animator>(true);
+	// 	Debug.Log("Animator is... " + armatureAnimator);
+
+	// 	if (armatureAnimator != null && armatureAnimator.runtimeAnimatorController != null)
+	// 	{
+
+	// 		if (armatureAnimator.runtimeAnimatorController.name == "Armature 2")
+	// 		{
+	// 			GameObject characterScreen = GameObject.Find("CharacterScreen(Clone)");
+	// 			if (characterScreen != null && characterScreen.activeInHierarchy)
+	// 			{
+	// 				armatureAnimator.Play("Idle", 0, 0f);
+	// 			}
+	// 			else
+	// 			{
+	// 				armatureAnimator.Play("run", 0, 0f);
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 
 	private void ResetTransform()

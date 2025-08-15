@@ -125,9 +125,14 @@ public class CharacterScreenSelectButton : MonoBehaviour
 	private Color tryLblColor;
 
 	private int tryState;
+	private InputActions inputActions;
 
 	private void OnEnable()
 	{
+		inputActions = new InputActions();
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnCharacterPerformed;
+
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
 		PlayerInfo.Instance.OnSubscribed = (Action)Delegate.Combine(PlayerInfo.Instance.OnSubscribed, new Action(ReloadButton));
@@ -135,8 +140,21 @@ public class CharacterScreenSelectButton : MonoBehaviour
 
 	private void OnDisable()
 	{
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnCharacterPerformed;
+
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		PlayerInfo.Instance.OnSubscribed = (Action)Delegate.Remove(PlayerInfo.Instance.OnSubscribed, new Action(ReloadButton));
+	}
+
+	private void OnCharacterPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+	{
+		// Виконати логіку натискання кнопки
+		if (context.performed && gameObject.activeInHierarchy)
+		{
+			OnClick();
+		}
+
 	}
 
 	public void InitButton()
@@ -302,57 +320,57 @@ public class CharacterScreenSelectButton : MonoBehaviour
 		_activeState = state;
 		switch (state)
 		{
-		case ButtonStates.buy:
-			buy.SetActive(true);
-			select.SetActive(false);
-			lockedTheme.SetActive(false);
-			lockedSymbol.SetActive(false);
-			exclusive.SetActive(false);
-			Level.SetActive(false);
-			break;
-		case ButtonStates.lockedSymbol:
-			lockedSymbol.SetActive(true);
-			buy.SetActive(false);
-			select.SetActive(false);
-			lockedTheme.SetActive(false);
-			exclusive.SetActive(false);
-			Level.SetActive(false);
-			break;
-		case ButtonStates.lockedTheme:
-			lockedTheme.SetActive(true);
-			buy.SetActive(false);
-			select.SetActive(false);
-			lockedSymbol.SetActive(false);
-			exclusive.SetActive(false);
-			Level.SetActive(false);
-			break;
-		case ButtonStates.select:
-			select.SetActive(true);
-			buy.SetActive(false);
-			lockedTheme.SetActive(false);
-			lockedSymbol.SetActive(false);
-			exclusive.SetActive(false);
-			Level.SetActive(false);
-			break;
-		case ButtonStates.exclusive:
-			exclusive.SetActive(true);
-			buy.SetActive(false);
-			lockedTheme.SetActive(false);
-			lockedSymbol.SetActive(false);
-			select.SetActive(false);
-			Level.SetActive(false);
-			break;
-		case ButtonStates.level:
-			Level.SetActive(true);
-			exclusive.SetActive(false);
-			buy.SetActive(false);
-			lockedTheme.SetActive(false);
-			lockedSymbol.SetActive(false);
-			select.SetActive(false);
-			break;
-		default:
-			Debug.LogError("No handler for button state: " + state, null);
-			break;
+			case ButtonStates.buy:
+				buy.SetActive(true);
+				select.SetActive(false);
+				lockedTheme.SetActive(false);
+				lockedSymbol.SetActive(false);
+				exclusive.SetActive(false);
+				Level.SetActive(false);
+				break;
+			case ButtonStates.lockedSymbol:
+				lockedSymbol.SetActive(true);
+				buy.SetActive(false);
+				select.SetActive(false);
+				lockedTheme.SetActive(false);
+				exclusive.SetActive(false);
+				Level.SetActive(false);
+				break;
+			case ButtonStates.lockedTheme:
+				lockedTheme.SetActive(true);
+				buy.SetActive(false);
+				select.SetActive(false);
+				lockedSymbol.SetActive(false);
+				exclusive.SetActive(false);
+				Level.SetActive(false);
+				break;
+			case ButtonStates.select:
+				select.SetActive(true);
+				buy.SetActive(false);
+				lockedTheme.SetActive(false);
+				lockedSymbol.SetActive(false);
+				exclusive.SetActive(false);
+				Level.SetActive(false);
+				break;
+			case ButtonStates.exclusive:
+				exclusive.SetActive(true);
+				buy.SetActive(false);
+				lockedTheme.SetActive(false);
+				lockedSymbol.SetActive(false);
+				select.SetActive(false);
+				Level.SetActive(false);
+				break;
+			case ButtonStates.level:
+				Level.SetActive(true);
+				exclusive.SetActive(false);
+				buy.SetActive(false);
+				lockedTheme.SetActive(false);
+				lockedSymbol.SetActive(false);
+				select.SetActive(false);
+				break;
+			default:
+				Debug.LogError("No handler for button state: " + state, null);
+				break;
 		}
 	}
 

@@ -64,6 +64,13 @@ public class UIButtonChangeScreen : UIBasicButton
 			ScreenNameToOpen = "FrontUI";
 			Send();
 		}
+
+		GameObject TryHoverboardPopup = GameObject.Find("TryHoverboardPopup(Clone)");
+		if (TryHoverboardPopup != null && TryHoverboardPopup.activeInHierarchy)
+		{
+			//ScreenNameToOpen = "FrontUI";
+			Send();
+		}
 	}
 
 	private void OnStartPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
