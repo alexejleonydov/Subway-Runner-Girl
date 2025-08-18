@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BuyHelmetButton : MonoBehaviour, IPurchaseHandler
 {
@@ -18,6 +19,9 @@ public class BuyHelmetButton : MonoBehaviour, IPurchaseHandler
 	private Color _freeViewLblColor;
 
 	private int _freeState;
+	private InputActions inputActions;
+
+
 
 	public void OnBuyClick()
 	{
@@ -68,6 +72,8 @@ public class BuyHelmetButton : MonoBehaviour, IPurchaseHandler
 
 	private void Awake()
 	{
+		inputActions = new InputActions();
+
 		Upgrade upgrade = Upgrades.upgrades[PropType.helmet];
 		priceLabel.text = (upgrade.getPrice(0) * number).ToString();
 		_freeViewLblColor = freeViewLbl.color;
@@ -75,6 +81,11 @@ public class BuyHelmetButton : MonoBehaviour, IPurchaseHandler
 
 	private void OnEnable()
 	{
+
+
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnBuyPerformed;
+
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
 		if (RiseSdk.Instance.HasRewardAd())
@@ -103,7 +114,20 @@ public class BuyHelmetButton : MonoBehaviour, IPurchaseHandler
 
 	private void OnDisable()
 	{
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnBuyPerformed;
+
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
+	}
+
+	private void OnBuyPerformed(InputAction.CallbackContext context)
+	{
+		GameObject HelmetPopup = GameObject.Find("HelmetPopup(Clone)");
+		if (HelmetPopup != null && HelmetPopup.activeInHierarchy)
+		{
+			OnBuyClick();
+			Debug.Log("BUY is performed!");
+		}
 	}
 
 	public void PurchaseFailure()

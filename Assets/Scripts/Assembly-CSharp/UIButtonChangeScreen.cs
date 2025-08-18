@@ -18,10 +18,12 @@ public class UIButtonChangeScreen : UIBasicButton
 		inputActions.Enable();
 		inputActions.Play.CoinsShop.performed += OnCoinsShopPerformed;
 		inputActions.Play.CharacterShop.performed += OnCharacterShopPerformed;
+		inputActions.UI.Board.performed += OnBoardPerformed;
 		inputActions.Play.Exit.performed += OnFrontUIPerformed;
 		inputActions.Play.PlayGame.performed += OnStartPerformed;
 
 		CloseSubscribePopupIfActive();
+		SubscribePopupClose();
 	}
 
 	private void OnDisable()
@@ -29,6 +31,7 @@ public class UIButtonChangeScreen : UIBasicButton
 		inputActions.Disable();
 		inputActions.Play.CoinsShop.performed -= OnCoinsShopPerformed;
 		inputActions.Play.CharacterShop.performed -= OnCharacterShopPerformed;
+		inputActions.UI.Board.performed -= OnBoardPerformed;
 		inputActions.Play.Exit.performed -= OnFrontUIPerformed;
 		inputActions.Play.PlayGame.performed -= OnStartPerformed;
 	}
@@ -49,6 +52,47 @@ public class UIButtonChangeScreen : UIBasicButton
 			Send();
 	}
 
+	private void OnBoardPerformed(InputAction.CallbackContext context)
+	{
+
+		GameObject FrontUIPopup = GameObject.Find("FrontUI(Clone)");
+		if (FrontUIPopup != null && FrontUIPopup.activeInHierarchy)
+		{
+
+			ScreenNameToOpen = "HelmetPopup";
+			screenChangeType = ScreenChangeType.QueuePopup;
+
+			Send();
+		}
+	}
+
+	private void SubscribePopupClose()
+	{
+		GameObject SubscribePopup = GameObject.Find("SubscribePopup(Clone)");
+		if (SubscribePopup != null && SubscribePopup.activeInHierarchy)
+		{
+			screenChangeType = ScreenChangeType.ClosePopup;
+			ScreenNameToOpen = "IngameUI";
+			Send();
+		}
+	}
+
+
+	private void CloseSubscribePopupIfActive()
+	{
+		GameObject subscribePopup = GameObject.Find("SubscribePopup(Clone)");
+		//Debug.Log("Subscribe Popup in Button is..." + subscribePopup);
+		if (subscribePopup != null && subscribePopup.activeInHierarchy)
+		{
+			UIScreenController.Instance.ClosePopupHandle("SubscribePopup(Clone)");
+			//UIScreenController.Instance.ClosePopup(null);
+			UIScreenController.Instance.ClosePopupHandle("SubscribePopup");
+			Debug.Log("Subscribe Popup closed for" + subscribePopup);
+			ScreenNameToOpen = "IngameUI";
+			Send();
+		}
+	}
+
 	private void OnFrontUIPerformed(InputAction.CallbackContext context)
 	{
 		GameObject gameOverUIPopup = GameObject.Find("4Footer");
@@ -64,6 +108,16 @@ public class UIButtonChangeScreen : UIBasicButton
 			ScreenNameToOpen = "FrontUI";
 			Send();
 		}
+
+		GameObject HelmetPopup = GameObject.Find("HelmetPopup(Clone)");
+		if (HelmetPopup != null && HelmetPopup.activeInHierarchy)
+		{
+			Debug.Log("Helmet is closed");
+			ScreenNameToOpen = "HelmetPopup";
+			screenChangeType = ScreenChangeType.ClosePopup;
+			Send();
+		}
+
 
 		GameObject TryHoverboardPopup = GameObject.Find("TryHoverboardPopup(Clone)");
 		if (TryHoverboardPopup != null && TryHoverboardPopup.activeInHierarchy)
@@ -106,21 +160,6 @@ public class UIButtonChangeScreen : UIBasicButton
 	}
 
 
-	private void CloseSubscribePopupIfActive()
-	{
-		GameObject subscribePopup = GameObject.Find("SubscribePopup(Clone)");
-		//Debug.Log("Subscribe Popup in Button is..." + subscribePopup);
-		if (subscribePopup != null && subscribePopup.activeInHierarchy)
-		{
-			UIScreenController.Instance.ClosePopupHandle("SubscribePopup(Clone)");
-			//UIScreenController.Instance.ClosePopup(null);
-			UIScreenController.Instance.ClosePopupHandle("SubscribePopup");
-			Debug.Log("Subscribe Popup closed for" + subscribePopup);
-			ScreenNameToOpen = "IngameUI";
-			Send();
-		}
-	}
-
 	public enum ScreenChangeType
 	{
 		PushScreen = 0,
@@ -158,6 +197,8 @@ public class UIButtonChangeScreen : UIBasicButton
 		UIScreenController instance = UIScreenController.Instance;
 		if (!(instance == null))
 		{
+			Debug.Log("screenChangeType is: " + screenChangeType);
+
 			if (screenChangeType == ScreenChangeType.PushScreen)
 			{
 				instance.PushScreen(ScreenNameToOpen);

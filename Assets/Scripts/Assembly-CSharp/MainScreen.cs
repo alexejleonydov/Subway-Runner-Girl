@@ -78,7 +78,30 @@ public class MainScreen : UIBaseScreen
 
 	private void OnStartPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
+
+		string[] popupNames =
+		{
+		"PauseUI(Clone)",
+		"LevelUpPopup(Clone)",
+		"OK",
+		"PlayerLevelPopup(Clone)",
+		"HelmetPopup(Clone)",
+		"TryHoverboardPopup(Clone)",
+	};
+
+		foreach (string name in popupNames)
+		{
+			GameObject obj = GameObject.Find(name);
+			if (obj != null && obj.activeInHierarchy)
+			{
+				Debug.Log("Some popup is ACTIVATED");
+				return;
+			}
+		}
+
 		Game.Instance.StartGame();
+		Debug.Log("Game is started!");
+
 	}
 
 

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HelmetButtonHelp : MonoBehaviour
 {
@@ -35,13 +36,20 @@ public class HelmetButtonHelp : MonoBehaviour
 
 	public bool IsActive { get; private set; }
 
+	private InputActions inputActions;
+
 	private void Awake()
 	{
+		inputActions = new InputActions();
+
 		helmet = Helmet.Instance;
 	}
 
 	private void OnDisable()
 	{
+		inputActions.Disable();
+		inputActions.UI.Board.performed -= OnBoardPerformed;
+
 		PlayerInfo instance = PlayerInfo.Instance;
 		instance.onPowerupAmountChanged = (Action)Delegate.Remove(instance.onPowerupAmountChanged, new Action(UpdateLabels));
 		helmet.OnStartHelmet -= OnStartHelmet;
@@ -50,6 +58,9 @@ public class HelmetButtonHelp : MonoBehaviour
 
 	private void OnEnable()
 	{
+		inputActions.Enable();
+		inputActions.UI.Board.performed += OnBoardPerformed;
+
 		PlayerInfo instance = PlayerInfo.Instance;
 		instance.onPowerupAmountChanged = (Action)Delegate.Combine(instance.onPowerupAmountChanged, new Action(UpdateLabels));
 		UpdateLabels();
@@ -119,6 +130,67 @@ public class HelmetButtonHelp : MonoBehaviour
 	private void OnStartHelmet()
 	{
 		AnimatOut();
+	}
+
+	private void OnBoardPerformed(InputAction.CallbackContext context)
+	{
+		OnClick();
+		AnimatOut();
+		Debug.Log("Helmet is Used!");
+		AttachHoverBoard();
+
+	}
+
+	public void AttachHoverBoard()
+	{
+		GameObject avatars = GameObject.Find("avatars");
+		GameObject hoverBoard = GameObject.Find("hoverBoard");
+
+		if (avatars == null || hoverBoard == null)
+		{
+			Debug.LogWarning("avatars або hoverBoar не призначені!");
+			return;
+		}
+
+		// Перебираємо усіх персонажів (slick, frank, ...)
+		foreach (Transform character in avatars.transform)
+		{
+			// Знаходимо активний анімаційний контейнер всередині персонажа
+			Transform animContainer = FindActiveAnimationContainer(character);
+			if (animContainer != null)
+			{
+				hoverBoard.transform.SetParent(animContainer, true);
+				hoverBoard.transform.localPosition = Vector3.zero;
+				hoverBoard.transform.localRotation = Quaternion.identity;
+
+				Debug.Log("hoverBoard прикріплено до: " + animContainer.name);
+				return; // припиняємо після першого прикріплення
+			}
+		}
+
+		Debug.LogWarning("Не знайдено активного анімаційного контейнера для прикріплення hoverBoar!");
+	}
+
+	private Transform FindActiveAnimationContainer(Transform parent)
+	{
+		foreach (Transform child in parent)
+		{
+			if (child.gameObject.activeInHierarchy && child.childCount > 0)
+			{
+				// Беремо першого активного нащадка як "рівень глибше"
+				foreach (Transform grandChild in child)
+				{
+					if (grandChild.gameObject.activeInHierarchy)
+						return grandChild;
+				}
+			}
+
+			// Рекурсивно шукаємо глибше у інших дітей
+			Transform found = FindActiveAnimationContainer(child);
+			if (found != null) return found;
+		}
+
+		return null;
 	}
 
 	private void OnHardReset()

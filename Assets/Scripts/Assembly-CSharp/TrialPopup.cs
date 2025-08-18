@@ -293,10 +293,10 @@ public class TrialPopup : UIBaseScreen, IPurchaseHandler
 
 	private void OnInteractPerformed(InputAction.CallbackContext context)
 	{
-		GameObject claimBtn = GameObject.Find("TryHoverboardPopup(Clone)");
+		GameObject buyBtn = GameObject.Find("TryHoverboardPopup(Clone)");
 		GameObject NotEnoughCurencyPopup = GameObject.Find("NotEnoughCurencyPopup(Clone)");
 
-		if ((claimBtn != null || claimBtn.activeInHierarchy) && !NotEnoughCurencyPopup.activeInHierarchy)
+		if ((buyBtn != null || buyBtn.activeInHierarchy) && !NotEnoughCurencyPopup.activeInHierarchy)
 		{
 			Debug.Log("Claim is pressed for TryHoverboard");
 			OnBuyClick();

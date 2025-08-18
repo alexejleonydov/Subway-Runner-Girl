@@ -198,17 +198,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9b81f302-616b-42e8-9405-25e7779fda10"",
-                    ""path"": ""<NPad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""3d03a510-86a1-42f0-8642-c92febdd1b07"",
                     ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
@@ -496,6 +485,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Board"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f53641c-020a-4ee2-b1ec-8d5a36afb6db"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -777,7 +775,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c71ad6eb-081e-4504-8c95-92ebe748bce1"",
-                    ""path"": ""<NPad>/buttonEast"",
+                    ""path"": ""<NPad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1103,6 +1101,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""FooterMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c90d582b-7c9a-4e24-acd1-6e938c799321"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Board"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dee32435-0ccd-4d16-a52f-11d2a1ef2df0"",
+                    ""path"": ""<NPad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Board"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1146,6 +1166,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_FooterMove = m_UI.FindAction("FooterMove", throwIfNotFound: true);
         m_UI_Swipe = m_UI.FindAction("Swipe", throwIfNotFound: true);
+        m_UI_Board = m_UI.FindAction("Board", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -1343,6 +1364,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_FooterMove;
     private readonly InputAction m_UI_Swipe;
+    private readonly InputAction m_UI_Board;
     public struct UIActions
     {
         private @InputActions m_Wrapper;
@@ -1359,6 +1381,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @FooterMove => m_Wrapper.m_UI_FooterMove;
         public InputAction @Swipe => m_Wrapper.m_UI_Swipe;
+        public InputAction @Board => m_Wrapper.m_UI_Board;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1404,6 +1427,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Swipe.started += instance.OnSwipe;
             @Swipe.performed += instance.OnSwipe;
             @Swipe.canceled += instance.OnSwipe;
+            @Board.started += instance.OnBoard;
+            @Board.performed += instance.OnBoard;
+            @Board.canceled += instance.OnBoard;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1444,6 +1470,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Swipe.started -= instance.OnSwipe;
             @Swipe.performed -= instance.OnSwipe;
             @Swipe.canceled -= instance.OnSwipe;
+            @Board.started -= instance.OnBoard;
+            @Board.performed -= instance.OnBoard;
+            @Board.canceled -= instance.OnBoard;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1506,5 +1535,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnFooterMove(InputAction.CallbackContext context);
         void OnSwipe(InputAction.CallbackContext context);
+        void OnBoard(InputAction.CallbackContext context);
     }
 }
