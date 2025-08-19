@@ -5474,7 +5474,7 @@ GameObject:
   - component: {fileID: 4524997674886969}
   m_Layer: 0
   m_Name: hoverBoard
-  m_TagString: Untagged
+  m_TagString: HoverBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5487,14 +5487,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080693206579831}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.039865527, y: -0.059520174, z: 0.0023789217, w: 0.99742794}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4224194481869689}
   m_Father: {fileID: 4121916106316986}
-  m_LocalEulerAnglesHint: {x: 0.000045776367, y: -0.000006830189, z: 0}
+  m_LocalEulerAnglesHint: {x: 4.5776, y: -6.83, z: 0}
 --- !u!1 &1086399068101474
 GameObject:
   m_ObjectHideFlags: 0

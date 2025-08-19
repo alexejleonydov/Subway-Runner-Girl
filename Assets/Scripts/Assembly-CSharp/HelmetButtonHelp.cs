@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class HelmetButtonHelp : MonoBehaviour
 {
@@ -134,10 +135,12 @@ public class HelmetButtonHelp : MonoBehaviour
 
 	private void OnBoardPerformed(InputAction.CallbackContext context)
 	{
+		AttachHoverBoard();
+
 		OnClick();
 		AnimatOut();
 		Debug.Log("Helmet is Used!");
-		AttachHoverBoard();
+
 
 	}
 
@@ -148,14 +151,14 @@ public class HelmetButtonHelp : MonoBehaviour
 
 		if (avatars == null || hoverBoard == null)
 		{
-			Debug.LogWarning("avatars або hoverBoar не призначені!");
+			Debug.LogWarning("avatars or hoverBoard is not assigned!");
 			return;
 		}
 
-		// Перебираємо усіх персонажів (slick, frank, ...)
+		hoverBoard.SetActive(false);
+
 		foreach (Transform character in avatars.transform)
 		{
-			// Знаходимо активний анімаційний контейнер всередині персонажа
 			Transform animContainer = FindActiveAnimationContainer(character);
 			if (animContainer != null)
 			{
@@ -163,12 +166,22 @@ public class HelmetButtonHelp : MonoBehaviour
 				hoverBoard.transform.localPosition = Vector3.zero;
 				hoverBoard.transform.localRotation = Quaternion.identity;
 
-				Debug.Log("hoverBoard прикріплено до: " + animContainer.name);
-				return; // припиняємо після першого прикріплення
+				// Викликаємо корутину для затримки активації
+				StartCoroutine(ActivateWithDelay(hoverBoard, 0.5f));
+
+				Debug.Log("hoverBoard attached to : " + animContainer.name);
+				return;
 			}
 		}
 
-		Debug.LogWarning("Не знайдено активного анімаційного контейнера для прикріплення hoverBoar!");
+		Debug.LogWarning("Not find any container for hoverBoard!");
+	}
+
+	// Корутіна для активації з затримкою
+	private IEnumerator ActivateWithDelay(GameObject obj, float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		obj.SetActive(true);
 	}
 
 	private Transform FindActiveAnimationContainer(Transform parent)

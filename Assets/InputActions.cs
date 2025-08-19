@@ -132,17 +132,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8e9042f7-38c8-48f0-adec-8e313944a33d"",
-                    ""path"": ""<NPad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""76cfd48f-d2c7-4469-8dc2-7b81881bdf6b"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -202,7 +191,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""CoinsShop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -345,7 +334,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/o"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CharacterShop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f9895b8-40ee-4b8a-b04e-5455e65d1d2d"",
+                    ""path"": ""<NPad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""CharacterShop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

@@ -7,13 +7,18 @@ public class UIButtonChangeScreen : UIBasicButton
 	private InputActions inputActions;
 
 
+	void Awake()
+	{
+		inputActions = new InputActions();
+	}
+
 	private void OnEnable()
 	{
 		CloseSubscribePopupIfActive();
 
 		//Debug.Log("UIButtonChangeScreen connected to..." + gameObject.name);
 
-		inputActions = new InputActions();
+
 
 		inputActions.Enable();
 		inputActions.Play.CoinsShop.performed += OnCoinsShopPerformed;
@@ -106,6 +111,7 @@ public class UIButtonChangeScreen : UIBasicButton
 		if (CoinboxQuickPopup != null && CoinboxQuickPopup.activeInHierarchy)
 		{
 			ScreenNameToOpen = "FrontUI";
+			screenChangeType = ScreenChangeType.PushScreen;
 			Send();
 		}
 
