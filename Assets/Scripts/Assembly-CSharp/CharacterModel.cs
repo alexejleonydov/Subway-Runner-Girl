@@ -81,6 +81,18 @@ public class CharacterModel : MonoBehaviour, ICharacterModel
 
 	private Transform helmetRoot;
 
+	public GameObject leftShoe;
+	public GameObject rightShoe;
+
+	public MeshRenderer meshLeftShoe
+	{
+		get { return FindShoe("feixie_L", ref leftShoe); }
+	}
+	public MeshRenderer meshRightShoe
+	{
+		get { return FindShoe("feixie_R", ref rightShoe); }
+	}
+
 	private Transform raftRoot;
 
 	public Transform BoneFoot
@@ -121,6 +133,24 @@ public class CharacterModel : MonoBehaviour, ICharacterModel
 		characterCustomization = base.gameObject.GetComponent<CharacterCustomization>();
 		ChangeCharacterOfPlayByPlayerInfo();
 		helmetRoot = meshHelmet.transform;
+
+		// leftShoe = GameObject.Find("feixie_L");
+		// rightShoe = GameObject.Find("feixie_R");
+
+		// Debug.Log("LeftShoe is found " + leftShoe);
+
+		// meshLeftShoe = leftShoe.GetComponent<MeshRenderer>();
+		// meshRightShoe = rightShoe.GetComponent<MeshRenderer>();
+	}
+
+	private MeshRenderer FindShoe(string shoeName, ref GameObject shoeObj)
+	{
+		shoeObj = GameObject.Find(shoeName);
+		if (shoeObj != null)
+			return shoeObj.GetComponent<MeshRenderer>();
+
+		Debug.LogWarning("Shoe is not found: " + shoeName);
+		return null;
 	}
 
 	public void SetRaft(GameObject raft)
@@ -239,7 +269,13 @@ public class CharacterModel : MonoBehaviour, ICharacterModel
 		}
 		if (Character.Instance.superShoes != null && Character.Instance.superShoes.IsActive)
 		{
-			meshSuperShoes.enabled = true;
+
+			//meshSuperShoes.enabled = true;
+
+			meshLeftShoe.enabled = true;
+			meshRightShoe.enabled = true;
+			Debug.Log("SuperShoe is ON for " + leftShoe);
+
 		}
 	}
 
@@ -270,7 +306,12 @@ public class CharacterModel : MonoBehaviour, ICharacterModel
 			meshFlypack[i].enabled = false;
 		}
 		animFlypack.Stop();
-		meshSuperShoes.enabled = false;
+
+		//meshSuperShoes.enabled = false;
+		meshLeftShoe.enabled = false;
+		meshRightShoe.enabled = false;
+		Debug.Log("SuperShoe is OFF");
+
 		meshCoinMagnet.enabled = false;
 	}
 

@@ -75,6 +75,7 @@ public class SuperShoes : ICharacterAttachment
 		End();
 	}
 
+
 	private void Prepare()
 	{
 		GameStats.Instance.pickedUpPowerups++;
@@ -85,7 +86,12 @@ public class SuperShoes : ICharacterAttachment
 		{
 			character.StopStumble();
 		}
-		characterModel.meshSuperShoes.enabled = true;
+		//characterModel.meshSuperShoes.enabled = true;
+
+		characterModel.meshLeftShoe.enabled = true;
+		characterModel.meshRightShoe.enabled = true;
+		Debug.Log("SuperShoe is ON   for SuperShoes.cs");
+
 		IsActive = true;
 		longMagnet.Activate();
 		if (this.OnSwitchToSuperShoes != null)
@@ -98,7 +104,12 @@ public class SuperShoes : ICharacterAttachment
 	private void End()
 	{
 		timeActiveInARow = 0f;
-		characterModel.meshSuperShoes.enabled = false;
+		//characterModel.meshSuperShoes.enabled = false;
+
+		characterModel.meshLeftShoe.enabled = false;
+		characterModel.meshRightShoe.enabled = false;
+		Debug.Log("SuperShoe is OFF for End in SuperShoes.cs");
+
 		IsActive = false;
 		longMagnet.Deactivate();
 		if (Powerup.timeLeft <= 0f)
@@ -121,7 +132,12 @@ public class SuperShoes : ICharacterAttachment
 	public void StopUse()
 	{
 		IsActive = false;
-		characterModel.meshSuperShoes.enabled = false;
+		//characterModel.meshSuperShoes.enabled = false;
+
+		characterModel.meshLeftShoe.enabled = false;
+		characterModel.meshRightShoe.enabled = false;
+
+		Debug.Log("SuperShoe is OFF for StopUse in SuperShoes.cs");
 	}
 
 	public void Pause()
