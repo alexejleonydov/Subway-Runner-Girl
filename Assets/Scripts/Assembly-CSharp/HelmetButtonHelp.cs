@@ -167,7 +167,7 @@ public class HelmetButtonHelp : MonoBehaviour
 				hoverBoard.transform.localRotation = Quaternion.identity;
 
 				// Викликаємо корутину для затримки активації
-				StartCoroutine(ActivateWithDelay(hoverBoard, 0.5f));
+				StartCoroutine(ActivateWithDelay(hoverBoard, 0.3f));
 
 				Debug.Log("hoverBoard attached to : " + animContainer.name);
 				return;

@@ -3266,45 +3266,45 @@ public class PlayerInfo
 			NotificationsObserver.Instance.NotifyNotificationDataChange(NotificationType.CharacterCanUnlock);
 			switch (Characters.characterOrder.IndexOf(currentTrialInfo.characterType))
 			{
-			case 0:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles1st", 0);
-				break;
-			case 1:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles2nd", 0);
-				break;
-			case 2:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles3rd", 0);
-				break;
-			case 3:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles4th", 0);
-				break;
-			case 4:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles5th", 0);
-				break;
-			case 5:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles6th", 0);
-				break;
-			case 6:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles7th", 0);
-				break;
-			case 7:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles8th", 0);
-				break;
-			case 8:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles9th", 0);
-				break;
-			case 9:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles10th", 0);
-				break;
-			case 10:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles11th", 0);
-				break;
-			case 11:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles12th", 0);
-				break;
-			case 12:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles13th", 0);
-				break;
+				case 0:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles1st", 0);
+					break;
+				case 1:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles2nd", 0);
+					break;
+				case 2:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles3rd", 0);
+					break;
+				case 3:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles4th", 0);
+					break;
+				case 4:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles5th", 0);
+					break;
+				case 5:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles6th", 0);
+					break;
+				case 6:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles7th", 0);
+					break;
+				case 7:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles8th", 0);
+					break;
+				case 8:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles9th", 0);
+					break;
+				case 9:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles10th", 0);
+					break;
+				case 10:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles11th", 0);
+					break;
+				case 11:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles12th", 0);
+					break;
+				case 12:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_roles13th", 0);
+					break;
 			}
 			UIScreenController.Instance.AddUnlockForCharacterToReward(currentTrialInfo.characterType, currentTrialInfo.characterThemeId);
 			UIModelController.Instance.SelectCharacterForPlay(currentTrialInfo.characterType, currentTrialInfo.characterThemeId);
@@ -3315,24 +3315,24 @@ public class PlayerInfo
 			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_try_role_hoverboard", 0);
 			switch (Helmets.helmOrder.IndexOf(currentTrialInfo.helmetType))
 			{
-			case 1:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet2nd", 0);
-				break;
-			case 2:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet3rd", 0);
-				break;
-			case 3:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet4th", 0);
-				break;
-			case 4:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet5th", 0);
-				break;
-			case 5:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet6th", 0);
-				break;
-			case 6:
-				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet7th", 0);
-				break;
+				case 1:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet2nd", 0);
+					break;
+				case 2:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet3rd", 0);
+					break;
+				case 3:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet4th", 0);
+					break;
+				case 4:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet5th", 0);
+					break;
+				case 5:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet6th", 0);
+					break;
+				case 6:
+					IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet7th", 0);
+					break;
 			}
 			UIScreenController.Instance.AddUnlockForHelmetToReward(currentTrialInfo.helmetType);
 			currentHelmet = currentTrialInfo.helmetType;

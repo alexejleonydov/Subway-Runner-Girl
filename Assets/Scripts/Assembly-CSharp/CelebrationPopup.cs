@@ -386,7 +386,9 @@ public class CelebrationPopup : UIBaseScreen
 		GameObject celebrationPopup = GameObject.Find("CelebrationPopup(Clone)");
 		if (celebrationPopup != null && celebrationPopup.activeInHierarchy)
 		{
-			UIScreenController.Instance.ClosePopupHandle("CelebrationPopup(Clone)");
+			pressButton();
+			Debug.Log("Tap to continue is pressed");
+			//UIScreenController.Instance.ClosePopupHandle("CelebrationPopup(Clone)");
 		}
 	}
 
@@ -1078,6 +1080,11 @@ public class CelebrationPopup : UIBaseScreen
 	}
 
 	private void Update()
+	{
+		pressButton();
+	}
+
+	private void pressButton()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{

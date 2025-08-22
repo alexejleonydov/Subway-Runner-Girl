@@ -296,7 +296,7 @@ public class TrialPopup : UIBaseScreen, IPurchaseHandler
 		GameObject buyBtn = GameObject.Find("TryHoverboardPopup(Clone)");
 		GameObject NotEnoughCurencyPopup = GameObject.Find("NotEnoughCurencyPopup(Clone)");
 
-		if ((buyBtn != null && buyBtn.activeInHierarchy) && !NotEnoughCurencyPopup.activeInHierarchy)
+		if (buyBtn != null && buyBtn.activeInHierarchy && (NotEnoughCurencyPopup == null || !NotEnoughCurencyPopup.activeInHierarchy))
 		{
 			Debug.Log("Buy is pressed for TryHoverboard");
 			OnBuyClick();

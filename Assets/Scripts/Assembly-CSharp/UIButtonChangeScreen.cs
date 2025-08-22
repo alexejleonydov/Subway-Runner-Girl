@@ -149,6 +149,14 @@ public class UIButtonChangeScreen : UIBasicButton
 			Send();
 		}
 
+		GameObject box_OpenPopup = GameObject.Find("Box_Open(Clone)");
+		if (box_OpenPopup != null && box_OpenPopup.activeInHierarchy)
+		{
+			ScreenNameToOpen = "IngameUI";
+			screenChangeType = ScreenChangeType.ClosePopup;
+			Send();
+		}
+
 		GameObject boxOpenUIPopup = GameObject.Find("OK");
 		if (boxOpenUIPopup != null && boxOpenUIPopup.activeInHierarchy)
 		{

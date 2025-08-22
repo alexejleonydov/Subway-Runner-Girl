@@ -81,7 +81,7 @@ public class Die : CharacterState
 			characterCamera.UpdatePosition(character.transform.position, Quaternion.identity, Time.deltaTime, true);
 			yield return null;
 		}
-		bool isShowHelpMe = true;
+		bool isShowHelpMe = false;  //true;
 		if (isShowHelpMe)
 		{
 			UIScreenController.Instance.QueuePopup("SaveMePopup");

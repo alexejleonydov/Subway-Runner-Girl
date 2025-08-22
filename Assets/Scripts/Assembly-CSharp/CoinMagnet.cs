@@ -95,10 +95,23 @@ public class CoinMagnet : ICharacterAttachment
 		if (!Helmet.Instance.IsActive || !Helmet.Instance.UseMagent)
 		{
 			characterModel.meshCoinMagnet.enabled = true;
+
+			GameObject magnetBoosterObj = GameObject.Find("ownMagnetBooster");
+			Debug.Log("Magnet booster found in " + magnetBoosterObj.name);
+
+			if (magnetBoosterObj != null)
+			{
+				MeshRenderer boosterMesh = magnetBoosterObj.GetComponent<MeshRenderer>();
+				if (boosterMesh != null)
+				{
+					boosterMesh.enabled = true;
+				}
+			}
+
 			characterAnimation["hold_magnet"].enabled = true;
 			characterAnimation.Play("hold_magnet");
 			characterModel.changeAnimationState.SetAbilty(true);
-			Debug.Log("Magnet");
+			Debug.Log("Ability for Magnet is set to TRUE");
 			coinMagnetCollider.OnEnter = CoinTriggerHit;
 			coinMagnetCollider.GetComponent<Collider>().enabled = true;
 		}
@@ -112,6 +125,17 @@ public class CoinMagnet : ICharacterAttachment
 		{
 			coinMagnetCollider.GetComponent<Collider>().enabled = false;
 			characterModel.meshCoinMagnet.enabled = false;
+
+			GameObject magnetBoosterObj = GameObject.Find("ownMagnetBooster");
+			if (magnetBoosterObj != null)
+			{
+				MeshRenderer boosterMesh = magnetBoosterObj.GetComponent<MeshRenderer>();
+				if (boosterMesh != null)
+				{
+					boosterMesh.enabled = false;
+				}
+			}
+
 			characterModel.changeAnimationState.SetAbilty(false);
 			coinEFX.localPosition = PickupParticles.coinEfxOffset;
 			characterAnimation["hold_magnet"].enabled = false;
@@ -144,7 +168,7 @@ public class CoinMagnet : ICharacterAttachment
 		Vector3 vector = coinPosition - characterController.transform.position;
 		if (glow == null)
 		{
-			yield return CoroutineC.Instance.StartCoroutineC(myTween.To(vector.magnitude / (pullSpeed * game.NormalizedGameSpeed), delegate(float t)
+			yield return CoroutineC.Instance.StartCoroutineC(myTween.To(vector.magnitude / (pullSpeed * game.NormalizedGameSpeed), delegate (float t)
 			{
 				coin.transform.position = Vector3.Lerp(coinPosition, characterModel.meshCoinMagnet.transform.position, t * t);
 			}));
@@ -152,7 +176,7 @@ public class CoinMagnet : ICharacterAttachment
 		else
 		{
 			Vector3 glowPosition = glow.transform.position;
-			yield return CoroutineC.Instance.StartCoroutineC(myTween.To(vector.magnitude / (pullSpeed * game.NormalizedGameSpeed), delegate(float t)
+			yield return CoroutineC.Instance.StartCoroutineC(myTween.To(vector.magnitude / (pullSpeed * game.NormalizedGameSpeed), delegate (float t)
 			{
 				coin.transform.position = Vector3.Lerp(coinPosition, characterModel.meshCoinMagnet.transform.position, t * t);
 				glow.transform.position = Vector3.Lerp(glowPosition, characterModel.meshCoinMagnet.transform.position, t * t);

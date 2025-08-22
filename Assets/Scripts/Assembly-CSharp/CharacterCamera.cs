@@ -380,7 +380,7 @@ public class CharacterCamera : MonoBehaviour
 
 	public void UpdatePosition(Vector3 position, Quaternion rotation, float deltaTime, bool allowHeightBlending)
 	{
-		Debug.Log("Current Camera Follow Mode: " + CurrentFollowMode);
+		//		Debug.Log("Current Camera Follow Mode: " + CurrentFollowMode);
 
 		switch (CurrentFollowMode)
 		{

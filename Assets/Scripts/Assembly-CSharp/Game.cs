@@ -678,6 +678,7 @@ public class Game : MonoBehaviour
 	public void ChangeState(CharacterState state)
 	{
 		characterState = state;
+		Debug.Log("Character is have state: " + characterState);
 		if (state != null)
 		{
 			currentThread = state.Begin();
@@ -916,7 +917,7 @@ public class Game : MonoBehaviour
 		{
 			return;
 		}
-	    characterState.HandleSwipe(SwipeDir.Left);
+		characterState.HandleSwipe(SwipeDir.Left);
 	}
 
 	private void OnRight(InputAction.CallbackContext context)
@@ -1391,9 +1392,11 @@ public class Game : MonoBehaviour
 			else
 			{
 				boss.CatchPlayer(characterAnimation);
+				Debug.Log("Character is Catched with anim: " + characterAnimation);
 			}
 		}
 		isDead = true;
+		Debug.Log("Is DEAD!");
 		stats.duration = GetDuration();
 		if (OnGameEnded != null)
 		{

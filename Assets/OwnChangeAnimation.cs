@@ -20,7 +20,7 @@ public class OwnChangeAnimation : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Currently playing: " + currAnim);
+        //   Debug.Log("Currently playing: " + currAnim);
 
 
         foreach (AnimationState state in charAnimation)
@@ -81,7 +81,7 @@ public class OwnChangeAnimation : MonoBehaviour
                 currAnimState = "hold_magnet_run";
             }
 
-            Debug.Log("Currently playing: " + currAnimState);
+            // Debug.Log("Currently playing: " + currAnimState);
         }
 
 
@@ -105,7 +105,7 @@ public class OwnChangeAnimation : MonoBehaviour
             isNormalAnim = true;
         }
         //if(isNormalAnim)
-        Debug.Log("Currently finally playing: " + currAnimState);
+        // Debug.Log("Currently finally playing: " + currAnimState);
         charAnimator.Play(currAnimState);
 
     }

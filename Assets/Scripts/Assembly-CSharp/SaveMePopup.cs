@@ -14,7 +14,7 @@ public class SaveMePopup : UIBaseScreen
 
 	public Transform FreeBtn;
 
-	private const float ANIMATION_DURATION = 0f;
+	private const float ANIMATION_DURATION = 10f;
 
 	private float timeLeft;
 
@@ -31,7 +31,7 @@ public class SaveMePopup : UIBaseScreen
 
 	public float getAnimationDuration()
 	{
-		return 0f;
+		return 10f;
 	}
 
 	public float getAnimationTimeLeft()
@@ -90,7 +90,7 @@ public class SaveMePopup : UIBaseScreen
 
 	private IEnumerator startClockAnimation()
 	{
-		timeLeft = 0f;
+		timeLeft = 10f;
 		while (timeLeft > -0.2f)
 		{
 			float spriteAmount = Mathf.Clamp01(timeLeft / 10f);
