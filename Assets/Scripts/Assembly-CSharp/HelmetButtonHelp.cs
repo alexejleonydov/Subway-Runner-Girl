@@ -147,7 +147,8 @@ public class HelmetButtonHelp : MonoBehaviour
 	public void AttachHoverBoard()
 	{
 		GameObject avatars = GameObject.Find("avatars");
-		GameObject hoverBoard = GameObject.Find("hoverBoard");
+		//GameObject hoverBoard = GameObject.Find("hoverBoard");
+		GameObject hoverBoard = FindInactiveByTag("HoverBoard");
 
 		if (avatars == null || hoverBoard == null)
 		{
@@ -205,6 +206,26 @@ public class HelmetButtonHelp : MonoBehaviour
 
 		return null;
 	}
+
+	// Пошук навіть серед неактивних
+	private GameObject FindInactiveByTag(string tag)
+	{
+		// Отримуємо ВСІ об'єкти, включаючи неактивні
+		GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+		foreach (GameObject obj in allObjects)
+		{
+			if (obj.CompareTag(tag))
+			{
+				// Перевіряємо щоб це був саме об'єкт зі сцени, а не префаб з Project
+				if (obj.scene.IsValid())
+					return obj;
+			}
+		}
+
+		return null;
+	}
+
 
 	private void OnHardReset()
 	{

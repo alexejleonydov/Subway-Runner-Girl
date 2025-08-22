@@ -388,7 +388,7 @@ public class CelebrationPopup : UIBaseScreen
 		{
 			pressButton();
 			Debug.Log("Tap to continue is pressed");
-			//UIScreenController.Instance.ClosePopupHandle("CelebrationPopup(Clone)");
+			UIScreenController.Instance.ClosePopupHandle("CelebrationPopup(Clone)");
 		}
 	}
 

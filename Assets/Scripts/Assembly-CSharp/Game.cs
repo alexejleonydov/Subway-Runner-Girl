@@ -517,6 +517,8 @@ public class Game : MonoBehaviour
 
 	public void Start()
 	{
+
+
 		StartCoroutine(GameIntro());
 		if (!PlayerInfo.Instance.hasRemoveAd)
 		{
@@ -834,7 +836,7 @@ public class Game : MonoBehaviour
 			RewardManager.AddRewardToUnlock(CelebrationRewardOrigin.Chest);
 			GameStats.Instance.chestPickups += 1 << TrackController.Instance.nextChestIndex - 1;
 		}
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetKeyDown(KeyCode.V))
 		{
 			PlayerInfo.Instance.NextTrialLevel();
 		}
@@ -846,7 +848,7 @@ public class Game : MonoBehaviour
 		{
 			Megaheadstart();
 		}
-		if (Input.GetKeyDown(KeyCode.S))
+		if (Input.GetKeyDown(KeyCode.B))
 		{
 			GameStats.Instance.superShoesPickups++;
 			attachment.Add(attachment.SuperShoes);
@@ -1066,6 +1068,8 @@ public class Game : MonoBehaviour
 
 	public void Update()
 	{
+		HandleDebugControls();
+
 		if (!SaveMeManager.IS_PURCHASE_RUNNING_INGAME && !trackController.IsRunningOnTutorialTrack)
 		{
 			t = Time.time - internalStartTime;

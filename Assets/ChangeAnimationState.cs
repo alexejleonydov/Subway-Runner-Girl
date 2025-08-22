@@ -97,23 +97,23 @@ public class ChangeAnimationState : MonoBehaviour
     {
         //Debug.Log("ChangeAnimatorState playing name: " + name);
 
-        if (isAbility)
-        {
-            if (name == "jump" || name == "jump_salto" || name == "jump_2" || name == "jump_3")
-                currAnimState = "hold_magnet_jump";
-            else if (name == "roll")
-                currAnimState = "roll";
-            else if (name == "run_side_R")
-                currAnimState = "run_side_R";
-            else if (name == "run_side_L")
-                currAnimState = "run_side_L";
-            else
-                currAnimState = "hold_magnet_run";
-        }
-        else
-        {
-            currAnimState = name;
-        }
+        // if (isAbility)
+        // {
+        //     if (name == "jump" || name == "jump_salto" || name == "jump_2" || name == "jump_3")
+        //         currAnimState = "hold_magnet_jump";
+        //     // else if (name == "roll")
+        //     //     currAnimState = "roll";
+        //     // else if (name == "run_side_R")
+        //     //     currAnimState = "run_side_R";
+        //     // else if (name == "run_side_L")
+        //     //     currAnimState = "run_side_L";
+        //     else
+        //         currAnimState = name;//"hold_magnet_run";
+        // }
+        // else
+        // {
+        currAnimState = name;
+        // }
 
         if (charAnimator != null)
         {

@@ -100,6 +100,7 @@ public class UIButtonChangeScreen : UIBasicButton
 
 	private void OnFrontUIPerformed(InputAction.CallbackContext context)
 	{
+
 		GameObject gameOverUIPopup = GameObject.Find("4Footer");
 		if (gameOverUIPopup != null && gameOverUIPopup.activeInHierarchy)
 		{
@@ -116,11 +117,13 @@ public class UIButtonChangeScreen : UIBasicButton
 		}
 
 		GameObject HelmetPopup = GameObject.Find("HelmetPopup(Clone)");
+		Debug.Log("Helmet object is " + gameObject.name);
 		if (HelmetPopup != null && HelmetPopup.activeInHierarchy)
 		{
 			Debug.Log("Helmet is closed");
 			ScreenNameToOpen = "HelmetPopup";
 			screenChangeType = ScreenChangeType.ClosePopup;
+			Send();
 			Send();
 		}
 
@@ -129,6 +132,7 @@ public class UIButtonChangeScreen : UIBasicButton
 		if (TryHoverboardPopup != null && TryHoverboardPopup.activeInHierarchy)
 		{
 			//ScreenNameToOpen = "FrontUI";
+			screenChangeType = ScreenChangeType.ClosePopup;
 			Send();
 		}
 	}
@@ -231,6 +235,7 @@ public class UIButtonChangeScreen : UIBasicButton
 			}
 			if (screenChangeType == ScreenChangeType.ClosePopup)
 			{
+				Debug.Log("screenChangeType is: " + screenChangeType + ScreenNameToOpen);
 				instance.ClosePopup(ScreenNameToOpen);
 			}
 		}

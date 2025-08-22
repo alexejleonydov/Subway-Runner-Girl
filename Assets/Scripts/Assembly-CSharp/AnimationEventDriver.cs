@@ -7,6 +7,6 @@ public class AnimationEventDriver : MonoBehaviour
 
 	public void PlayParticleSystem()
 	{
-		ps.Play();
+		//ps.Play();
 	}
 }

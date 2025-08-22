@@ -57,6 +57,12 @@ public class HelmetRendering : MonoBehaviour
 
 	public AnimationPair[] getOnHelmAnimations;
 
+
+	void Awake()
+	{
+		Debug.Log("Prefab instantiated by: " + StackTraceUtility.ExtractStackTrace());
+	}
+
 	private void AddClipsToAnimationComp(Animation animation, AnimationClip clip, List<AnimationClip> addedClipsList)
 	{
 		if (!(clip != null))
