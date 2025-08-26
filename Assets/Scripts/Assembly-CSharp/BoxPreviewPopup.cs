@@ -57,6 +57,8 @@ public class BoxPreviewPopup : UIBaseScreen, IPurchaseHandler
 		features = new List<UICard>();
 		features.Add(defaultFeature);
 		features.Add(cusomFeature);
+
+		PlayerInfo.Instance.tutorialStep = 3;
 	}
 
 	public override void Show()
@@ -69,10 +71,10 @@ public class BoxPreviewPopup : UIBaseScreen, IPurchaseHandler
 			return;
 		}
 		base.Show();
-		if (PlayerInfo.Instance.tutorialStep == 2)
-		{
-			UIScreenController.Instance.ReadyTutorial();
-		}
+		// if (PlayerInfo.Instance.tutorialStep == 2)
+		// {
+		// 	UIScreenController.Instance.ReadyTutorial();
+		// }
 		chestButton.SetChestType(_chestType);
 		GameObject gameObject = chestButton.Init();
 		InitAssets.Instance.SetChestBox(gameObject.GetComponentsInChildren<MeshRenderer>(), new Vector4(0f, 0f, 1f, 1f), 1f);
@@ -115,19 +117,19 @@ public class BoxPreviewPopup : UIBaseScreen, IPurchaseHandler
 
 	protected override void AfterShow()
 	{
-		if (PlayerInfo.Instance.tutorialStep == 2)
-		{
-			GameObject gameObject = Object.Instantiate(chestButton.button.gameObject);
-			gameObject.transform.parent = chestButton.button.parent;
-			gameObject.transform.localPosition = Vector3.up * chestButton.button.localPosition.y;
-			gameObject.transform.localScale = Vector3.one;
-			BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-			boxCollider.size = new Vector3(320f, 120f, 0f);
-			UIButtonMessage uIButtonMessage = gameObject.AddComponent<UIButtonMessage>();
-			uIButtonMessage.target = chestButton.gameObject;
-			uIButtonMessage.functionName = "OnClick";
-			UIScreenController.Instance.ShowTutorial(gameObject, UIPosScalesAndNGUIAtlas.Instance.chestPopupButtoneFingerOffset / UIScreenController.Instance.root.activeHeight * 2f, UIPosScalesAndNGUIAtlas.Instance.chestPopupButtoneFingerRotZ);
-		}
+		// if (PlayerInfo.Instance.tutorialStep == 2)
+		// {
+		// 	GameObject gameObject = Object.Instantiate(chestButton.button.gameObject);
+		// 	gameObject.transform.parent = chestButton.button.parent;
+		// 	gameObject.transform.localPosition = Vector3.up * chestButton.button.localPosition.y;
+		// 	gameObject.transform.localScale = Vector3.one;
+		// 	BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+		// 	boxCollider.size = new Vector3(320f, 120f, 0f);
+		// 	UIButtonMessage uIButtonMessage = gameObject.AddComponent<UIButtonMessage>();
+		// 	uIButtonMessage.target = chestButton.gameObject;
+		// 	uIButtonMessage.functionName = "OnClick";
+		// 	UIScreenController.Instance.ShowTutorial(gameObject, UIPosScalesAndNGUIAtlas.Instance.chestPopupButtoneFingerOffset / UIScreenController.Instance.root.activeHeight * 2f, UIPosScalesAndNGUIAtlas.Instance.chestPopupButtoneFingerRotZ);
+		// }
 	}
 
 	public override void Hide()
@@ -160,40 +162,40 @@ public class BoxPreviewPopup : UIBaseScreen, IPurchaseHandler
 	{
 		switch (type)
 		{
-		case 2:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "click_video_all_success", 0);
-			RiseSdk.Instance.TrackEvent("click_video_all_success", "default,default");
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "click_video_shop_chest", 0);
-			RiseSdk.Instance.TrackEvent("click_video_shop_chest", "default,default");
-			if (UIScreenController.Instance.CheckNetwork())
-			{
-				if (RiseSdk.Instance.HasRewardAd())
+			case 2:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "click_video_all_success", 0);
+				RiseSdk.Instance.TrackEvent("click_video_all_success", "default,default");
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "click_video_shop_chest", 0);
+				RiseSdk.Instance.TrackEvent("click_video_shop_chest", "default,default");
+				if (UIScreenController.Instance.CheckNetwork())
 				{
-					IvyApp.Instance.Statistics(string.Empty, string.Empty, "video_shop_chest", 0);
-					VideoLoadingPopup.adType = 2;
-					VideoLoadingPopup.rewardId = 16;
-					UIScreenController.Instance.PushPopup("VideoLoadingPopup");
+					if (RiseSdk.Instance.HasRewardAd())
+					{
+						IvyApp.Instance.Statistics(string.Empty, string.Empty, "video_shop_chest", 0);
+						VideoLoadingPopup.adType = 2;
+						VideoLoadingPopup.rewardId = 16;
+						UIScreenController.Instance.PushPopup("VideoLoadingPopup");
+					}
+					else
+					{
+						UISliderInController.Instance.OnNetErrorPickedUp();
+					}
 				}
 				else
 				{
+					UIScreenController.Instance.PushPopup("NoNetworkPopup");
+				}
+				break;
+			case 3:
+				if (UIScreenController.Instance.CheckNetwork())
+				{
 					UISliderInController.Instance.OnNetErrorPickedUp();
 				}
-			}
-			else
-			{
-				UIScreenController.Instance.PushPopup("NoNetworkPopup");
-			}
-			break;
-		case 3:
-			if (UIScreenController.Instance.CheckNetwork())
-			{
-				UISliderInController.Instance.OnNetErrorPickedUp();
-			}
-			else
-			{
-				UIScreenController.Instance.PushPopup("NoNetworkPopup");
-			}
-			break;
+				else
+				{
+					UIScreenController.Instance.PushPopup("NoNetworkPopup");
+				}
+				break;
 		}
 	}
 
@@ -220,29 +222,29 @@ public class BoxPreviewPopup : UIBaseScreen, IPurchaseHandler
 		int type = chestButton.type;
 		switch (type)
 		{
-		case 1:
-			if (!_purchaseInProgress)
-			{
-				_purchaseInProgress = true;
-				PurchaseHandler.Instance.PurchaseChest(_chestType, this);
-			}
-			break;
-		case 2:
-		case 3:
-			OnFreeViewClick(type);
-			break;
-		case 4:
-			if (ShopManager.Instance.IsCoolingDownOver())
-			{
-				if (PlayerInfo.Instance.tutorialStep == 2)
+			case 1:
+				if (!_purchaseInProgress)
 				{
-					PlayerInfo.Instance.tutorialStep++;
-					UIScreenController.Instance.HideTutorial();
+					_purchaseInProgress = true;
+					PurchaseHandler.Instance.PurchaseChest(_chestType, this);
 				}
-				OpenChest();
-				ShopManager.Instance.SetNewTime();
-			}
-			break;
+				break;
+			case 2:
+			case 3:
+				OnFreeViewClick(type);
+				break;
+			case 4:
+				if (ShopManager.Instance.IsCoolingDownOver())
+				{
+					if (PlayerInfo.Instance.tutorialStep == 2)
+					{
+						PlayerInfo.Instance.tutorialStep++;
+						UIScreenController.Instance.HideTutorial();
+					}
+					OpenChest();
+					ShopManager.Instance.SetNewTime();
+				}
+				break;
 		}
 	}
 

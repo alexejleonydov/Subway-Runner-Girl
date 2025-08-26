@@ -102,10 +102,14 @@ public class UIButtonChangeScreen : UIBasicButton
 	{
 
 		GameObject gameOverUIPopup = GameObject.Find("4Footer");
+		Debug.Log("gameOverUIPopup in Button is..." + gameOverUIPopup);
+
 		if (gameOverUIPopup != null && gameOverUIPopup.activeInHierarchy)
 		{
-			ScreenNameToOpen = "FrontUI";
+			//screenChangeType = ScreenChangeType.ClosePopup;
+			//ScreenNameToOpen = "GameoverUI";
 			Send();
+			Debug.Log("gameOverUIPopup button is clicked");
 		}
 
 		GameObject CoinboxQuickPopup = GameObject.Find("CoinboxQuick(Clone)");
@@ -132,6 +136,13 @@ public class UIButtonChangeScreen : UIBasicButton
 		if (TryHoverboardPopup != null && TryHoverboardPopup.activeInHierarchy)
 		{
 			//ScreenNameToOpen = "FrontUI";
+			screenChangeType = ScreenChangeType.ClosePopup;
+			Send();
+		}
+		GameObject LevelUpPopup = GameObject.Find("LevelUpPopup(Clone)");
+		if (LevelUpPopup != null && LevelUpPopup.activeInHierarchy)
+		{
+
 			screenChangeType = ScreenChangeType.ClosePopup;
 			Send();
 		}
@@ -175,6 +186,14 @@ public class UIButtonChangeScreen : UIBasicButton
 			Send();
 		}
 
+
+		GameObject LevelUpPopup = GameObject.Find("LevelUpPopup(Clone)");
+		if (LevelUpPopup != null && LevelUpPopup.activeInHierarchy)
+		{
+
+			screenChangeType = ScreenChangeType.ClosePopup;
+			Send();
+		}
 	}
 
 

@@ -59,6 +59,12 @@ public class MainScreen : UIBaseScreen
 	private InputActions inputActions;
 
 
+	void Awake()
+	{
+		PlayerInfo.Instance.tutorialStep = 3;
+		PlayerInfo.Instance.tutorialCompleted = true;
+
+	}
 	private void OnEnable()
 	{
 		inputActions = new InputActions();

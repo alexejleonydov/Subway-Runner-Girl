@@ -26,21 +26,21 @@ public class UIScrollClick : MonoBehaviour
 		}
 	}
 
-    private void Update()
-    {
+	private void Update()
+	{
 		Vector3 mouseScreenPosition = Input.mousePosition;
-		Debug.Log("Mouse Screen Position: " + mouseScreenPosition);
+		//		Debug.Log("Mouse Screen Position: " + mouseScreenPosition);
 	}
 
-    private void ScrollSwipe(InputAction.CallbackContext obj)
-    {
+	private void ScrollSwipe(InputAction.CallbackContext obj)
+	{
 		Debug.Log("Swipe");
 
 		float direction = inputActions.UI.Swipe.ReadValue<float>();
 
-		Vector2 pos = 200*direction*Vector2.right;
+		Vector2 pos = 200 * direction * Vector2.right;
 
-		Vector2 oldPos = new (968.94f, 178.29f);
+		Vector2 oldPos = new(968.94f, 178.29f);
 
 		Vector2 newPose = oldPos + pos;
 
@@ -48,7 +48,7 @@ public class UIScrollClick : MonoBehaviour
 
 	}
 
-    private void OnClick()
+	private void OnClick()
 	{
 		if (scollClick != null)
 		{

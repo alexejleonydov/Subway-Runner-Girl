@@ -1081,27 +1081,29 @@ public class CelebrationPopup : UIBaseScreen
 
 	private void Update()
 	{
-		pressButton();
+		//pressButton();
 	}
 
 	private void pressButton()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
+		// if (Input.GetKeyDown(KeyCode.Escape))
+		// {
+		if (openButton.enabled)
 		{
-			if (openButton.enabled)
-			{
-				OnPressed();
-				OnReleased();
-			}
-			if (continueButton.enabled)
-			{
-				SkipNow();
-			}
-			if (isWaitingForInput)
-			{
-				skipWaitBackButtonPressed = true;
-			}
+			OnPressed();
+			OnReleased();
+			Debug.Log("Tap to continue is pressed for OnPressed");
 		}
+		if (continueButton.enabled)
+		{
+			SkipNow();
+			Debug.Log("Tap to continue is pressed for Skip");
+		}
+		if (isWaitingForInput)
+		{
+			skipWaitBackButtonPressed = true;
+		}
+		//}
 	}
 
 	private void UpdateGui(CelebrationReward reward)
