@@ -13,17 +13,30 @@ public class UIScrollClick : MonoBehaviour
 
 	private void Awake()
 	{
-		if (inputActions == null)
-			inputActions = new InputActions();
+		//if (inputActions == null)
+		inputActions = new InputActions();
 
-		inputActions.Enable();
+		// inputActions.Enable();
 
-		inputActions.UI.Swipe.performed += ScrollSwipe;
+		// inputActions.UI.Swipe.performed += ScrollSwipe;
 
 		if (!(target == null))
 		{
 			scollClick = target.GetComponent<IScrollClick>();
 		}
+	}
+
+	private void OnEnable()
+	{
+		inputActions.Enable();
+
+		inputActions.UI.Swipe.performed += ScrollSwipe;
+	}
+	private void OnDisable()
+	{
+		inputActions.Disable();
+
+		inputActions.UI.Swipe.performed -= ScrollSwipe;
 	}
 
 	private void Update()
@@ -34,17 +47,20 @@ public class UIScrollClick : MonoBehaviour
 
 	private void ScrollSwipe(InputAction.CallbackContext obj)
 	{
-		Debug.Log("Swipe");
+
 
 		float direction = inputActions.UI.Swipe.ReadValue<float>();
 
-		Vector2 pos = 200 * direction * Vector2.right;
+		Vector2 pos = 250 * direction * Vector2.right;
 
-		Vector2 oldPos = new(968.94f, 178.29f);
+		//Vector2 oldPos = new(968.94f, 178.29f);
+		Vector2 oldPos = new(960.94f, 410.29f);
 
 		Vector2 newPose = oldPos + pos;
 
 		scollClick.ScrollClicked(newPose);
+
+		Debug.Log("Swipe on " + newPose);
 
 	}
 

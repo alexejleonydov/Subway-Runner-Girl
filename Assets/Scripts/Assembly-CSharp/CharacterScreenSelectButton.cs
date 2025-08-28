@@ -154,7 +154,6 @@ public class CharacterScreenSelectButton : MonoBehaviour
 		{
 			OnClick();
 		}
-
 	}
 
 	public void InitButton()

@@ -29,14 +29,18 @@ public class UIFooterHandler : MonoBehaviour
 
 	public IndexController indexController;
 
-    private void Start()
-    {
+	void Awake()
+	{
+		inputActions = new InputActions();
+	}
+	private void Start()
+	{
 		//currentIndex = 1;
 
-		
+
 	}
 
-    private void OnEnable()
+	private void OnEnable()
 	{
 		indexController = FindObjectOfType<IndexController>();
 		currentIndex = indexController.currentInd;
@@ -45,14 +49,19 @@ public class UIFooterHandler : MonoBehaviour
 		PurchaseHandler.Instance.AddOnUpgradePurchase(UpdateTips);
 		PlayerInfo instance = PlayerInfo.Instance;
 		instance.OnHelmUnlocked = (Action<Helmets.HelmType>)Delegate.Combine(instance.OnHelmUnlocked, new Action<Helmets.HelmType>(UpdateTipsBY));
+
+		inputActions.Enable();
+
+		inputActions.UI.FooterMove.performed += MoveFooterButtons;
+
 	}
 	private void MoveFooterButtonsDirection(InputAction.CallbackContext obj)
 	{
-		
+
 	}
 
 	public void SetIndex()
-    {
+	{
 		FootItem[] footItemsNew = { character, helm, upgrade, store };
 
 		footItems = footItemsNew;
@@ -64,57 +73,57 @@ public class UIFooterHandler : MonoBehaviour
 	}
 
 
-	public void AddInput()
-    {
-		if (inputActions == null)
-			inputActions = new InputActions();
+	// public void AddInput()
+	// {
+	// 	if (inputActions == null)
+	// 		inputActions = new InputActions();
 
-		//if(currentIndex == 1)
-		//OnButtonClick(1);
+	// 	//if(currentIndex == 1)
+	// 	//OnButtonClick(1);
 
-		inputActions.Enable();
+	// 	inputActions.Enable();
 
-		//inputActions.UI.FooterMove.performed+= MoveFooterButtonsDirection;
+	// 	//inputActions.UI.FooterMove.performed+= MoveFooterButtonsDirection;
 
-		inputActions.UI.FooterMove.performed += MoveFooterButtons;
-	}
+	// 	inputActions.UI.FooterMove.performed += MoveFooterButtons;
+	// }
 
 	private void MoveFooterButtons(InputAction.CallbackContext obj)
-    {
+	{
 		//if (canPress)
 		//{
-			//canPress = false;
+		//canPress = false;
 
-			direction = inputActions.UI.FooterMove.ReadValue<float>();
+		direction = inputActions.UI.FooterMove.ReadValue<float>();
 
-			Debug.Log("CurrentIndexValue:" + inputActions.UI.FooterMove.ReadValue<float>());
+		Debug.Log("CurrentIndexValue:" + inputActions.UI.FooterMove.ReadValue<float>());
 
-			currentIndex += direction;
+		currentIndex += direction;
 
-			currentIndex = Mathf.Clamp(currentIndex, 1, 4);
+		currentIndex = Mathf.Clamp(currentIndex, 1, 4);
 
-		    indexController.currentInd = currentIndex;
+		indexController.currentInd = currentIndex;
 
-			OnButtonPress((int)currentIndex);
+		OnButtonPress((int)currentIndex);
 
-			OnButtonClick((int)currentIndex);
+		OnButtonClick((int)currentIndex);
 
-			//StartCoroutine(ButtonClickDelay());
+		//StartCoroutine(ButtonClickDelay());
 
-			Debug.Log("CurrentIndex:" + currentIndex + direction);
+		Debug.Log("CurrentIndex:" + currentIndex + direction);
 		//}
 	}
 
-    private void OnDisable()
+	private void OnDisable()
 	{
 		PurchaseHandler.Instance.RemoveOnUpgradePurchase(UpdateTips);
 		PlayerInfo instance = PlayerInfo.Instance;
 		instance.OnHelmUnlocked = (Action<Helmets.HelmType>)Delegate.Remove(instance.OnHelmUnlocked, new Action<Helmets.HelmType>(UpdateTipsBY));
 
 
-		//inputActions.Disable();
+		inputActions.Disable();
 
-		//inputActions.UI.FooterMove.performed -= MoveFooterButtons;
+		inputActions.UI.FooterMove.performed -= MoveFooterButtons;
 	}
 
 	private void UpdateTipsBY(Helmets.HelmType obj)
@@ -138,11 +147,11 @@ public class UIFooterHandler : MonoBehaviour
 	}
 
 	public IEnumerator ButtonClickDelay()
-    {
+	{
 		yield return new WaitForSeconds(0.5f);
 
 		canPress = true;
-    }
+	}
 
 
 	public void OnButtonClick(int selected)

@@ -224,6 +224,8 @@ public class HelmScreen : UIBaseScreen, IScrollClick
 		{
 			SelectCurrentHelmShown();
 			NGUITools.PlaySound(selectSound);
+
+
 		}
 	}
 
@@ -327,5 +329,6 @@ public class HelmScreen : UIBaseScreen, IScrollClick
 	private void UpdateButtons()
 	{
 		selectBtn.UpdateSelectState(_currentHelmShown);
+		Debug.Log("Swipe on Button" + _currentHelmShown);
 	}
 }

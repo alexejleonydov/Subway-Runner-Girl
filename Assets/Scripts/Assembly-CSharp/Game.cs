@@ -895,7 +895,7 @@ public class Game : MonoBehaviour
 	{
 		if (characterState == null)
 		{
-			//Debug.LogError("characterState is NULL у OnUp!");
+			//Debug.LogError("characterState is NULL in OnUp!");
 			return;
 		}
 
@@ -906,7 +906,7 @@ public class Game : MonoBehaviour
 	{
 		if (characterState == null)
 		{
-			//Debug.LogError("characterState is NULL у OnUp!");
+			//Debug.LogError("characterState is NULL in OnUp!");
 			return;
 		}
 

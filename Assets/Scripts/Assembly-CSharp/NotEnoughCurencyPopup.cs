@@ -105,6 +105,7 @@ public class NotEnoughCurencyPopup : UIBaseScreen
 
 		inputActions.Enable();
 		inputActions.Play.PlayGame.performed += OnBuyKeyPressed;
+		inputActions.Play.Exit.performed += OnExitKeyPressed;
 
 	}
 
@@ -114,28 +115,74 @@ public class NotEnoughCurencyPopup : UIBaseScreen
 
 		inputActions.Disable();
 		inputActions.Play.PlayGame.performed -= OnBuyKeyPressed;
+		inputActions.Play.Exit.performed -= OnExitKeyPressed;
 	}
+
+	// private void OnBuyKeyPressed(InputAction.CallbackContext context)
+	// {
+	// 	Debug.Log("OnBuyKeyPressed activated");
+	// 	GameObject NotEnoughCurencyPopup = GameObject.Find("NotEnoughCurencyPopup(Clone)");
+	// 	if (NotEnoughCurencyPopup != null && NotEnoughCurencyPopup.activeInHierarchy)
+	// 	{
+
+	// 		if ("IngameUI".Equals(UIScreenController.Instance.GetTopScreenName()) && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
+	// 		{
+	// 			OnBuyClicked(buy);
+	// 			Debug.Log("Buy button pressed");
+	// 		}
+	// 		else
+	// 		{
+	// 			OnOkClicked(buy);
+	// 			Debug.Log("OK button pressed");
+	// 		}
+	// 	}
+	// }
 
 	private void OnBuyKeyPressed(InputAction.CallbackContext context)
 	{
 		Debug.Log("OnBuyKeyPressed activated");
-		GameObject NotEnoughCurencyPopup = GameObject.Find("NotEnoughCurencyPopup(Clone)");
-		if (NotEnoughCurencyPopup != null && NotEnoughCurencyPopup.activeInHierarchy)
-		{
 
-			if ("IngameUI".Equals(UIScreenController.Instance.GetTopScreenName()) && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
+		if (gameObject.activeInHierarchy && buy != null)
+		{
+			Debug.Log("Emulating button click automatically");
+
+
+			UIEventListener listener = UIEventListener.Get(buy);
+
+
+			if (listener.onClick != null)
 			{
-				OnBuyClicked(buy);
-				Debug.Log("Buy button pressed");
+				listener.onClick.Invoke(buy);
+				Debug.Log("Button click invoked via UIEventListener");
 			}
 			else
 			{
-				OnOkClicked(buy);
-				Debug.Log("OK button pressed");
+
+				if (_popupData != null && "IngameUI".Equals(UIScreenController.Instance.GetTopScreenName()) && SaveMeManager.IS_PURCHASE_MADE_FROM_INGAME)
+				{
+					OnBuyClicked(buy);
+					Debug.Log("OnBuyClicked called automatically");
+				}
+				else
+				{
+					OnOkClicked(buy);
+					Debug.Log("OnOkClicked called automatically");
+				}
+			}
+
+			if (UIScreenController.isInstanced)
+			{
+				UIScreenController.Instance.ClosePopup(null);
+				Debug.Log("Popup closed automatically after click");
 			}
 		}
 	}
 
+
+	private void OnExitKeyPressed(InputAction.CallbackContext context)
+	{
+		OnCancelClicked();
+	}
 
 	public void OnBuyClicked(GameObject go)
 	{

@@ -167,7 +167,7 @@ public class HelmetButtonHelp : MonoBehaviour
 				hoverBoard.transform.localPosition = Vector3.zero;
 				hoverBoard.transform.localRotation = Quaternion.identity;
 
-				// Викликаємо корутину для затримки активації
+
 				StartCoroutine(ActivateWithDelay(hoverBoard, 0.3f));
 
 				Debug.Log("hoverBoard attached to : " + animContainer.name);
@@ -178,7 +178,7 @@ public class HelmetButtonHelp : MonoBehaviour
 		Debug.LogWarning("Not find any container for hoverBoard!");
 	}
 
-	// Корутіна для активації з затримкою
+
 	private IEnumerator ActivateWithDelay(GameObject obj, float delay)
 	{
 		yield return new WaitForSeconds(delay);
@@ -191,7 +191,7 @@ public class HelmetButtonHelp : MonoBehaviour
 		{
 			if (child.gameObject.activeInHierarchy && child.childCount > 0)
 			{
-				// Беремо першого активного нащадка як "рівень глибше"
+
 				foreach (Transform grandChild in child)
 				{
 					if (grandChild.gameObject.activeInHierarchy)
@@ -199,7 +199,7 @@ public class HelmetButtonHelp : MonoBehaviour
 				}
 			}
 
-			// Рекурсивно шукаємо глибше у інших дітей
+
 			Transform found = FindActiveAnimationContainer(child);
 			if (found != null) return found;
 		}
@@ -207,17 +207,17 @@ public class HelmetButtonHelp : MonoBehaviour
 		return null;
 	}
 
-	// Пошук навіть серед неактивних
+
 	private GameObject FindInactiveByTag(string tag)
 	{
-		// Отримуємо ВСІ об'єкти, включаючи неактивні
+
 		GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
 
 		foreach (GameObject obj in allObjects)
 		{
 			if (obj.CompareTag(tag))
 			{
-				// Перевіряємо щоб це був саме об'єкт зі сцени, а не префаб з Project
+
 				if (obj.scene.IsValid())
 					return obj;
 			}

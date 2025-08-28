@@ -106,118 +106,119 @@ public class UIModelController : MonoBehaviour
 		_currentActivatedScreenModel = screen;
 		switch (screen)
 		{
-		case ModelScreen.Character:
-		{
-			GameObject gameObject7 = Object.Instantiate(ModelPrefab);
-			gameObject7.transform.parent = CharacterAnchor.transform;
-			gameObject7.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.characterScreenCharacterModelLocalPos;
-			Utility.SetLayerRecursively(gameObject7.transform, CharacterAnchor.layer);
-			gameObject7.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.characterScreenCharacterModelLocalScl;
-			gameObject7.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.characterScreenCharacterModelLocalRot);
-			CharacterModel component7 = gameObject7.GetComponent<CharacterModel>();
-			component7.ChangeCharacterModel(modelName, modelIndex);
-			component7.HideAllPowerups();
-			component7.StartIdleAnimations();
-			_cachedActiveModel = component7;
-			return gameObject7;
-		}
-		case ModelScreen.TrialRolePopup:
-		{
-			GameObject gameObject6 = Object.Instantiate(ModelPrefab);
-			gameObject6.transform.parent = TutorialPopupAnchor.transform;
-			gameObject6.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalPos;
-			Utility.SetLayerRecursively(gameObject6.transform, TutorialPopupAnchor.layer);
-			gameObject6.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalScl;
-			gameObject6.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalRot);
-			CharacterModel component6 = gameObject6.GetComponent<CharacterModel>();
-			component6.ChangeCharacterModel(modelName, modelIndex);
-			component6.HideAllPowerups();
-			component6.StartIdleAnimations();
-			_cachedActiveModel = component6;
-			return gameObject6;
-		}
-		case ModelScreen.TrialHelmetPopup:
-		{
-			GameObject gameObject5 = Object.Instantiate(ModelPrefab);
-			gameObject5.transform.parent = TutorialPopupAnchor.transform;
-			gameObject5.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalPos;
-			gameObject5.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalScl;
-			gameObject5.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalRot);
-			CharacterModel component5 = gameObject5.GetComponent<CharacterModel>();
-			component5.ChangeCharacterModel(modelName, modelIndex);
-			component5.HideAllPowerups();
-			component5.StartTryAnimation();
-			GameObject helmetRoot2 = component5.GetHelmetRoot();
-			HelmetModelPreviewFactory.Instance.ChangeHelmet(_currentTryHelmType, helmetRoot2, component5.GetAnimation(), true);
-			Utility.SetLayerRecursively(gameObject5.transform, TutorialPopupAnchor.layer);
-			_cachedActiveModel = component5;
-			return gameObject5;
-		}
-		case ModelScreen.GameOver:
-			return null;
-		case ModelScreen.Helms:
-		{
-			GameObject gameObject4 = Object.Instantiate(ModelPrefab);
-			gameObject4.transform.parent = CharacterAnchor.transform;
-			gameObject4.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.helmetScreenCharacterModelLocalPos;
-			Utility.SetLayerRecursively(gameObject4.transform, CharacterAnchor.layer);
-			gameObject4.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.helmetScreenCharacterModelLocalScl;
-			gameObject4.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.helmetScreenCharacterModelLocalRot);
-			CharacterModel component4 = gameObject4.GetComponent<CharacterModel>();
-			component4.ChangeCharacterModel(modelName, modelIndex);
-			component4.HideAllPowerups();
-			_cachedActiveModel = component4;
-			return gameObject4;
-		}
-		case ModelScreen.CelebrationCharacterUnlock:
-		{
-			GameObject gameObject3 = Object.Instantiate(ModelPrefab);
-			gameObject3.transform.parent = TutorialPopupAnchor.transform;
-			gameObject3.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.celebrationCharacterUnlockCharacterModelLocalPos;
-			Utility.SetLayerRecursively(gameObject3.transform, TutorialPopupAnchor.layer);
-			gameObject3.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.celebrationCharacterUnlockCharacterModelLocalScl;
-			gameObject3.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.celebrationCharacterUnlockCharacterModelLocalRot);
-			CharacterModel component3 = gameObject3.GetComponent<CharacterModel>();
-			component3.ChangeCharacterModel(modelName, modelIndex);
-			component3.HideAllPowerups();
-			component3.StartIdleAnimations();
-			_isCelebrationCharacterScreen = true;
-			return gameObject3;
-		}
-		case ModelScreen.CelebrationHelmUnlock:
-		{
-			GameObject gameObject2 = Object.Instantiate(ModelPrefab);
-			gameObject2.transform.parent = TutorialPopupAnchor.transform;
-			gameObject2.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.celebrationHelmUnlockCharacterModelLocalPos;
-			gameObject2.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.celebrationHelmUnlockCharacterModelLocalScl;
-			gameObject2.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.celebrationHelmUnlockCharacterModelLocalRot);
-			CharacterModel component2 = gameObject2.GetComponent<CharacterModel>();
-			component2.ChangeCharacterModel(modelName, modelIndex);
-			component2.HideAllPowerups();
-			GameObject helmetRoot = component2.GetHelmetRoot();
-			HelmetModelPreviewFactory.Instance.ChangeHelmet(_currentCelebrateHelmType, helmetRoot, component2.GetAnimation(), true);
-			Utility.SetLayerRecursively(gameObject2.transform, TutorialPopupAnchor.layer);
-			_isCelebrationCharacterScreen = false;
-			StartCoroutine("AnimateUnlockBackground", gameObject2);
-			return gameObject2;
-		}
-		case ModelScreen.CelebrationHighScore:
-		{
-			GameObject gameObject = Object.Instantiate(ModelPrefab);
-			gameObject.transform.parent = TutorialPopupAnchor.transform;
-			gameObject.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.celebrationHighScoreCharacterModelLocalPos;
-			gameObject.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.celebrationHighScoreCharacterModelLocalScl;
-			gameObject.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.celebrationHighScoreCharacterModelLocalRot);
-			CharacterModel component = gameObject.GetComponent<CharacterModel>();
-			component.ChangeCharacterModel(modelName, modelIndex);
-			component.HideAllPowerups();
-			component.StartHighScoreAnimations();
-			Utility.SetLayerRecursively(gameObject.transform, TutorialPopupAnchor.layer);
-			_isCelebrationCharacterScreen = false;
-			return gameObject;
-		}
-		default:
-			return null;
+			case ModelScreen.Character:
+				{
+					GameObject gameObject7 = Object.Instantiate(ModelPrefab);
+					gameObject7.transform.parent = CharacterAnchor.transform;
+					gameObject7.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.characterScreenCharacterModelLocalPos;
+					Utility.SetLayerRecursively(gameObject7.transform, CharacterAnchor.layer);
+					gameObject7.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.characterScreenCharacterModelLocalScl;
+					gameObject7.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.characterScreenCharacterModelLocalRot);
+					CharacterModel component7 = gameObject7.GetComponent<CharacterModel>();
+					component7.ChangeCharacterModel(modelName, modelIndex);
+					component7.HideAllPowerups();
+					component7.StartIdleAnimations();
+					_cachedActiveModel = component7;
+					return gameObject7;
+				}
+			case ModelScreen.TrialRolePopup:
+				{
+					GameObject gameObject6 = Object.Instantiate(ModelPrefab);
+					gameObject6.transform.parent = TutorialPopupAnchor.transform;
+					gameObject6.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalPos;
+					Utility.SetLayerRecursively(gameObject6.transform, TutorialPopupAnchor.layer);
+					gameObject6.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalScl;
+					gameObject6.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalRot);
+					CharacterModel component6 = gameObject6.GetComponent<CharacterModel>();
+					component6.ChangeCharacterModel(modelName, modelIndex);
+					component6.HideAllPowerups();
+					component6.StartIdleAnimations();
+					_cachedActiveModel = component6;
+					return gameObject6;
+				}
+			case ModelScreen.TrialHelmetPopup:
+				{
+					GameObject gameObject5 = Object.Instantiate(ModelPrefab);
+					gameObject5.transform.parent = TutorialPopupAnchor.transform;
+					gameObject5.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalPos;
+					gameObject5.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalScl;
+					gameObject5.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.tryCharacterModelLocalRot);
+					CharacterModel component5 = gameObject5.GetComponent<CharacterModel>();
+					component5.ChangeCharacterModel(modelName, modelIndex);
+					component5.HideAllPowerups();
+					component5.StartTryAnimation();
+					GameObject helmetRoot2 = component5.GetHelmetRoot();
+					HelmetModelPreviewFactory.Instance.ChangeHelmet(_currentTryHelmType, helmetRoot2, component5.GetAnimation(), true);
+					Utility.SetLayerRecursively(gameObject5.transform, TutorialPopupAnchor.layer);
+					_cachedActiveModel = component5;
+					return gameObject5;
+				}
+			case ModelScreen.GameOver:
+				return null;
+			case ModelScreen.Helms:
+				{
+					GameObject gameObject4 = Object.Instantiate(ModelPrefab);
+					gameObject4.transform.parent = CharacterAnchor.transform;
+					gameObject4.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.helmetScreenCharacterModelLocalPos;
+					Utility.SetLayerRecursively(gameObject4.transform, CharacterAnchor.layer);
+					gameObject4.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.helmetScreenCharacterModelLocalScl;
+					gameObject4.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.helmetScreenCharacterModelLocalRot);
+					CharacterModel component4 = gameObject4.GetComponent<CharacterModel>();
+					component4.ChangeCharacterModel(modelName, modelIndex);
+					component4.HideAllPowerups();
+					_cachedActiveModel = component4;
+					gameObject4.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+					return gameObject4;
+				}
+			case ModelScreen.CelebrationCharacterUnlock:
+				{
+					GameObject gameObject3 = Object.Instantiate(ModelPrefab);
+					gameObject3.transform.parent = TutorialPopupAnchor.transform;
+					gameObject3.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.celebrationCharacterUnlockCharacterModelLocalPos;
+					Utility.SetLayerRecursively(gameObject3.transform, TutorialPopupAnchor.layer);
+					gameObject3.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.celebrationCharacterUnlockCharacterModelLocalScl;
+					gameObject3.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.celebrationCharacterUnlockCharacterModelLocalRot);
+					CharacterModel component3 = gameObject3.GetComponent<CharacterModel>();
+					component3.ChangeCharacterModel(modelName, modelIndex);
+					component3.HideAllPowerups();
+					component3.StartIdleAnimations();
+					_isCelebrationCharacterScreen = true;
+					return gameObject3;
+				}
+			case ModelScreen.CelebrationHelmUnlock:
+				{
+					GameObject gameObject2 = Object.Instantiate(ModelPrefab);
+					gameObject2.transform.parent = TutorialPopupAnchor.transform;
+					gameObject2.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.celebrationHelmUnlockCharacterModelLocalPos;
+					gameObject2.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.celebrationHelmUnlockCharacterModelLocalScl;
+					gameObject2.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.celebrationHelmUnlockCharacterModelLocalRot);
+					CharacterModel component2 = gameObject2.GetComponent<CharacterModel>();
+					component2.ChangeCharacterModel(modelName, modelIndex);
+					component2.HideAllPowerups();
+					GameObject helmetRoot = component2.GetHelmetRoot();
+					HelmetModelPreviewFactory.Instance.ChangeHelmet(_currentCelebrateHelmType, helmetRoot, component2.GetAnimation(), true);
+					Utility.SetLayerRecursively(gameObject2.transform, TutorialPopupAnchor.layer);
+					_isCelebrationCharacterScreen = false;
+					StartCoroutine("AnimateUnlockBackground", gameObject2);
+					return gameObject2;
+				}
+			case ModelScreen.CelebrationHighScore:
+				{
+					GameObject gameObject = Object.Instantiate(ModelPrefab);
+					gameObject.transform.parent = TutorialPopupAnchor.transform;
+					gameObject.transform.localPosition = UIPosScalesAndNGUIAtlas.Instance.celebrationHighScoreCharacterModelLocalPos;
+					gameObject.transform.localScale = UIPosScalesAndNGUIAtlas.Instance.celebrationHighScoreCharacterModelLocalScl;
+					gameObject.transform.localRotation = Quaternion.Euler(UIPosScalesAndNGUIAtlas.Instance.celebrationHighScoreCharacterModelLocalRot);
+					CharacterModel component = gameObject.GetComponent<CharacterModel>();
+					component.ChangeCharacterModel(modelName, modelIndex);
+					component.HideAllPowerups();
+					component.StartHighScoreAnimations();
+					Utility.SetLayerRecursively(gameObject.transform, TutorialPopupAnchor.layer);
+					_isCelebrationCharacterScreen = false;
+					return gameObject;
+				}
+			default:
+				return null;
 		}
 	}
 
@@ -304,51 +305,51 @@ public class UIModelController : MonoBehaviour
 			{
 				switch (index % 3)
 				{
-				case 0:
-					if (_isCelebrationCharacterScreen)
-					{
-						currentRotation2 = new Vector3(0f, 130f, 0f);
-						currentOffset2 = new Vector3(0f, 0f, 180f);
-						currentBackgroundRotationOffset = new Vector3(35f, 20f, 0f);
-						currentCharPosition2 = charPosition;
-					}
-					else
-					{
-						currentRotation2 = new Vector3(27f, 205f, 16f);
-						currentOffset2 = new Vector3(45f, 100f, 130f);
-						currentCharPosition2 = charWithHelmPosition;
-					}
-					break;
-				case 1:
-					if (_isCelebrationCharacterScreen)
-					{
-						currentRotation2 = new Vector3(0f, 180f, 0f);
-						currentOffset2 = new Vector3(0f, 0f, 200f);
-						currentBackgroundRotationOffset = new Vector3(35f, 0f, 0f);
-						currentCharPosition2 = charPosition;
-					}
-					else
-					{
-						currentRotation2 = new Vector3(350f, 90f, 350f);
-						currentOffset2 = new Vector3(0f, 90f, 170f);
-						currentCharPosition2 = charWithHelmPosition;
-					}
-					break;
-				default:
-					if (_isCelebrationCharacterScreen)
-					{
-						currentRotation2 = new Vector3(0f, 240f, 0f);
-						currentOffset2 = new Vector3(5f, 0f, 200f);
-						currentBackgroundRotationOffset = new Vector3(35f, -30f, 0f);
-						currentCharPosition2 = charPosition;
-					}
-					else
-					{
-						currentRotation2 = new Vector3(10f, 210f, 0f);
-						currentOffset2 = new Vector3(0f, 100f, 120f);
-						currentCharPosition2 = charWithHelmPosition;
-					}
-					break;
+					case 0:
+						if (_isCelebrationCharacterScreen)
+						{
+							currentRotation2 = new Vector3(0f, 130f, 0f);
+							currentOffset2 = new Vector3(0f, 0f, 180f);
+							currentBackgroundRotationOffset = new Vector3(35f, 20f, 0f);
+							currentCharPosition2 = charPosition;
+						}
+						else
+						{
+							currentRotation2 = new Vector3(27f, 205f, 16f);
+							currentOffset2 = new Vector3(45f, 100f, 130f);
+							currentCharPosition2 = charWithHelmPosition;
+						}
+						break;
+					case 1:
+						if (_isCelebrationCharacterScreen)
+						{
+							currentRotation2 = new Vector3(0f, 180f, 0f);
+							currentOffset2 = new Vector3(0f, 0f, 200f);
+							currentBackgroundRotationOffset = new Vector3(35f, 0f, 0f);
+							currentCharPosition2 = charPosition;
+						}
+						else
+						{
+							currentRotation2 = new Vector3(350f, 90f, 350f);
+							currentOffset2 = new Vector3(0f, 90f, 170f);
+							currentCharPosition2 = charWithHelmPosition;
+						}
+						break;
+					default:
+						if (_isCelebrationCharacterScreen)
+						{
+							currentRotation2 = new Vector3(0f, 240f, 0f);
+							currentOffset2 = new Vector3(5f, 0f, 200f);
+							currentBackgroundRotationOffset = new Vector3(35f, -30f, 0f);
+							currentCharPosition2 = charPosition;
+						}
+						else
+						{
+							currentRotation2 = new Vector3(10f, 210f, 0f);
+							currentOffset2 = new Vector3(0f, 100f, 120f);
+							currentCharPosition2 = charWithHelmPosition;
+						}
+						break;
 				}
 				UpdateCelebrationRotation(go, currentRotation2, currentCharPosition2, currentOffset2, currentBackgroundRotationOffset);
 				index++;

@@ -134,10 +134,11 @@ public class CharacterModel : MonoBehaviour, ICharacterModel
 		ChangeCharacterOfPlayByPlayerInfo();
 		helmetRoot = meshHelmet.transform;
 
+
 		// leftShoe = GameObject.Find("feixie_L");
 		// rightShoe = GameObject.Find("feixie_R");
 
-		// Debug.Log("LeftShoe is found " + leftShoe);
+		Debug.Log("CharacterShown ");
 
 		// meshLeftShoe = leftShoe.GetComponent<MeshRenderer>();
 		// meshRightShoe = rightShoe.GetComponent<MeshRenderer>();
@@ -149,7 +150,7 @@ public class CharacterModel : MonoBehaviour, ICharacterModel
 		if (shoeObj != null)
 			return shoeObj.GetComponent<MeshRenderer>();
 
-		Debug.LogWarning("Shoe is not found: " + shoeName);
+		Debug.Log("Shoe is not found: " + shoeName);
 		return null;
 	}
 

@@ -30,7 +30,7 @@ public class ChangeAnimationState : MonoBehaviour
             if (charAnimation.IsPlaying(state.name))
             {
                 currAnim = state.name;
-                Debug.Log($"[Old Animation]  Play: {currAnim}");
+                //     Debug.Log($"[Old Animation]  Play: {currAnim}");
             }
         }
 
@@ -90,7 +90,7 @@ public class ChangeAnimationState : MonoBehaviour
     public void SetAbilty(bool ability)
     {
         isAbility = ability;
-        Debug.Log("rrr Ability is setted to " + isAbility);
+        // Debug.Log("rrr Ability is setted to " + isAbility);
 
         if (isAbility)
         {
@@ -106,12 +106,12 @@ public class ChangeAnimationState : MonoBehaviour
 
     public void ChangeAnimatorState(string name)
     {
-        Debug.Log("rrr ChangeAnimatorState playing name: " + name);
+        // Debug.Log("rrr ChangeAnimatorState playing name: " + name);
 
         if (!string.IsNullOrEmpty(currAnim) && currAnim.StartsWith("SW_"))
         {
             currAnimState = "idle";
-            Debug.Log("rrr OldState was SW_... " + name);
+            //            Debug.Log("rrr OldState was SW_... " + name);
         }
         else if (isAbility)
         {
@@ -128,7 +128,7 @@ public class ChangeAnimationState : MonoBehaviour
         {
             currAnimState = name;
         }
-        Debug.Log("rrr ChangeAnimatorState playing currAnimState: " + currAnimState);
+        //Debug.Log("rrr ChangeAnimatorState playing currAnimState: " + currAnimState);
         if (charAnimator != null)
         {
             charAnimator.Play(currAnimState);

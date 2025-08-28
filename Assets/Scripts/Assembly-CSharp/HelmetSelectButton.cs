@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HelmetSelectButton : MonoBehaviour, IPurchaseHandler
 {
@@ -87,15 +88,34 @@ public class HelmetSelectButton : MonoBehaviour, IPurchaseHandler
 
 	private int tryState;
 
+	private InputActions inputActions;
+
 	private void OnEnable()
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
 		RiseSdkListener.OnAdEvent += OnFreeReward;
+
+		inputActions = new InputActions();
+		inputActions.Enable();
+		inputActions.Play.PlayGame.performed += OnCharacterPerformed;
 	}
 
 	private void OnDisable()
 	{
 		RiseSdkListener.OnAdEvent -= OnFreeReward;
+
+		inputActions.Disable();
+		inputActions.Play.PlayGame.performed -= OnCharacterPerformed;
+	}
+
+	private void OnCharacterPerformed(InputAction.CallbackContext context)
+	{
+
+		if (context.performed && gameObject.activeInHierarchy)
+		{
+			OnClick();
+		}
+
 	}
 
 	private void OnFreeReward(RiseSdk.AdEventType type, int id, string tag, int eventType)
@@ -195,24 +215,24 @@ public class HelmetSelectButton : MonoBehaviour, IPurchaseHandler
 	{
 		switch (Helmets.helmOrder.IndexOf(currentHelmtype))
 		{
-		case 1:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet2nd", 0);
-			break;
-		case 2:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet3rd", 0);
-			break;
-		case 3:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet4th", 0);
-			break;
-		case 4:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet5th", 0);
-			break;
-		case 5:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet6th", 0);
-			break;
-		case 6:
-			IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet7th", 0);
-			break;
+			case 1:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet2nd", 0);
+				break;
+			case 2:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet3rd", 0);
+				break;
+			case 3:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet4th", 0);
+				break;
+			case 4:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet5th", 0);
+				break;
+			case 5:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet6th", 0);
+				break;
+			case 6:
+				IvyApp.Instance.Statistics(string.Empty, string.Empty, "get_helmet7th", 0);
+				break;
 		}
 		_purchaseInProgress = false;
 		if (TrialManager.Instance.IsCurrentHelmetTrial(currentHelmtype))
@@ -263,21 +283,21 @@ public class HelmetSelectButton : MonoBehaviour, IPurchaseHandler
 		activeState = newState;
 		switch (newState)
 		{
-		case State.buy:
-			buyGo.SetActive(true);
-			select.SetActive(false);
-			level.SetActive(false);
-			break;
-		case State.select:
-			select.SetActive(true);
-			buyGo.SetActive(false);
-			level.SetActive(false);
-			break;
-		case State.level:
-			level.SetActive(true);
-			select.SetActive(false);
-			buyGo.SetActive(false);
-			break;
+			case State.buy:
+				buyGo.SetActive(true);
+				select.SetActive(false);
+				level.SetActive(false);
+				break;
+			case State.select:
+				select.SetActive(true);
+				buyGo.SetActive(false);
+				level.SetActive(false);
+				break;
+			case State.level:
+				level.SetActive(true);
+				select.SetActive(false);
+				buyGo.SetActive(false);
+				break;
 		}
 	}
 
@@ -323,7 +343,7 @@ public class HelmetSelectButton : MonoBehaviour, IPurchaseHandler
 		{
 			if (!tryGo.activeSelf)
 			{
-				tryGo.SetActive(true);
+				tryGo.SetActive(false);
 			}
 			if (RiseSdk.Instance.HasRewardAd())
 			{
